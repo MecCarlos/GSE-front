@@ -1,0 +1,23 @@
+.box
+{
+    padding-top: 7%;
+    padding-bottom: 2%;
+    border-radius: 10px;
+    /* background: whitesmoke; */
+
+    .elem
+    {
+        background: whitesmoke;
+    }
+
+}
+
+.bg-image-fixed {
+  background-image: url('../../assets/images/Lp1.jpeg'); /* change le chemin selon ton projet */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+}

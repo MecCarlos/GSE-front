@@ -1,0 +1,12 @@
+#add_btn
+{
+    background: navy;
+    color: white;
+    transition: all 0.3s ease;
+    /* background: linear-gradient(to right, navy, black); */
+}
+#add_btn:hover
+{
+    background: transparent;
+    color: navy;
+}

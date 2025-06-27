@@ -1,0 +1,137 @@
+.navbar .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: whitesmoke;
+  border-radius: 50px;
+
+    
+  form
+  {
+    border: solid 1px navy;
+    background: whitesmoke;
+    padding: 2%;
+    gap: 10px;
+    border-radius: 50px;
+    
+    input
+    {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 80%;
+    }
+
+    button
+    {
+      background: navy;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+
+.btn-connexion {
+  background-color: transparent;
+  color: navy;
+  text-decoration: none;
+  border: none;
+  padding: 8px 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 50px;
+  border: 1px solid navy;
+  font-family: monospace ;
+}
+
+.btn-connexion:hover {
+  background-color: navy;
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .btn-connexion {
+    padding: 4px 5px;
+    font-size: 1rem;
+    align-items: center;
+  }
+}
+
+#lk
+{
+  color: navy;
+  font-family: monospace;
+}
+
+.logo {
+  width: 80px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.nav-link.active {
+  color: #007bff !important; 
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+}
+
+
+
+
+
+@media (max-width: 576px)
+{
+  .logo
+  {
+    width: 50px;
+    height: 30px;
+  }
+
+  .navbar .container {
+    border-radius: 10px;
+    form
+    {
+      padding: 1% 2%;
+    }
+
+  }
+
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem !important;
+    }
+
+  .navbar-toggler-icon {
+    width: 18px !important;
+    height: 14px !important;
+    background-size: 100% 100% !important;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='navy' stroke-width='2' stroke-linecap='round' d='M2 2h26M2 10h26M2 18h26'/%3E%3C/svg%3E") !important;
+  }
+
+
+  #pc_form
+  {
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 991px) {
+  .navbar .form-control {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  #phone_form
+  {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 1%;
+
+    button
+    {
+      background: #000;
+    }
+  }
+}

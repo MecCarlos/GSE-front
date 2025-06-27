@@ -1,0 +1,67 @@
+.home_page
+{
+    width: 100%;
+    margin: 0;
+    font-family: monospace;
+
+    .hello_box
+    {
+        position: absolute;
+        /* background: rgba(0, 0, 0, 0.24); */
+        width: 100%;
+        left: 0;
+        top: 0;
+        /* height: 135%; */
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 15rem;
+    }
+
+    section.services
+    {
+        position: relative;
+        margin-top: 65rem;
+        background: whitesmoke;
+        padding: 1%;
+        justify-content: center;
+        align-items: center;
+        
+        .container
+        {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+    }
+
+}
+
+@media (max-width: 576px) {
+    .home_page
+    {
+        .hello_box
+        {
+            padding: 3rem;
+            padding-top: 5rem;
+
+            h1,p,button
+            {
+                font-size: small;
+            }
+
+            p,button
+            {
+                font-size: x-small;
+            }
+
+        }
+
+        section.services
+        {
+            margin-top: 18rem;
+        }
+    }
+}

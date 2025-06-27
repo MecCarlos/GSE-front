@@ -1,0 +1,121 @@
+
+.log_page
+{
+  background: whitesmoke;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  align-items: center;
+  padding-top:4rem;
+  overflow: scroll;
+
+  img
+  {
+    width: 250px;
+    height: 150px;
+  }
+}
+
+
+.auth-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  margin-top: 1rem;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* border-radius: 50px; */
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 7px;
+  background-color: goldenrod;
+  background: navy;
+  color: white;
+  border: none;
+  border-radius: 5px;   
+  font-weight: bold;
+  transform: all 0.5s ease;
+    border-radius: 50px;
+
+
+  &:hover {
+    background-color: rgb(4, 4, 160);
+  }
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 55%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+}
+
+.text-link {
+  color: navy;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.text-link:hover {
+  text-decoration: none;
+}
+
+small {
+  display: block;
+  margin-top: 5px;
+  font-weight: bolder;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  float: left;
+}
+
+
+
+@media (max-width: 576px) 
+{
+    .log_page
+    {
+        img
+        {
+            width: 100px;
+            height: 70px;
+        }
+    
+    }
+}
