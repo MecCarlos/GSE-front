@@ -1,0 +1,156 @@
+.produit_adm_box
+{
+  padding: 2rem 5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .v_plus
+  {
+    border-bottom: solid 1px ;
+    text-decoration: none;
+    padding: .5%;
+    color: navy;
+    font-weight: bold;
+  }
+    
+  .produit
+  {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+        
+    .pdt
+    {
+      background: rgba(209, 208, 208, 0.384);
+      background: transparent;
+      border-radius: 15px;
+      text-align: center;
+      padding: 5%;
+      text-decoration: none;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border: solid 2px rgba(209, 208, 208, 0.384);
+            
+      /* border: solid 4px navy; */
+
+       
+      img
+      {
+        width: 100%;
+        border-radius: 10px;
+       background: rgba(230, 230, 250, 0.274)
+      }
+    }
+        
+    .zone_info
+    {
+      display: flex;
+      flex-direction: column;
+      /* background: white; */
+      padding: 4%;    
+      border-radius: 10px;         
+      width: 100%;   
+      align-items: center;
+      justify-content: center;
+      text-align: center; 
+      font-size: x-small;
+
+      .prix
+      {
+        text-decoration: line-through;
+        margin: 0 5px ;
+        color: red;
+      }
+
+      .statut
+      {
+        font-weight: bold;
+        color:  navy;
+        font-size: x-small;
+      }
+            
+      .btn_box
+        {
+          display: flex;
+          gap: 7%;
+        }
+        
+        button
+        {
+          background: none;
+          color: white;
+          font-weight: bold;
+          border: none;
+          font-size: large;   
+          /* width: auto; */
+          border-radius: 10px;
+          font-weight: bolder;
+          transition: all 0.3s ease-in-out;
+          }
+      
+          .edit
+            {
+              background: rgba(0, 128, 0, 0.185);
+              color: yellowgreen;
+      
+              &:hover
+              {
+                background-color: rgba(0, 128, 0, 0.3);
+                color: darkgreen;
+              }
+            }
+      
+            .delete
+            {
+              background-color: rgba(255, 0, 0, 0.13);
+              color: red ;
+      
+              &:hover
+              {
+                background-color: rgba(255, 0, 0, 0.3);
+                color: darkred;
+              }
+            }
+               
+          }
+
+          .c-btn
+          {
+            border-radius: 50%;
+          }
+     
+            
+      
+  }
+
+}
+
+/* Responsive tablette */
+@media (max-width: 992px) {
+  .produit_adm_box .produit {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Responsive mobile (2 par ligne) */
+@media (max-width: 576px) {
+  .produit_adm_box {
+    padding: 1rem; 
+  }
+  .produit_adm_box .produit {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 produit par ligne sur très petits écrans */
+@media (max-width: 400px) {
+  .produit_adm_box .produit {
+    grid-template-columns: 1fr; /*1 element par ligne*/
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}

@@ -1,123 +1,178 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "../Style/common/produit.css";
-
-const products = [
-  { id: 1, name: "Asus RX5", price: 12000, image: "https://cdn.thewirecutter.com/wp-content/media/2024/11/cheapgaminglaptops-2048px-7981.jpg?auto=webp&quality=75&crop=1.91:1&width=1200", description: "Puissant laptop pour les gamers exigeants, 16GB RAM, SSD 512Go.", },
-  { id: 2, name: "Asus Zenbook", price: 15000, image: "https://media.cnn.com/api/v1/images/stellar/prod/asus-zenbook-duo-cnnu-001.jpg?c=16x9&q=h_833,w_1480,c_fill" },
-  { id: 4, name: "hp core i9", price: 17000, image: "https://cdn.mos.cms.futurecdn.net/pyL3b8cis5dcmUvgbe9ygV.jpg" },
-  { id: 6, name: "Clavier gameur", price: 13500, image: "https://img.20mn.fr/xfn5eCcLQMey7Cxaz3gXBCk/1444x920_gaming-keyboard-with-rgb-light-white-mechanical-keyboard-with-backlight" },
-  { id: 5, name: "Ipad 5", price: 11000, image: "https://cdn.thewirecutter.com/wp-content/media/2025/03/BEST-IPAD-2048px-m3-case-1.jpg?auto=webp&quality=75&width=1024" },
-  { id: 3, name: "Samsung ZFold 5", price: 9000,  image: "https://crackberry.com/sites/crackberry.com/files/styles/large_wm_brw/public/article_images/2024/07/samsung-galaxy-z-fold-6-review-45.jpg" },
-  { id: 7, name: "Produit 7", price: 8000,  image: "https://media.cnn.com/api/v1/images/stellar/prod/asus-zenbook-duo-cnnu-001.jpg?c=16x9&q=h_833,w_1480,c_fill" },
-  { id: 8, name: "Produit 8", price: 16000, image: "https://helios-i.mashable.com/imagery/reviews/00QF4O4xLw2fQsBydDx1SQa/hero-image.fill.size_1248x702.v1729587520.jpg" },
-  { id: 9, name: "Produit 9", price: 14000, image: "https://www.itaf.eu/wp-content/uploads/2021/01/Best-laptops-in-2021-7-things-to-consider-when-buying-a-laptop.jpg" },
-  { id: 9, name: "Produit 9", price: 14000, image: "https://www.itaf.eu/wp-content/uploads/2021/01/Best-laptops-in-2021-7-things-to-consider-when-buying-a-laptop.jpg" },
-  { id: 9, name: "Produit 9", price: 14000, image: "https://www.itaf.eu/wp-content/uploads/2021/01/Best-laptops-in-2021-7-things-to-consider-when-buying-a-laptop.jpg" },
-  { id: 9, name: "Produit 9", price: 14000, image: "https://www.itaf.eu/wp-content/uploads/2021/01/Best-laptops-in-2021-7-things-to-consider-when-buying-a-laptop.jpg" },
-];
+import { NavLink } from "react-router-dom";
+import { LiaLongArrowAltRightSolid } from "react-icons/lia";
+import { Modal, Button } from "react-bootstrap";
+import { useCart } from "../Context/CartContext.js"; // ✅ import du panier
 
 const Produit = () => {
+  const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleAddToCart = (product) => {
-    alert(`Ajouté au panier : ${product.name}`);
-  };
+  const { addToCart } = useCart(); // ✅ hook panier
 
-  const openModal = (product) => {
+  useEffect(() => {
+    fetch("http://localhost:3001/api/adm/rec/produits")
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.error("Erreur chargement produits:", err));
+  }, []);
+
+  const handleOpenModal = (product) => {
     setSelectedProduct(product);
+    setSelectedVariantIndex(0);
+    setSelectedImage(product.variantes?.[0]?.images?.principale || "default.png");
+    setShowModal(true);
   };
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     setSelectedProduct(null);
+    setSelectedVariantIndex(0);
+    setSelectedImage(null);
+    setShowModal(false);
   };
 
   return (
-    <section className="container my-5 mt-6">
-        <div className="text-center">
-            <h3 className="mb-4">🛍️ Nos Produits</h3>
-        </div>
-        <div className="row">
-            {products.map(product => (
-            <div key={product.id} className="col-md-3 mb-4">
-                <div className="card h-100 shadow-sm">
+    <section className="produit_box">
+      <h6>Découvrez nos produits</h6>
+      <div className="produit">
+        {Array.isArray(products) &&
+          products.slice(0, 18).map((p, i) => {
+            const firstVariant = p.variantes?.[0];
+            const mainImage = firstVariant?.images?.principale || "default.png";
+            return (
+              <div key={i} className="pdt" onClick={() => handleOpenModal(p)}>
                 <img
-                    src={product.image}
-                    className="card-img-top"
-                    alt={product.name}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => openModal(product)}
+                  className="pdt_img"
+                  src={`http://localhost:3001/uploads/${mainImage}`}
+                  alt={p.nom}
+                  style={{ width: "150px", height: "150px", objectFit: "cover" }}
                 />
-                <div className="card-body d-flex flex-column">
-                    <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text text-success fw-bold">{product.price.toLocaleString()} FCFA</p>
-                    <div className=" text-center" >
-                        <button
-                        className="btn mt-auto w-75 rounded-pill"
-                        onClick={() => handleAddToCart(product)}
-                        id="add_btn"
-                        >
-                        Ajouter au panier
-                        </button>
-                    </div>
+                <div className="zone_info">
+                  <h6>{p.nom}</h6>
+                  <div className="d-flex">
+                    <p className="promo">{firstVariant?.prix_promo || firstVariant?.prix} F</p>
+                    {firstVariant?.prix_promo && <p className="prix">{firstVariant.prix} F</p>}
+                  </div>
+                  <Button
+                    className="panier"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation(); // évite d’ouvrir la modal
+                      addToCart({ product: p, variantIndex: 0, quantity: 1 }); // ✅ ajout au panier
+                    }}
+                  >
+                    Panier
+                  </Button>
                 </div>
-            </div>
-          </div>
-        ))}
-        </div>
+              </div>
+            );
+          })}
+      </div>
 
-        <div className="text-center mt-3">
-            <Link to="/produits" className="btn btn-outline-dark rounded-pill">
-                Voir plus de produits
-            </Link>
-        </div>
+      <NavLink to="/catalogue" className="v_plus">
+        Voir plus <LiaLongArrowAltRightSolid />
+      </NavLink>
 
-      
-
-        {/* Modal */}
-        {selectedProduct && (
-            <div
-            className="modal fade show"
-            style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}
-            tabIndex="-1"
-            onClick={closeModal}
-            >
-                <div
-                className="modal-dialog modal-dialog-centered"
-                onClick={e => e.stopPropagation()} // empêcher la fermeture quand on clique à l’intérieur
-                >
-                <div className="modal-content">
-                    {/* <div className="modal-header">
-                        <h5 className="modal-title">{selectedProduct.name}</h5>
-                        <button type="button" className="btn-close" onClick={closeModal}></button>
-                    </div> */}
-                    <div className="modal-body">
-                        <img
-                        src={selectedProduct.image}
-                        alt={selectedProduct.name}
-                        className="img-fluid mb-3"
-                        />
-                        <h5>{selectedProduct.name}</h5>
-                        <p>{selectedProduct.description}</p>
-                        <p className="fw-bold text-success">{selectedProduct.price.toLocaleString()} FCFA</p>
-                    </div>
-                    <div className="modal-footer">
-                        {/* <button className="btn btn-secondary" onClick={closeModal}>
-                        Fermer
-                        </button> */}
-                        <button
-                        className="btn btn-primary rounded-pill"
-                        onClick={() => {
-                            handleAddToCart(selectedProduct);
-                            closeModal();
+      {/* Modal produit */}
+      {selectedProduct && (
+        <Modal show={showModal} onHide={handleCloseModal} centered dialogClassName="modal-lg-custom">
+          <Modal.Body>
+            <div className="row align-items-center p-2">
+              <div className="col-md-6 text-center">
+                <img
+                  src={`http://localhost:3001/uploads/${selectedImage}`}
+                  alt={selectedProduct.nom}
+                  style={{ width: "100%", borderRadius: "10px" }}
+                />
+                <div className="mt-2 d-flex justify-content-center gap-2">
+                  {["principale", "image_1", "image_2"].map((key) => {
+                    const img = selectedProduct.variantes?.[selectedVariantIndex]?.images?.[key];
+                    if (!img) return null;
+                    return (
+                      <img
+                        key={key}
+                        src={`http://localhost:3001/uploads/${img}`}
+                        alt={key}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          objectFit: "cover",
+                          cursor: "pointer",
+                          border: selectedImage === img ? "2px solid navy" : "1px solid #ccc",
+                          borderRadius: "5px",
                         }}
-                    >
-                    Ajouter au panier
-                    </button>
+                        onClick={() => setSelectedImage(img)}
+                      />
+                    );
+                  })}
                 </div>
+              </div>
+
+              <div className="col-md-6 text-center">
+                <h5>
+                  {selectedProduct.nom} {selectedProduct.model}
+                </h5>
+                <p>
+                  <span className="text-danger product-prix" style={{ textDecoration: "line-through" }}>
+                    {selectedProduct.variantes?.[selectedVariantIndex]?.prix} FCFA
+                  </span>
+                  <br />
+                  <span className="text-primary product-prix">
+                    {selectedProduct.variantes?.[selectedVariantIndex]?.prix_promo ||
+                      selectedProduct.variantes?.[selectedVariantIndex]?.prix}{" "}
+                    FCFA
+                  </span>
+                </p>
+                <p>
+                  {selectedProduct.variantes?.[selectedVariantIndex]?.quantite > 0 ? "En stock" : "Rupture"}
+                </p>
+
+                {selectedProduct.variantes && selectedProduct.variantes.length > 1 && (
+                  <select
+                    className="form-control"
+                    value={selectedVariantIndex}
+                    onChange={(e) => {
+                      const idx = Number(e.target.value);
+                      setSelectedVariantIndex(idx);
+                      setSelectedImage(
+                        selectedProduct.variantes?.[idx]?.images?.principale || "default.png"
+                      );
+                    }}
+                  >
+                    {selectedProduct.variantes.map((v, idx) => (
+                      <option key={idx} value={idx}>
+                        {Object.values(v.options).join(" / ")}
+                      </option>
+                    ))}
+                  </select>
+                )}
+
+                <p className="product-description">{selectedProduct.description}</p>
+
+                <Button
+                  className="mt-2 panier"
+                  style={{
+                    backgroundColor: "lavender",
+                    color: "navy",
+                    padding: "3%",
+                    fontWeight: "normal",
+                    borderRadius: "10px",
+                    border: "none",
+                  }}
+                  onClick={() =>
+                    addToCart({ product: selectedProduct, variantIndex: selectedVariantIndex, quantity: 1 }) // ✅ ajout au panier
+                  }
+                >
+                  Panier
+                </Button>
+              </div>
             </div>
-          </div>
-        </div>
+          </Modal.Body>
+        </Modal>
       )}
     </section>
   );

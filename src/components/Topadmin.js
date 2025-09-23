@@ -1,111 +1,89 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import '../Style/common/navbar.css'; 
-import logo from '../assets/images/logo.png';
-import { IoMdSearch } from "react-icons/io";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import "../Style/common/navbar.css";
+import logo from "../assets/images/logo.png";
+import { BiCartAlt } from "react-icons/bi";
+import { IoSearch } from "react-icons/io5";
+import { FaRegUserCircle } from "react-icons/fa";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const Topadmin = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      navigate(`/catalogue?search=${searchTerm.trim()}`);
-      setSearchTerm('');
-    }
-  };
+  //  Détection du scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  //  Fonction déconnexion
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    navigate('/login');
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-      <div className="container d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center">
+    <>
+      <nav className={`Top_user navbar navbar-expand-lg navbar-light fixed-top ${scrolled ? "scrolled" : ""}`}>
+        <div className="container">
+          {/* Logo */}
           <NavLink className="navbar-brand d-flex align-items-center" to="/">
-            <img src={logo} className="me-2 logo" alt="Logo" />
+            <img src={logo} className="me-2 logo" alt="logo" />
           </NavLink>
 
-            {/* Recherche visible sur mobile seulement */}
-          <form
-            onSubmit={handleSearch}
-            className="d-lg-none mx-auto rounded-pill"
-            style={{ maxWidth: '60%' }}
-            id='phone_form'
+          {/* Toggle mobile */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
           >
-            <input
-              type="text"
-              className=""
-              placeholder="Rechercher..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="rounded-pill" type="submit">
-              <IoMdSearch />
-            </button>
-          </form>
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
+          {/* Liens */}
+          <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li className="nav-item mx-3">
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/admin-accueil">Accueil</NavLink>
+              </li>
+              <li className="nav-item mx-3">
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/admin-catalogue">Catalogue</NavLink>
+              </li>
+              <li className="nav-item mx-3">
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/commande">Commande</NavLink>
+              </li>
+              {/* <li className="nav-item mx-3">
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/apropos">À propos</NavLink>
+              </li> */}
+            </ul>
 
-          {/* Champ de recherche pc*/}
-          <form onSubmit={handleSearch} className="d-flex ms-3 " id='pc_form'>
-            <input
-              type="text"
-              className="rounded-pill"
-              placeholder="Rechercher un produit..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ maxWidth: '100%' }}
-            />
-            <button className="rounded-pill ms-2" type="submit">
-              <IoMdSearch />
-            </button>
-          </form>
-        </div>
+            {/* Icônes et bouton user */}
+            <div className="d-flex align-items-center s-btn">
+              <NavLink className="btn-icn me-2" to="#"><IoSearch /></NavLink>
+              <NavLink className="btn-icn me-2" to="#"><BiCartAlt /></NavLink>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            <li className="nav-item">
-              <NavLink to="/accueil" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} id='lk'>
-                Accueil
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/admin-catalogue" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} id='lk'>
-                Catalogue
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/commande" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} id='lk'>
-                Commande
-              </NavLink>
-            </li>
-            
-            <li className="nav-item">
-              <button className="btn-connexion ms-lg-3" onClick={handleLogout}>
-                Déconnexion
+              {/*  Icône User qui ouvre le modal */}
+              <button className="btn s-btn connexion" onClick={() => setShowModal(!showModal)}>
+                <FaRegUserCircle />
               </button>
-            </li>
-          </ul>
+            </div>
+          </div>
+      {/*  Modal Déconnexion */}
+      {showModal && (
+        <div className="user_modal" style={{borderRadius: '10px', backgroundColor: 'whitesmoke'}}>
+          <NavLink className="profil" style={{color : "navy"}} to="#"><FaRegUserCircle /> Profil</NavLink>
+          <button className="dec text-danger " onClick={handleLogout}> <RiLogoutCircleRLine /> Déconnexion</button>
         </div>
-      </div>
-    </nav>
+      )}
+        </div>
+      </nav>
+
+    </>
   );
-};
+}; 
 
 export default Topadmin;

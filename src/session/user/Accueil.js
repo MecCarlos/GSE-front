@@ -1,72 +1,108 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Topmenu from "../../components/Topmenu";
 import "../../Style/common/home.css";
-import lp1 from "../../assets/images/Lp1.jpeg";
-import lp2 from "../../assets/images/Lp3.jpg";
-import lp3 from "../../assets/images/Lp4.jpg";
 import Service from "../../components/Service";
-import { Link } from 'react-router-dom';
 import Produit from "../../components/Produit";
-import Avis from "../../components/Avis";
-import Map from "../../components/Map";
 import Footer from "../../components/Footer";
-import Topmenu from "../../components/Topuser";
+import { Contact } from "../../components/Contact";
+import { motion } from "framer-motion";
+import Carousel from "../../components/Carousel";
+import Produit_img from "../../components/Produit_img";
+import Bande from "../../components/Bande";
+import Ultra from "../../components/Ultra";
+import Carousel_home from "../../components/Carousel_home";
+import Topuser from "../../components/Topuser";
 
 
 export const Accueil = () => { 
 
-   
+    const [bgColor, setBgColor] = useState("#fff");
+
+    const variants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1 } }
+    };
+
+    const variantsRight = {
+        hidden: { opacity: 0, x: 50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 2 } }
+    };
 
     return (
         <div className="home_page">
-            <div className="home_content">
-                <Topmenu/>
+            <div className="home_content"   style={{
+                backgroundColor: bgColor, 
+                transition: "background-color 1s ease",
+                minHeight: "100vh", 
+                padding: "20px"      }}>
+                <Topuser/>
+                <div className="part left">
+                    <motion.div
+                        className="home_text"
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ staggerChildren: 0.2 }}
+                        >
+                        <motion.h1 variants={variants}>Gildas Empire Services</motion.h1>
+                        <motion.h5 variants={variants}>Bienvenue sur notre site de vente en ligne</motion.h5>
+                        <motion.p variants={variants}>Découvrez nos produits de qualité, conçus pour répondre à vos besoins.</motion.p>
+                        <motion.button className="btn btn-primary rounded-pill" variants={variants}>
+                            Explorer
+                        </motion.button>
+                    </motion.div>
+                </div>
+                <div className="part right">
+                    {/* <img src={airpod}/> */}
 
-                <div id="carouselExampleSlidesOnly" className="carousel w-100 slide" data-bs-ride="carousel" style={{position: "absolute", top: "0", left: "0"}}>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                        <img src={lp1} className="d-block w-100"/>
-                        </div>
-                        <div className="carousel-item">
-                        <img src={lp2} className="d-block w-100"/>
-                        </div>
-                        <div className="carousel-item">
-                        <img src={lp3} className="d-block w-100"/>
-                        </div>
-                    </div>
+                    <Carousel_home onColorChange={setBgColor}/>
+
+
+                    {/* <motion.div 
+                        className="text"
+                        initial="hidden"
+                        animate="visible"
+                        variants={variantsRight}
+                        >
+                        <motion.h5 variants={variantsRight}>Apple airpod max</motion.h5>
+                        <motion.p variants={variantsRight}>Decouvrez une nouvelle expériences auditives</motion.p>
+
+                        <motion.div className="price" variants={variantsRight}>
+                            <h6 className="text-danger">200.775<span className="p-1">F</span></h6>
+                            <button className="rounded-pill">Commander</button>
+                        </motion.div>
+                    </motion.div> */}
+
                 </div>
             </div>
-            {/* Message hello */}
-            <div className="hello_box">
-                <div className="home_text text-white">
-                    <h1>Bienvenue sur notre site de vente en ligne</h1>
-                    <p>Découvrez nos produits de qualité, conçus pour répondre à vos besoins.</p>
-                    <button className="btn btn-primary">Explorer</button>
-                </div>
-            </div>
 
-            {/* section service */}
-
-            <section className="section services">
-                <div className="container">
-                    <div className="section-title">
-                        <h3>🔧 Nos Services</h3>
-                        <p>Nous offrons une gamme de services pour améliorer votre expérience d'achat.</p>
-                    </div>
-
-                    {/* service */}
-                    <Service/>
-
-                </div>
-            </section>
+            {/* bande d'image */}
+            <Carousel/>
 
             {/* section produit */}
-                <Produit/>
+            <Produit_img/>
+            
+            {/* Bande */}
+            <Bande/>
+
+            {/* design */}
+            <Ultra/>
+
+
+            {/* products */}
+            <Produit/>
+
+            {/* service */}
+            <Service/>
+
+
+            {/* section contact */}
+            <Contact/>
 
             {/* Avis */}
-            <Avis/>
+            {/* <Avis/> */}
 
             {/* Carte */}
-            <Map/>
+            {/* <Map/> */}
 
             {/* Footer */}
             <Footer/>
@@ -74,4 +110,4 @@ export const Accueil = () => {
 
         
     );
-}
+    }

@@ -1,0 +1,46 @@
+.bandex
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  padding: 0 3rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bandex-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 220px;
+  text-align: left;
+}
+
+.bandex-icon {
+  font-size: 2rem;
+  color: navy; /* ✅ icône navy */
+  flex-shrink: 0;
+}
+
+.bandex-text h6 {
+  margin: 0;
+  font-weight: 600; /* ✅ titre un peu gras */
+  color: black;
+}
+
+.bandex-text p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #222; /* ✅ texte noir */
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .bandex {
+    justify-content: start;
+  }
+  .bandex-item {
+    max-width: 100%;
+  }
+}

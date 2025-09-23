@@ -1,0 +1,30 @@
+-- Table des produits
+CREATE TABLE produits (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    modele VARCHAR(255) NOT NULL,
+    prix_base DECIMAL(10,2) NOT NULL,
+    description TEXT,
+    type_produit VARCHAR(50), -- ex: PC, Telephone, Montre
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table des options (stockage, couleur, version, etc.)
+CREATE TABLE options_produit (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  produit_id INT NOT NULL,
+  nom_option VARCHAR(100) NOT NULL,
+  valeur VARCHAR(100) NOT NULL,
+  prix_suppl DECIMAL(10,2) DEFAULT 0,
+  FOREIGN KEY (produit_id) REFERENCES produits(id) ON DELETE CASCADE
+);
+
+-- Table des images du produit
+CREATE TABLE images_produit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produit_id INT NOT NULL,
+    couleur VARCHAR(50), -- optionnel si image liée à couleur
+    url_image VARCHAR(255) NOT NULL,
+    is_principale BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (produit_id) REFERENCES produits(id) ON DELETE CASCADE
+);

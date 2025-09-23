@@ -1,0 +1,89 @@
+.section_ultra {
+  position: relative;
+  padding: 10rem 2rem 2rem 2rem; /* ✅ plus d'espace en haut pour laisser l'image déborder */
+  color: white;
+  margin-top: 6rem;
+  overflow: visible; /* ✅ permet à l'image de dépasser */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section_ultra.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✅ Image qui déborde */
+.section_ultra .casque {
+  position: absolute;
+  top: -2rem; /* ✅ elle remonte au-dessus de la section */
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 80%; /* ✅ elle dépasse des côtés */
+  max-width: 700px;
+  transition: transform 0.4s ease;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ✅ Zoom au scroll */
+.section_ultra.zoom .casque {
+  transform: translateX(-50%) scale(1.1); /* ✅ zoom plus visible */
+}
+
+/* ✅ Bloc Ultra */
+.ultra {
+  position: relative;
+  background: navy;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 2; /* ✅ contenu par-dessus */
+}
+
+.ultra .left,
+.ultra .right {
+  flex: 1;
+  min-width: 250px;
+}
+
+.text_box h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.text_box h3 {
+  font-size: 2rem;
+}
+
+.text_box p {
+  font-size: 1rem;
+}
+
+/* ✅ Bouton */
+.bttn {
+  margin-top: 2.5rem;
+  background: white;
+  color: navy;
+  padding: 0.7rem 2rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.bttn:hover {
+  background: yellow;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .text_box h1 { font-size: 2.5rem; }
+  .text_box h3 { font-size: 1.5rem; }
+  .section_ultra .casque { width: 110%; max-width: none; top: -3rem; }
+}

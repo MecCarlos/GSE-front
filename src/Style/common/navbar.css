@@ -1,53 +1,90 @@
+html, body {
+  overflow-x: hidden; 
+}
+
 .navbar .container {
-  width: 90%;
-  max-width: 1200px;
+  max-width: 90%;
+  padding: 0 10px;
   margin: 0 auto;
-  background: whitesmoke;
+}
+
+.navbar .container{
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
   border-radius: 50px;
+}
 
-    
-  form
-  {
-    border: solid 1px navy;
-    background: whitesmoke;
-    padding: 2%;
-    gap: 10px;
-    border-radius: 50px;
-    
-    input
-    {
-      border: none;
-      background: transparent;
-      outline: none;
-      width: 80%;
-    }
-
-    button
-    {
-      background: navy;
-      color: white;
-      border: none;
-    }
-  }
+.navbar.scrolled .container{
+  background: whitesmoke;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 
-.btn-connexion {
-  background-color: transparent;
+.btn-icn
+{
+  color: navy;
+  font-size: large;
+}
+
+
+.btn.connexion {
   color: navy;
   text-decoration: none;
+  padding: 3px;
   border: none;
-  padding: 8px 20px;
   transition: background-color 0.3s ease;
-  border-radius: 50px;
-  border: 1px solid navy;
-  font-family: monospace ;
+  border-radius: 100px;
 }
 
 .btn-connexion:hover {
   background-color: navy;
   color: white;
 }
+
+
+.user_modal
+{
+  background: #000;
+  position: absolute;
+
+  transform: translateY(10px); /* petit décalage visuel */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-in-out;
+  left: 86%;
+  top: 3rem;
+  justify-content: center;
+  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  padding: .5%;
+  
+  .profil
+  {
+    justify-content: center;
+    color: gray;
+    text-decoration: none;
+  }
+
+  .dec
+  {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(10px); }
+}
+
+
 
 @media (max-width: 576px) {
   .btn-connexion {
@@ -59,7 +96,7 @@
 
 #lk
 {
-  color: navy;
+  color: black;
   font-family: monospace;
 }
 
@@ -70,10 +107,39 @@
 }
 
 .nav-link.active {
-  color: #007bff !important; 
+  position: relative;
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  color: navy !important;
 }
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: navy;
+  border-radius: 50%;
+}
+
+
+@media (max-width: 576px) {
+  .navbar .container {
+    border-radius: 0;   /* ✅ évite que ça dépasse */
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .s-btn
+  {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
 
 
 
@@ -89,6 +155,11 @@
 
   .navbar .container {
     border-radius: 10px;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
     form
     {
       padding: 1% 2%;
@@ -116,22 +187,50 @@
 
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1200px) 
+{
+  nav
+  {
+    width: 100%;
+    border-radius: 0;
+  };
+
   .navbar .form-control {
     font-size: 14px;
-    padding: 6px 10px;
+  }
+
+  .bv
+  {
+    align-items: start !important;
+    justify-content: start;
+    padding: 0;
+    width: 70%;
   }
 
   #phone_form
   {
     display: flex;
     flex-direction: row;
-    margin: 5px;
+    margin: O;
     padding: 1%;
+    /* background: #000; */
 
     button
     {
       background: #000;
     }
   }
+}
+
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: crimson;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
 }

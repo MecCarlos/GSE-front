@@ -1,0 +1,78 @@
+.carousel {
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.carousel h6 {
+text-align: center;
+font-weight: bold;
+margin-bottom: 1rem;
+}
+
+/* Bande qui défile avec animation alternée */
+.bande {
+display: flex;
+width: max-content;
+animation: slide-alternate 18s ease-in-out infinite alternate;
+}
+
+/* ✅ Pause au survol */
+.carousel:hover .bande {
+animation-play-state: paused;
+}
+
+/* Style des éléments */
+.elem {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 0 20px;
+padding: 10px; 
+border-radius: 12px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+text-decoration: none;
+color: #222;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet 3D */
+.elem:hover {
+transform: scale(1.08) rotateY(5deg);
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Images */
+.elem .c_img {
+width: 60px;
+height: auto;
+margin-bottom: 8px;
+transition: transform 0.3s ease;
+}
+
+.elem .c_img:hover {
+transform: scale(1.1);
+}
+
+/* Animation : alternance gauche ↔ droite */
+@keyframes slide-alternate {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+.elem .c_img { width: 90px; }
+.bande { animation-duration: 25s; } /* ralenti sur mobile */
+}
+
+
+.elem .c_img {
+width: 90px;        /* largeur identique */
+height: 90px;       /* hauteur identique */
+object-fit: cover;   /* recadre l'image sans l'étirer */
+border-radius: 10px; /* coins arrondis uniformes */
+margin-bottom: 8px;
+transition: transform 0.3s ease;
+}

@@ -1,0 +1,115 @@
+.pdt_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: center;
+}
+
+/* ✅ Style de base des cartes produits */
+.element {
+  flex: 1 1 calc(33.333% - 1%);
+  min-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1%;
+  font-size: small;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.element:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*  Partie gauche */
+.element .left {
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.element .left h6.reduc {
+  background: white;
+  border-radius: 2px;
+  font-size: x-small;
+  padding: 0.2rem 0.4rem;
+  display: inline-block;
+}
+
+.element .left h4 {
+  font-weight: bold;
+  margin: 0.3rem 0;
+  color: #000;
+}
+
+.element .left button {
+  background: white;
+  color: currentColor;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all .1s  ease;
+  font-weight: bold;
+}
+
+.element .left button:hover {
+  /* background: currentColor; 
+  color: white;        
+  border-color: currentColor; */
+  transform: translateX(1rem);
+}
+
+/*  Partie image */
+.element .right {
+  flex-shrink: 0;
+}
+
+.element .right img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+/*  Couleurs de fond */
+.gray { background: rgba(209, 208, 208, 0.651); color: rgba(209, 208, 208, 1); }
+.pink { background: rgba(245, 68, 97, 0.555); color: rgb(245, 68, 97); }
+.blue { background: rgba(33, 180, 238, 0.733); color: rgb(33, 180, 238); }
+.purple { background: rgba(245, 108, 58, 0.3); color: rgb(245, 108, 58); }
+.gold { background: rgba(214, 162, 28, 0.575); color: rgb(214, 162, 28); }
+
+/*  Responsive tablette */
+@media (max-width: 768px) {
+  .element {
+    flex: 1 1 calc(50% - 1%);
+    font-size: 0.9rem;
+  }
+  .element .right img {
+    max-width: 150px;
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {
+  .element {
+    flex: 1 1 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  .element .left {
+    padding-right: 0;
+  }
+  .element .right img {
+    max-width: 120px; /*  réduit sur mobile */
+    margin-top: 0.5rem;
+  }
+  .element .left button {
+    width: 100%; /*  bouton prend toute la largeur sur mobile */
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,57 @@
+.color-carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s ease; /* ✅ couleur fluide */
+}
+
+/* ✅ Conteneur qui glisse */
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out; /* ✅ animation du slide */
+}
+
+/* ✅ Chaque slide prend toute la largeur */
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ✅ Dots */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  gap: 8px;
+  display: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+}

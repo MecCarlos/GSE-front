@@ -1,10 +1,141 @@
 .home_page
 {
-    width: 100%;
-    margin: 0;
-    font-family: monospace;
+  width: 100%;
+  margin: 0;
 
-    .hello_box
+  .home_content 
+  {
+    display: flex;
+    flex-wrap: wrap; 
+    /* background: #FBFBFB; */
+  }
+
+  /* === PARTIES GENERALES === */
+  .home_content .part {
+    width: 50%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    /* background: #000; */
+  }
+
+  /* === PARTIE GAUCHE === */
+  .home_content .left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6rem 3rem;
+    height: 100vh;
+    text-align: left;
+
+    .explorer
+    {
+      background-color: navy;
+      color: white;
+      font-weight: normal;
+    }
+  }
+
+  .home_content .left .home_text {
+    max-width: 500px;
+  }
+
+  /* === PARTIE DROITE === */
+  .home_content .right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    flex-direction: column;
+  }
+
+    .home_content .right
+    {
+      padding: 0;
+    }
+
+  .home_content .right img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+  }
+
+  /* Texte flottant */
+  .home_content .right .text {
+    width: 60%;
+    text-align: right;
+    margin-top: 2rem;
+    position: relative; 
+    margin-left: auto;
+  }
+
+  /* === PRICE === */
+  .home_content .right .text .price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .home_content .right .text .price button {
+    padding: 6px 14px;
+    color: white;
+    background: #0d6efd;
+    border: 1px solid #0d6efd;
+    transition: all .3s ease;
+    font-size: small;
+    border-radius: 20px;
+  }
+
+  .home_content .right .text .price button:hover {
+    background: transparent;
+    color: #0d6efd;
+  }
+
+  /* ✅ RESPONSIVE MEDIA QUERIES */
+  @media (max-width: 992px) {
+    .home_content .part {
+      width: 100%;
+      /* padding: 2rem; */
+    }
+    
+    .home_content .left {
+      height: auto;
+      padding: 3rem 2rem;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .home_content .right .text {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
+
+    .home_content .right .text .price {
+      justify-content: center;
+    }
+
+  .home_content .right img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home_content .left .home_text h1 {
+    font-size: 1.6rem;
+  }
+  .home_content .left .home_text h5 {
+    font-size: 1rem;
+  }
+  .home_content .right img {
+    max-width: 250px;
+  }
+}
+
+
+  .hello_box
     {
         position: absolute;
         /* background: rgba(0, 0, 0, 0.24); */
@@ -21,7 +152,6 @@
     section.services
     {
         position: relative;
-        margin-top: 65rem;
         background: whitesmoke;
         padding: 1%;
         justify-content: center;
@@ -37,31 +167,4 @@
 
     }
 
-}
-
-@media (max-width: 576px) {
-    .home_page
-    {
-        .hello_box
-        {
-            padding: 3rem;
-            padding-top: 5rem;
-
-            h1,p,button
-            {
-                font-size: small;
-            }
-
-            p,button
-            {
-                font-size: x-small;
-            }
-
-        }
-
-        section.services
-        {
-            margin-top: 18rem;
-        }
-    }
 }

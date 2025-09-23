@@ -1,0 +1,188 @@
+/* Container général */
+.commande-container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Conteneur flex pour panier + formulaire */
+.commande-part {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Panier : taille indépendante selon contenu */
+.commande-cart {
+  flex: 0 0 auto; /* ne s'étire pas */
+  width: auto;
+  max-width: 450px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.commande-cart h4, .commande-cart h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Items du panier */
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.cart-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.variant {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.price {
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.commande-cart h3 span {
+  color: #4b7bec;
+}
+
+/* Formulaire commande : prend l'espace restant */
+.commande-form {
+  flex: 1 1 400px;
+  max-width: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.commande-form h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Formulaire inputs */
+.commande-form form div {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.commande-form label {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.commande-form input,
+.commande-form select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.commande-form input:focus,
+.commande-form select:focus {
+  border-color: #4b7bec;
+  outline: none;
+}
+
+/* Bouton commander */
+.btn-commande {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #4b7bec;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-commande:hover {
+  background-color: #3a5bb8;
+}
+
+/* Messages */
+.message {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* Responsive : mobile/tablette */
+@media (max-width: 992px) {
+  .commande-part {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .commande-cart,
+  .commande-form {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Carte bancaire */
+.card-info {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.card-info div {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.card-info input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.card-info input:focus {
+  border-color: #4b7bec;
+  outline: none;
+}

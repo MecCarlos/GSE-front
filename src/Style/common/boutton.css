@@ -1,111 +1,214 @@
-  /* bouton flottant */
- .floating-button {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    background-color: #064bb4;
-    color: white;
-    border: none;
-    border-radius: 50%;
+/* Bouton flottant */
+.floating-button {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #064bb4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(6, 75, 180, 0.6);
+}
+
+/* Fond du modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Contenu du modal */
+.modal-content {
+  width: 90%;
+  max-width: 550px;
+  background: #ffffff;
+  border-radius: 15px;
+  position: relative;
+  margin: 20px auto;
+  overflow-y: auto;
+  max-height: 90vh;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+}
+
+.contentz
+{
+  z-index: 1002;
+  padding: 15px ;
+  background: whitesmoke;
+}
+
+.modal-content img {
+  width: 15%;
+  /* float: left; */
+}
+
+/* Formulaire */
+.modal-content form {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content label {
+  color: #064bb4;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  transition: border 0.2s ease;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #064bb4;
+}
+
+/* Boutons */
+
+.variant_btn,.enr_btn
+{
+  padding:10px ;
+  background: #064bb4;
+  color: white;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+  width: 20%;
+}
+
+.variant_btn
+{
+  background: gray;
+}
+
+.modal-content button {
+  padding:5px ;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal-content button:hover {
+  background: #032252;
+}
+
+/* Variantes */
+.variantes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.variante-box {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  background: #f9f9f9;
+}
+
+.variante-box button.remove-variante {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  padding: 0;
+}
+
+.variante-box button.remove-variante:hover {
+  background: #c0392b;
+}
+
+/* Images previews */
+.variante-box img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-top: 5px;
+  border-radius: 8px;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .modal-content img {
+    width: 20%;
+    float: none;
+    display: block;
+    margin: 0 auto 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-button {
+    bottom: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
     font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
   }
-
-  /* fond du modal */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: scroll;
+  
+  .modal-content {
+    padding: 10px;
   }
-      
-    .modal-content {
-        /* background: white; */
-        width: 90%;
-        max-width: 500px;
-        position: relative;
-        /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
-/* 
-        .modal-content button.close-btn {
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          background: none;
-          border: none;
-          font-size: 2rem;
-          color: #666;
-          cursor: pointer;
-          z-index: 10;
-        } */
-
-        
-        .contentz
-        {
-          border-radius: 15px;
-          padding: 30px;
-          background: white;
-          
-          img
-          {
-            width: 15%;
-            float: left;
-          }
-        }
-
-        form
-        {
-          margin-top: 10%;
-          padding: 0!important;
-
-          input,button
-          {
-            border-radius: 50px;
-          }
-
-          label
-          {
-            /* font-style: italic; */
-            color: #064bb4;
-          }
-
-          select
-          {
-            border-radius: 50px;
-          }
-
-          button
-          {
-            width: 100%;
-            padding: 2%;
-            background: #064bb4;
-            justify-content: center;
-            color: white;
-            border-radius: 50px;
-            border: none;
-
-            &:hover
-            {
-              background: #032252;
-              color: white;
-            }
-          }
-
-         
-        }
-      }
-     
-
-      
+  
+  .variante-box {
+    padding: 10px;
+  }
+}

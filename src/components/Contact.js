@@ -1,6 +1,6 @@
 import React from "react";
 import Topmenu from "./Topmenu";
-import "../Style/common/home.css";
+// import "../Style/common/home.css";
 import Map from "./Map";
 import "../Style/common/contact.css"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
@@ -8,7 +8,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 export const Contact = () => {
   return (
     <div className="home_page">
-        <div className="container my-5 bg-image-fixed box">
+        <div className="container my-5 bg-image-fixed contact">
         <div className="hebox">
             <div className="home_text text-white">
                 <h1>Contactez-nous</h1>
@@ -18,7 +18,7 @@ export const Contact = () => {
         <div className="row g-4">
           {/* Formulaire */}
           <div className="col-md-6 ">
-            <div className="card p-4 shadow elem">
+            <div className="card p-4 shadow c_element">
               <h4>Formulaire de contact</h4>
               <form>
                 <label className="mt-3">Nom</label>
@@ -31,16 +31,16 @@ export const Contact = () => {
                 <input type="text" placeholder="Objet" className="form-control" />
 
                 <label className="mt-3">Message</label>
-                <textarea className="form-control" rows="5" placeholder="Votre message..."></textarea>
+                <textarea className="form-control" rows="2.5" placeholder="Votre message..."></textarea>
 
-                <button className="btn btn-primary mt-4">Envoyer</button>
+                <button className="btn mt-4">Envoyer</button>
               </form>
             </div>
           </div>
 
           {/* Horaires */}
           <div className="col-md-6">
-            <div className="card p-4 shadow elem">
+            <div className="card p-4 shadow c_element">
               <h4>Nos horaires</h4>
               <ul className="list-unstyled mt-3">
                 <li><strong>Lundi - Vendredi :</strong> 08h - 18h</li>
@@ -53,7 +53,7 @@ export const Contact = () => {
               <p>Téléphone : +229 XX XX XX XX</p>
             </div>
             {/* Liens sociaux */}
-            <div className="card mt-5 p-4 text-center shadow elem">
+            <div className="card mt-5 p-4 text-center shadow c_element">
             <h5>Suivez-nous sur les réseaux sociaux</h5>
             <div className="d-flex justify-content-center gap-4 mt-3">
                 <a href="#" className="text-primary fs-4"><FaFacebook /></a>

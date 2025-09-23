@@ -1,19 +1,27 @@
-.box
+.contact
 {
-    padding-top: 7%;
-    padding-bottom: 2%;
-    border-radius: 10px;
-    /* background: whitesmoke; */
+  padding-top: 7%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  /* background: whitesmoke; */
 
-    .elem
-    {
-        background: whitesmoke;
-    }
+  .c_element
+  {
+    background: whitesmoke;
+  }
+
+  button
+  {
+    color: white;
+    background: navy;
+    border: solid navy 1px;
+
+  }
 
 }
 
 .bg-image-fixed {
-  background-image: url('../../assets/images/Lp1.jpeg'); /* change le chemin selon ton projet */
+  background-image: url('../../assets/images/cfond.png');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
