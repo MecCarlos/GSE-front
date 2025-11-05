@@ -7,7 +7,7 @@ import { useAuth } from '../../AuthContext';
 
 const Login = () => {
     const { login } = useAuth();
-    const [email, setEmail] = useState('lana@gmail.com');
+    const [email, setEmail] = useState('root@gmail.com');
     const [password, setPassword] = useState('Mac-os02');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Login = () => {
     const [messageType, setMessageType] = useState('');
     const [message, setMessage] = useState('');
 
-    // 👉 Récupération du paramètre redirect (sinon /accueil par défaut)
+    // Récupération du paramètre redirect (sinon /accueil par défaut)
     const params = new URLSearchParams(location.search);
     const redirectPath = params.get("redirect") || "/accueil";
 
@@ -34,11 +34,12 @@ const Login = () => {
 
             const data = await res.json();
             if (res.ok) {
-                //  On sauvegarde aussi le user renvoyé par le backend
                 login(data.token, data.role, data.user);
+                console.log("Token:", localStorage.getItem("token"));
+                console.log("Role:", localStorage.getItem("role"));
+                console.log("User:", localStorage.getItem("user"));
 
                 //  Redirection prioritaire : admin → admin-accueil
-                // sinon → la page demandée avant login (redirectPath)
                 if (data.role === "admin") {
                     navigate("/admin-accueil", { replace: true });
                 } else {
@@ -47,10 +48,8 @@ const Login = () => {
 
                 setMessage('Connexion réussie !');
                 setMessageType('success');
-            } else {
-                setMessage(data.message || 'Erreur de connexion');
-                setMessageType('danger');
             }
+
         } catch (err) {
             console.error(err);
             setMessage('Une erreur est survenue.');

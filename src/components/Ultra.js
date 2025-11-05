@@ -42,18 +42,18 @@ const Ultra = () => {
     >
       <div className="ultra d-flex">
         <div className="left">
-          <h6 className="reduc">25%</h6>
+          <h6 className="reduc">- 15%</h6>
           <div className="text_box">
-            <h1>FINE</h1>
-            <h1>SMILE</h1>
+            <h1>CE</h1>
+            <h1>MOIS</h1>
           </div>
           <h6 className="reduc">Stock très limité</h6>
         </div>
 
         <div className="right">
-          <h6 className="reduc">25%</h6>
+          {/* <h6 className="reduc">25%</h6> */}
           <div className="text_box">
-            <h3>Summer sale</h3>
+            <h3>Gildas Empire</h3>
             <p>Consultez nos meilleurs produits en stock et faites-vous livrer en un rien de temps.</p>
             <NavLink className="bttn rounded-pill">Boutique</NavLink>
           </div>

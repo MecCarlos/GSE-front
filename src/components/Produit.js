@@ -3,7 +3,7 @@ import "../Style/common/produit.css";
 import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { Modal, Button } from "react-bootstrap";
-import { useCart } from "../Context/CartContext.js"; // ✅ import du panier
+import { useCart } from "../Context/CartContext.js"; // hook panier
 
 const Produit = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const Produit = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const { addToCart } = useCart(); // ✅ hook panier
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetch("http://localhost:3001/api/adm/rec/produits")
@@ -37,14 +37,25 @@ const Produit = () => {
 
   return (
     <section className="produit_box">
-      <h6>Découvrez nos produits</h6>
+      <h3>Découvrez nos produits</h3>
       <div className="produit">
         {Array.isArray(products) &&
           products.slice(0, 18).map((p, i) => {
             const firstVariant = p.variantes?.[0];
             const mainImage = firstVariant?.images?.principale || "default.png";
             return (
-              <div key={i} className="pdt" onClick={() => handleOpenModal(p)}>
+              <div
+                key={i}
+                className="pdt"
+                onClick={() => handleOpenModal(p)}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.setProperty("--x", `${x}px`);
+                  e.currentTarget.style.setProperty("--y", `${y}px`);
+                }}
+              >
                 <img
                   className="pdt_img"
                   src={`http://localhost:3001/uploads/${mainImage}`}
@@ -61,8 +72,8 @@ const Produit = () => {
                     className="panier"
                     size="sm"
                     onClick={(e) => {
-                      e.stopPropagation(); // évite d’ouvrir la modal
-                      addToCart({ product: p, variantIndex: 0, quantity: 1 }); // ✅ ajout au panier
+                      e.stopPropagation();
+                      addToCart({ product: p, variantIndex: 0, quantity: 1 });
                     }}
                   >
                     Panier
@@ -74,10 +85,9 @@ const Produit = () => {
       </div>
 
       <NavLink to="/catalogue" className="v_plus">
-        Voir plus <LiaLongArrowAltRightSolid />
+        Voir plus <LiaLongArrowAltRightSolid className="fleche" />
       </NavLink>
 
-      {/* Modal produit */}
       {selectedProduct && (
         <Modal show={showModal} onHide={handleCloseModal} centered dialogClassName="modal-lg-custom">
           <Modal.Body>
@@ -116,20 +126,17 @@ const Produit = () => {
                 <h5>
                   {selectedProduct.nom} {selectedProduct.model}
                 </h5>
-                <p>
+                <p className="d-flex justify-content-center gap-1">
                   <span className="text-danger product-prix" style={{ textDecoration: "line-through" }}>
                     {selectedProduct.variantes?.[selectedVariantIndex]?.prix} FCFA
                   </span>
-                  <br />
                   <span className="text-primary product-prix">
                     {selectedProduct.variantes?.[selectedVariantIndex]?.prix_promo ||
                       selectedProduct.variantes?.[selectedVariantIndex]?.prix}{" "}
                     FCFA
                   </span>
                 </p>
-                <p>
-                  {selectedProduct.variantes?.[selectedVariantIndex]?.quantite > 0 ? "En stock" : "Rupture"}
-                </p>
+                <p>{selectedProduct.variantes?.[selectedVariantIndex]?.quantite > 0 ? "En stock" : "Rupture"}</p>
 
                 {selectedProduct.variantes && selectedProduct.variantes.length > 1 && (
                   <select
@@ -154,7 +161,7 @@ const Produit = () => {
                 <p className="product-description">{selectedProduct.description}</p>
 
                 <Button
-                  className="mt-2 panier"
+                  className="mt-2 panier2"
                   style={{
                     backgroundColor: "lavender",
                     color: "navy",
@@ -164,7 +171,7 @@ const Produit = () => {
                     border: "none",
                   }}
                   onClick={() =>
-                    addToCart({ product: selectedProduct, variantIndex: selectedVariantIndex, quantity: 1 }) // ✅ ajout au panier
+                    addToCart({ product: selectedProduct, variantIndex: selectedVariantIndex, quantity: 1 })
                   }
                 >
                   Panier

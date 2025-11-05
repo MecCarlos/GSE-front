@@ -1,21 +1,34 @@
-import React from "react";
-import Topmenu from "./Topmenu";
-// import "../Style/common/home.css";
-import Map from "./Map";
-import "../Style/common/contact.css"
+import "../Style/common/contact.css";
+import { useState } from "react";
+import Map from "./Map.js";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-export const Contact = () => {
+
+export const ContactComp = () => {
+  const [form, setForm] = useState({ nom: "", email: "", message: "" });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Message envoyé :", form);
+    // Appel API ici si besoin
+    alert("Votre message a bien été envoyé !"); 
+    setForm({ nom: "", email: "", message: "" });
+  };
+
   return (
-    <div className="home_page">
-        <div className="container my-5 bg-image-fixed contact">
-        <div className="hebox">
+      <div className="home_page">
+      <div className="container my-5 bg-image-fixed contact">
+        {/* <div className="hebox">
             <div className="home_text text-white">
-                <h1>Contactez-nous</h1>
-                <p>Nous sommes là pour répondre à toutes vos questions.</p>
+            <p>Nous sommes là pour répondre à toutes vos questions.</p>
             </div>
-        </div>
+            </div> */}
         <div className="row g-4">
+            <h4 className="h3">Contactez-nous</h4>
           {/* Formulaire */}
           <div className="col-md-6 ">
             <div className="card p-4 shadow c_element">
@@ -68,7 +81,7 @@ export const Contact = () => {
         </div>
 
 
-      <Map />
+        <Map />
     </div>
   );
 };

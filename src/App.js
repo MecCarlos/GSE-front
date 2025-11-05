@@ -1,88 +1,143 @@
-  import React from 'react';
-  import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-  import { Home } from './session/commons/Home';
-  import "leaflet/dist/leaflet.css";
-  import Login from './components/auth/Login';
-  import Register from './components/auth/Register';
-  import { Accueil } from './session/user/Accueil';
-  import PrivateRoute from './PrivateRoute';
-  import { Catalogue } from './session/user/Catalogue';
-  import { Contact } from './session/commons/Contact';
-  import { AuthProvider } from './AuthContext';
-  import { Contactuser } from './session/user/Contactuser';
-  import { A_accueil } from './session/admin/A_accueil';
-  import { A_catalogue } from './session/admin/Catalogue';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
 
-  // 👉 On importe le CartProvider
-  import { CartProvider } from './Context/CartContext.js';
-  import Panier from './session/user/Panier.js';
-import Commande from './session/user/Commande.js';
-import MyCommande from './session/user/MyCommande.js';
+// Contexts
+import { AuthProvider, useAuth } from "./AuthContext";
+import { CartProvider } from "./Context/CartContext";
 
-  function App() {
-    return (
-      <AuthProvider>
-        <CartProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/contact" element={<Contact />} />
+// Navbars
+import UserNavbar from "./components/UserNavbar";
+import AdminNavbar from "./components/AdminNavbar";
 
-              {/* Page utilisateur */}
-              <Route path="/accueil" element={
+// Pages publiques
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import { Catalogue } from "./session/user/Catalogue";
+import Panier from "./session/user/Panier";
+
+// Pages user privées
+import { Accueil } from "./session/user/Accueil";
+import Commande from "./session/user/Commande";
+import MyCommande from "./session/user/MyCommande";
+import { Contactuser } from "./session/user/Contactuser";
+
+// Pages admin privées
+import { A_accueil } from "./session/admin/A_accueil";
+import { A_catalogue } from "./session/admin/A_Catalogue";
+import { A_Commande } from "./session/admin/A_Commande";
+import { Contact } from "./session/commons/Contact";
+import { About } from "./session/commons/About";
+import Home from "./session/commons/Home";
+
+//  Navbar dynamique (toujours affichée)
+const NavbarWrapper = () => {
+  const { auth } = useAuth();
+
+  if (auth.role === "admin") {
+    return <AdminNavbar />;
+  }
+
+  // Si pas admin → UserNavbar (connecté ou pas)
+  return <UserNavbar />;
+};
+
+// PrivateRoute simple
+const PrivateRoute = ({ children, adminOnly }) => {
+  const { auth, loading } = useAuth();
+
+  if (loading) return <p>Chargement...</p>;
+
+  if (!auth.user) return <p>Vous devez être connecté pour accéder à cette page.</p>;
+
+  if (adminOnly && auth.role !== "admin")
+    return <p>Vous n'avez pas les droits pour accéder à cette page.</p>;
+
+  return children;
+};
+
+function App() {
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <Router>
+          {/* ✅ Navbar toujours affichée */}
+          <NavbarWrapper />
+
+          <Routes>
+            {/* Pages publiques */}
+            <Route path="/" element={< Home/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/catalogue" element={<Catalogue />} />
+            <Route path="/panier" element={<Panier />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/apropos" element={<About />} />
+
+            {/* Pages user privées */}
+            <Route
+              path="/accueil"
+              element={
                 <PrivateRoute>
                   <Accueil />
                 </PrivateRoute>
-              } />
-              <Route path="/catalogue" element={
-                <PrivateRoute>
-                  <Catalogue />
-                </PrivateRoute>
-              } />
-
-              <Route path="/Contact_utilisateur" element={
-                <PrivateRoute>
-                  <Contactuser />
-                </PrivateRoute>
-              } />
-
-              <Route path="/Panier" element={
-                <PrivateRoute>
-                  <Panier />
-                </PrivateRoute>
-              } />
-
-              <Route path="/Commande" element={
+              }
+            />
+            <Route
+              path="/Commande"
+              element={
                 <PrivateRoute>
                   <Commande />
                 </PrivateRoute>
-              } />
-
-              <Route path="/MyCommande" element={
+              }
+            />
+            <Route
+              path="/MyCommande"
+              element={
                 <PrivateRoute>
                   <MyCommande />
                 </PrivateRoute>
-              } />
-
-              {/* Page admin */}
-              <Route path="/admin-accueil" element={
+              }
+            />
+            <Route
+              path="/Contact_utilisateur"
+              element={
                 <PrivateRoute>
+                  <Contactuser />
+                </PrivateRoute>
+              }
+            />
+
+            {/* Pages admin privées */}
+            <Route
+              path="/admin-accueil"
+              element={
+                <PrivateRoute adminOnly={true}>
                   <A_accueil />
                 </PrivateRoute>
-              } />
-
-              <Route path="/admin-catalogue" element={
-                <PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin-catalogue"
+              element={
+                <PrivateRoute adminOnly={true}>
                   <A_catalogue />
                 </PrivateRoute>
-              } />
-            </Routes>
-          </Router>
-        </CartProvider>
-      </AuthProvider>
-    );
-  }
+              }
+            />
+            <Route
+              path="/admin-commande"
+              element={
+                <PrivateRoute adminOnly={true}>
+                  <A_Commande />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Router>
+      </CartProvider>
+    </AuthProvider>
+  );
+}
 
-  export default App;
+export default App;

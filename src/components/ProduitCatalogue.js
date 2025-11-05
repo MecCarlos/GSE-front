@@ -11,8 +11,6 @@ const ProduitCatalogue = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // Toast
   const [showToast, setShowToast] = useState(false);
 
   const { addToCart } = useCart();
@@ -23,7 +21,6 @@ const ProduitCatalogue = () => {
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
-
         const cats = ["Tous", ...new Set(data.map((p) => p.categorie))];
         setCategories(cats);
       })
@@ -32,11 +29,8 @@ const ProduitCatalogue = () => {
 
   const handleFilter = (cat) => {
     setSelectedCategory(cat);
-    if (cat === "Tous") {
-      setFilteredProducts(products);
-    } else {
-      setFilteredProducts(products.filter((p) => p.categorie === cat));
-    }
+    if (cat === "Tous") setFilteredProducts(products);
+    else setFilteredProducts(products.filter((p) => p.categorie === cat));
   };
 
   const handleOpenModal = (product) => {
@@ -53,7 +47,6 @@ const ProduitCatalogue = () => {
     setShowModal(false);
   };
 
-  // 👉 Fonction pour ajouter et afficher le Toast
   const handleAddToCart = (product, variantIndex = 0) => {
     addToCart({ product, variantIndex, quantity: 1 });
     setShowToast(true);
@@ -64,7 +57,6 @@ const ProduitCatalogue = () => {
     <section className="produit_box">
       <h6>Découvrez nos produits</h6>
 
-      {/* Bande des catégories */}
       <div className="categorie-bar d-flex flex-wrap gap-2 mb-3" style={{ alignItems: "center" }}>
         {categories.map((cat) => (
           <Button
@@ -79,14 +71,24 @@ const ProduitCatalogue = () => {
         ))}
       </div>
 
-      {/* Liste des produits */}
       <div className="produit">
         {Array.isArray(filteredProducts) &&
           filteredProducts.map((p, i) => {
             const firstVariant = p.variantes?.[0];
             const mainImage = firstVariant?.images?.principale || "default.png";
             return (
-              <div key={i} className="pdt" onClick={() => handleOpenModal(p)}>
+              <div
+                key={i}
+                className="pdt"
+                onClick={() => handleOpenModal(p)}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.setProperty("--x", `${x}px`);
+                  e.currentTarget.style.setProperty("--y", `${y}px`);
+                }}
+              >
                 <img
                   className="pdt_img"
                   src={`http://localhost:3001/uploads/${mainImage}`}
@@ -103,7 +105,7 @@ const ProduitCatalogue = () => {
                     className="panier"
                     size="sm"
                     onClick={(e) => {
-                      e.stopPropagation(); // évite ouverture modal
+                      e.stopPropagation();
                       handleAddToCart(p, 0);
                     }}
                   >
@@ -115,7 +117,7 @@ const ProduitCatalogue = () => {
           })}
       </div>
 
-      {/* Modal d’info produit */}
+      {/* Modal produit */}
       {selectedProduct && (
         <Modal show={showModal} onHide={handleCloseModal} centered dialogClassName="modal-lg-custom">
           <Modal.Body>
@@ -126,7 +128,6 @@ const ProduitCatalogue = () => {
                   alt={selectedProduct.nom}
                   style={{ width: "100%", borderRadius: "10px" }}
                 />
-
                 <div className="mt-2 d-flex justify-content-center gap-2">
                   {["principale", "image_1", "image_2"].map((key) => {
                     const img = selectedProduct.variantes?.[selectedVariantIndex]?.images?.[key];
@@ -151,10 +152,8 @@ const ProduitCatalogue = () => {
                 </div>
               </div>
 
-              <div className="col-md-6 text-center text-align-center">
-                <h5>
-                  {selectedProduct.nom} {selectedProduct.model}
-                </h5>
+              <div className="col-md-6 text-center">
+                <h5>{selectedProduct.nom} {selectedProduct.model}</h5>
                 <p>
                   <span className="text-danger product-prix" style={{ textDecoration: "line-through" }}>
                     {selectedProduct.variantes?.[selectedVariantIndex]?.prix} FCFA
@@ -162,13 +161,10 @@ const ProduitCatalogue = () => {
                   <br />
                   <span className="text-primary product-prix">
                     {selectedProduct.variantes?.[selectedVariantIndex]?.prix_promo ||
-                      selectedProduct.variantes?.[selectedVariantIndex]?.prix}{" "}
-                    FCFA
+                      selectedProduct.variantes?.[selectedVariantIndex]?.prix} FCFA
                   </span>
                 </p>
-                <p>
-                  {selectedProduct.variantes?.[selectedVariantIndex]?.quantite > 0 ? "En stock" : "Rupture"}
-                </p>
+                <p>{selectedProduct.variantes?.[selectedVariantIndex]?.quantite > 0 ? "En stock" : "Rupture"}</p>
 
                 {selectedProduct.variantes && selectedProduct.variantes.length > 1 && (
                   <select
@@ -212,15 +208,9 @@ const ProduitCatalogue = () => {
         </Modal>
       )}
 
-      {/* ✅ Toast de confirmation */}
+      {/* Toast */}
       <ToastContainer position="top-end" className="p-3">
-        <Toast
-          show={showToast}
-          bg="success"
-          onClose={() => setShowToast(false)}
-          delay={2000}
-          autohide
-        >
+        <Toast show={showToast} bg="success" onClose={() => setShowToast(false)} delay={2000} autohide>
           <Toast.Body style={{ color: "white" }}>✅ Produit ajouté au panier !</Toast.Body>
         </Toast>
       </ToastContainer>

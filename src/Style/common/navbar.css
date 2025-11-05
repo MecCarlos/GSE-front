@@ -1,121 +1,104 @@
+/* === GLOBAL === */
 html, body {
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.navbar .container {
-  max-width: 90%;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-.navbar .container{
+/* === NAVBAR === */
+.Top_user.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Top_user .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0.5rem 10px;
   background: transparent;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+/* .Top_user.scrolled .container {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+} */
+
+/* === BOUTONS GAUCHE === */
+.s-btn-left {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.circle-btn, .btn.connexion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  color: navy;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+.circle-btn:hover, .btn.connexion:hover {
+  background: rgba(255,255,255,0.6);
+  transform: scale(1.1);
+}
+
+/* === MENU DROITE === */
+.menu-right {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  position: relative;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+.menu-right li {
+  position: relative;
+  list-style: none;
+}
+
+.menu-right .nav-link {
+  color: navy;
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+}
+
+.menu-right .nav-link:hover {
+  background: rgba(255,255,255,0.5);
   border-radius: 50px;
 }
 
-.navbar.scrolled .container{
-  background: whitesmoke;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.btn-icn
-{
-  color: navy;
-  font-size: large;
-}
-
-
-.btn.connexion {
-  color: navy;
-  text-decoration: none;
-  padding: 3px;
-  border: none;
-  transition: background-color 0.3s ease;
-  border-radius: 100px;
-}
-
-.btn-connexion:hover {
-  background-color: navy;
-  color: white;
-}
-
-
-.user_modal
-{
-  background: #000;
-  position: absolute;
-
-  transform: translateY(10px); /* petit décalage visuel */
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 0.1%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  animation: fadeIn 0.2s ease-in-out;
-  left: 86%;
-  top: 3rem;
-  justify-content: center;
-  /* align-items: center; */
-  display: flex;
-  flex-direction: column;
-  font-size: small;
-  padding: .5%;
-  
-  .profil
-  {
-    justify-content: center;
-    color: gray;
-    text-decoration: none;
-  }
-
-  .dec
-  {
-    border: none;
-    background: none;
-    padding: 0;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(0); }
-  to { opacity: 1; transform: translateY(10px); }
-}
-
-
-
-@media (max-width: 576px) {
-  .btn-connexion {
-    padding: 4px 5px;
-    font-size: 1rem;
-    align-items: center;
-  }
-}
-
-#lk
-{
-  color: black;
-  font-family: monospace;
-}
-
-.logo {
-  width: 80px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-.nav-link.active {
-  position: relative;
-  font-weight: bold;
-  color: navy !important;
-}
-
 .nav-link.active::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: -4px; 
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
   width: 8px;
@@ -124,105 +107,7 @@ html, body {
   border-radius: 50%;
 }
 
-
-@media (max-width: 576px) {
-  .navbar .container {
-    border-radius: 0;   /* ✅ évite que ça dépasse */
-    width: 100%;
-    padding: 0 5px;
-  }
-
-  .s-btn
-  {
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-
-
-
-
-
-
-@media (max-width: 576px)
-{
-  .logo
-  {
-    width: 50px;
-    height: 30px;
-  }
-
-  .navbar .container {
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-
-    form
-    {
-      padding: 1% 2%;
-    }
-
-  }
-
-
-  .navbar-toggler {
-    padding: 0.25rem 0.5rem !important;
-    }
-
-  .navbar-toggler-icon {
-    width: 18px !important;
-    height: 14px !important;
-    background-size: 100% 100% !important;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='navy' stroke-width='2' stroke-linecap='round' d='M2 2h26M2 10h26M2 18h26'/%3E%3C/svg%3E") !important;
-  }
-
-
-  #pc_form
-  {
-    display: none !important;
-  }
-
-}
-
-@media (max-width: 1200px) 
-{
-  nav
-  {
-    width: 100%;
-    border-radius: 0;
-  };
-
-  .navbar .form-control {
-    font-size: 14px;
-  }
-
-  .bv
-  {
-    align-items: start !important;
-    justify-content: start;
-    padding: 0;
-    width: 70%;
-  }
-
-  #phone_form
-  {
-    display: flex;
-    flex-direction: row;
-    margin: O;
-    padding: 1%;
-    /* background: #000; */
-
-    button
-    {
-      background: #000;
-    }
-  }
-}
-
-
+/* === BADGE PANIER === */
 .cart-badge {
   position: absolute;
   top: -8px;
@@ -233,4 +118,96 @@ html, body {
   font-weight: bold;
   border-radius: 50%;
   padding: 2px 6px;
+}
+
+/* === MODAL UTILISATEUR === */
+.user_modal {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  background: whitesmoke;
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.user_modal .profil, .user_modal .dec {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: navy;
+  padding: 0.3rem 0.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user_modal .dec {
+  color: crimson;
+  background: none;
+  border: none;
+}
+
+/* === HAMBURGER === */
+.hamburger {
+  display: none;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  color: navy;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger:hover {
+  background: rgba(255,255,255,0.6);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+  .menu-right {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    padding: 1rem;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .menu-right.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .Top_user .container {
+    max-width: 100%;
+    padding: 0 5px;
+    border-radius: 0;
+    justify-content: space-between;
+  }
+
+  .circle-btn, .btn.connexion {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
 }

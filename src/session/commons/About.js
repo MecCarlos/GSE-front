@@ -1,19 +1,19 @@
-import { ContactComp } from "../../components/ContactComp";
+import { AboutComp } from "../../components/AboutComp";
 import Footer from "../../components/Footer";
 import "../../Style/common/contact.css";
 import { useState } from "react";
 
-export const Contact = () => { 
+export const About = () => { 
 
 
   return (
     <div className="home_page">
       <div className="home_content contact_page">
         <header>
-          <h1>Contact</h1>
+          <h1>A popos</h1>
         </header>
 
-        <ContactComp/>
+        <AboutComp/>
         
       </div>
 

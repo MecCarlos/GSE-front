@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return <div>Chargement...</div>; // ou un spinner
+    return <div>Chargement...</div>;
   }
 
   if (!auth.token) {

@@ -1,236 +1,197 @@
-import React, { useState } from "react";
-import { useCart } from "../../Context/CartContext.js";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../AuthContext";
-import "../../Style/user/commande.css";
-import Topuser from "../../components/Topuser";
-import pvide from "../../assets/gifs/pvide.gif";
-import Footer from "../../components/Footer";
+import { Table, Button, Badge, Modal } from "react-bootstrap";
+import { FaInfoCircle } from "react-icons/fa";
+import "../../Style/user/MyCommande.css";
 
 const MyCommande = () => {
-  const { cart, total, clearCart } = useCart();
-  const { auth } = useAuth(); // contient token, role, user
+  const { auth } = useAuth();
+  const [commandes, setCommandes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const commandesPerPage = 20; // 20 commandes par page
+  const [selectedCommande, setSelectedCommande] = useState(null);
 
-  const [adresse, setAdresse] = useState("");
-  const [ville, setVille] = useState("");
-  const [codePostal, setCodePostal] = useState("");
-  const [paiement, setPaiement] = useState("paypal");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false); // nouveau état pour overlay succès
-
-  // Données carte bancaire
-  const [cardData, setCardData] = useState({
-    numero: "",
-    date: "",
-    cvc: "",
-  });
-
-  const handleCardChange = (e) => {
-    setCardData({ ...cardData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!auth.user) {
-      setMessage("Vous devez être connecté pour passer une commande.");
-      return;
-    }
-
-    if (!adresse || !ville || !codePostal) {
-      setMessage("Veuillez compléter tous les champs de livraison.");
-      return;
-    }
-
-    if (paiement === "carte" && (!cardData.numero || !cardData.date || !cardData.cvc)) {
-      setMessage("Veuillez remplir toutes les informations de carte.");
-      return;
-    }
-
-    const commande = {
-      userId: auth.user.id,
-      adresseLivraison: { adresse, ville, codePostal },
-      paiement,
-      cardData: paiement === "carte" ? cardData : null,
-      items: cart.map((it) => ({
-        productId: it.productId,
-        nom: it.nom,
-        options: JSON.parse(it.variantKey || "{}"),
-        quantite: it.quantite,
-        prix: it.prix,
-      })),
-      total,
+  useEffect(() => {
+    const fetchCommandes = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/commandes/${auth.user.id}`, {
+          headers: { Authorization: `Bearer ${auth.token}` },
+        });
+        const data = await res.json();
+        setCommandes(data.reverse());
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    try {
-      const res = await fetch("http://localhost:3001/api/commande/create", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`
-        },
-        body: JSON.stringify(commande),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        clearCart();
-        setAdresse("");
-        setVille("");
-        setCodePostal("");
-        setPaiement("paypal");
-        setCardData({ numero: "", date: "", cvc: "" });
-        setSuccess(true); // afficher overlay succès
-        setMessage(""); // masquer ancien message si existant
-      } else {
-        setMessage(data.message || "Erreur lors de la commande");
-      }
-    } catch (err) {
-      console.error(err);
-      setMessage("Erreur de communication avec le serveur");
-    }
-  };
+    if (auth.user) fetchCommandes();
+  }, [auth.user, auth.token]);
 
   if (!auth.user) return <p>Chargement de l'utilisateur...</p>;
+  if (loading) return <p>Chargement des commandes...</p>;
+
+  // Filtrage des commandes
+  const filteredCommandes = commandes.filter((c) => {
+    if (filter === "all") return true;
+    return c.etat === filter;
+  });
+
+  // Pagination
+  const indexOfLast = currentPage * commandesPerPage;
+  const indexOfFirst = indexOfLast - commandesPerPage;
+  const currentCommandes = filteredCommandes.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredCommandes.length / commandesPerPage);
+
+  // Badge selon l'état
+  const renderBadge = (etat) => {
+    let variant = "secondary";
+    if (etat === "validée") variant = "info";
+    else if (etat === "en_livraison") variant = "warning";
+    else if (etat === "livrée") variant = "success";
+    else if (etat === "annulée") variant = "danger";
+    else if (etat === "en_attente") variant = "secondary";
+    return <Badge bg={variant} className="etat-badge">{etat.replace("_", " ")}</Badge>;
+  };
 
   return (
     <div className="home_page">
-      <div className="home_content">
-        <Topuser />
-        <header className="commande_page">
-          <h1>Commande</h1>
+      <div className="home_content Mycommande_page">
+        <header>
+          <h2 className="mb-4 text-center">Mes commandes</h2>
         </header>
 
-        <div className="commande-container">
-          {cart.length === 0 ? (
-            <div className="img_box">
-              <img className="panier_vide" src={pvide}/>
-            </div>
-            ) : (
-            <div className="commande-part">
-              {/* Récapitulatif du panier */}
-              <div className="commande-cart">
-                <h4>Récapitulatif du panier</h4>
-                {cart.map((it, idx) => (
-                  <div key={idx} className="cart-item">
-                    <img
-                      src={`http://localhost:3001/uploads/${it.image || "default.png"}`}
-                      alt={it.nom}
-                      className="cart-img"
-                    />
-                    <div className="cart-info">
-                      <strong>{it.nom}</strong>
-                      <div className="variant">
-                        {Object.values(JSON.parse(it.variantKey || "{}") || {}).join(" / ")}
-                      </div>
-                      <div className="price">
-                        {it.quantite} × {it.prix} FCFA
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <h3>Total : <span className="text-primary">{total}</span> FCFA</h3>
-              </div>
+        <div className="content-section">
+          {/* Filtre par état */}
+          <div className="filters">
+            {[
+              { key: "all", label: "Toutes" },
+              { key: "en_attente", label: "En attente" },
+              { key: "validée", label: "Validée" },
+              { key: "en_livraison", label: "En livraison" },
+              { key: "livrée", label: "Livrée" },
+              { key: "annulée", label: "Annulée" },
+            ].map((f) => (
+              <button
+                key={f.key}
+                className={`filter-btn ${filter === f.key ? "active" : ""}`}
+                onClick={() => { setFilter(f.key); setCurrentPage(1); }}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
 
-              {/* Formulaire commande */}
-              <div className="commande-form">
-                <h3>Adresse de livraison</h3>
-                {message && <p className="message">{message}</p>}
-                <form onSubmit={handleSubmit}>
-                  <div>
-                    <label>Adresse</label>
-                    <input
-                      type="text"
-                      value={adresse}
-                      onChange={(e) => setAdresse(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label>Ville</label>
-                    <input
-                      type="text"
-                      value={ville}
-                      onChange={(e) => setVille(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label>Code postal</label>
-                    <input
-                      type="text"
-                      value={codePostal}
-                      onChange={(e) => setCodePostal(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label>Paiement</label>
-                    <select value={paiement} onChange={(e) => setPaiement(e.target.value)}>
-                      <option value="paypal">PayPal</option>
-                      <option value="espece">Espèce à la livraison</option>
-                      <option value="carte">Carte bancaire</option>
-                    </select>
-                  </div>
+          {/* Tableau des commandes */}
+          <div className="table-container">
+            <Table hover responsive className="styled-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>État</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentCommandes.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="text-center">Aucune commande à afficher</td>
+                  </tr>
+                ) : (
+                  currentCommandes.map((c) => (
+                    <tr key={c.id}>
+                      <td>{c.id}</td>
+                      <td>{new Date(c.createdAt).toLocaleDateString()}</td>
+                      <td className="total">{c.total} FCFA</td>
+                      <td>{renderBadge(c.etat)}</td>
+                      <td>
+                        <Button
+                          variant="info"
+                          size="sm"
+                          onClick={() => setSelectedCommande(c)}
+                        >
+                          <FaInfoCircle /> Voir détails
+                        </Button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </Table>
+          </div>
 
-                  {paiement === "carte" && (
-                    <div className="card-info">
-                      <div>
-                        <label>Numéro de carte</label>
-                        <input
-                          type="text"
-                          name="numero"
-                          value={cardData.numero}
-                          onChange={handleCardChange}
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label>Date d'expiration</label>
-                        <input
-                          type="text"
-                          name="date"
-                          placeholder="MM/AA"
-                          value={cardData.date}
-                          onChange={handleCardChange}
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label>CVC</label>
-                        <input
-                          type="text"
-                          name="cvc"
-                          value={cardData.cvc}
-                          onChange={handleCardChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  <button type="submit" className="btn-commande">
-                    Valider la commande
-                  </button>
-                </form>
-              </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="pagination-container">
+              <Button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+              >
+                ⬅ Précédent
+              </Button>
+              {[...Array(totalPages)].map((_, i) => (
+                <Button
+                  key={i}
+                  className={currentPage === i + 1 ? "active" : ""}
+                  variant={currentPage === i + 1 ? "primary" : "outline-primary"}
+                  onClick={() => setCurrentPage(i + 1)}
+                >
+                  {i + 1}
+                </Button>
+              ))}
+              <Button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+              >
+                Suivant ➡
+              </Button>
             </div>
           )}
+
+          {/* Modal détails */}
+          <Modal show={!!selectedCommande} onHide={() => setSelectedCommande(null)} size="lg">
+            <Modal.Header>
+              <Modal.Title>Commande {selectedCommande?.id}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedCommande?.items && selectedCommande.items.length > 0 ? (
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Produit</th>
+                      <th>Options</th>
+                      <th>Quantité</th>
+                      <th>Prix</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedCommande.items.map((p, idx) => (
+                      <tr key={idx}>
+                        <td>{p.nom}</td>
+                        <td>{p.options ? Object.values(p.options).join(" / ") : "-"}</td>
+                        <td>{p.quantite}</td>
+                        <td>{p.prix} FCFA</td>
+                        <td>{p.quantite * p.prix} FCFA</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              ) : (
+                <p>Aucun produit</p>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={() => setSelectedCommande(null)}>Fermer</Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
-
-      <Footer />
-
-      {/* Overlay succès */}
-      {success && (
-        <div className="commande-success-overlay">
-          <div className="commande-success-message">
-            <p>Votre commande a été passée avec succès !</p>
-            <p>Elle sera bientôt livrée. Vous pouvez consulter son état dans le menu "Commandes".</p>
-            <button onClick={() => setSuccess(false)}>OK</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -5,7 +5,11 @@
   justify-content: center;
 }
 
-/* ✅ Style de base des cartes produits */
+.h3 {
+  font-family: monospace;
+  margin-bottom: 1.5rem;
+}
+
 .element {
   flex: 1 1 calc(33.333% - 1%);
   min-width: 250px;
@@ -57,9 +61,7 @@
 }
 
 .element .left button:hover {
-  /* background: currentColor; 
-  color: white;        
-  border-color: currentColor; */
+
   transform: translateX(1rem);
 }
 
@@ -76,11 +78,11 @@
 }
 
 /*  Couleurs de fond */
-.gray { background: rgba(209, 208, 208, 0.651); color: rgba(209, 208, 208, 1); }
+.gray { background: rgba(122, 122, 122, 0.308); color: rgba(209, 208, 208, 1); }
 .pink { background: rgba(245, 68, 97, 0.555); color: rgb(245, 68, 97); }
 .blue { background: rgba(33, 180, 238, 0.733); color: rgb(33, 180, 238); }
-.purple { background: rgba(245, 108, 58, 0.3); color: rgb(245, 108, 58); }
-.gold { background: rgba(214, 162, 28, 0.575); color: rgb(214, 162, 28); }
+.purple { background: rgba(128, 0, 128, 0.459); color: rgba(128, 0, 128, 0.459); }
+.gold { background: rgba(214, 161, 28, 0.37); color: rgb(214, 162, 28); }
 
 /*  Responsive tablette */
 @media (max-width: 768px) {

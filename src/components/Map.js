@@ -1,13 +1,13 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-// Position de ta boutique (latitude, longitude)
-const position = [6.1234567, 2.3456789]; 
+// Position de Pahou
+const position = [6.4167, 2.2333]; 
 
 const Map = () => {
   return (
-    <section className="container my-5" style={{ position: "relative" }}>
-      <h3 className="mb-4 text-center">Où nous trouver ?</h3>
+    <section className="container my-5 w-100" style={{ position: "relative" }}>
+      <h3 className="mb-4 text-center" style={{fontFamily: "monospace"}}>Où nous trouver ?</h3>
       <MapContainer center={position} zoom={15} style={{ height: "400px" }}>
         {/* Carte OpenStreetMap */}
         <TileLayer

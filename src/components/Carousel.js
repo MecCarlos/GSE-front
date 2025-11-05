@@ -3,20 +3,22 @@ import "../Style/common/carousel.css";
 import { NavLink } from "react-router-dom";
 
 import ipad from "../../src/assets/images/ipad.png";
-import iph13 from "../../src/assets/images/iph13.png";
-import macbook1 from "../../src/assets/images/macbook1.png";
+import iph13 from "../../src/assets/images/casque_pink.png";
+import asus from "../../src/assets/images/asus2.png";
 import macbook2 from "../../src/assets/images/macbook2.png";
 import airpodpro from "../../src/assets/images/airpod.png";
 import souris from "../../src/assets/images/sourisstyle.png";
+import webcam from "../../src/assets/images/webcam.png";
 
 const Carousel = () => {
   const products = [
     { img: ipad, name: "iPad", url: "/produit/ipad" },
-    { img: iph13, name: "iPhone 13", url: "/login" },
-    { img: macbook1, name: "MacBook Pro", url: "/login" },
+    { img: iph13, name: "Casque audio", url: "/login" },
+    { img: asus, name: "Asus", url: "/login" },
+    { img: souris, name: "Souris gamer", url: "/login" },
     { img: macbook2, name: "MacBook Air", url: "/login" },
     { img: airpodpro, name: "AirPods Pro 3", url: "/login" },
-    { img: souris, name: "Souris", url: "/login" }
+    { img: webcam, name: "Web cam", url: "/login" }
   ];
 
   return (

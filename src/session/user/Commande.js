@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useCart } from "../../Context/CartContext.js";
 import { useAuth } from "../../AuthContext";
 import "../../Style/user/commande.css";
-import Topuser from "../../components/Topuser";
 import pvide from "../../assets/gifs/pvide.gif";
 import Footer from "../../components/Footer";
+import { NavLink } from "react-router-dom";
 
 const Commande = () => {
   const { cart, total, clearCart } = useCart();
@@ -15,7 +15,7 @@ const Commande = () => {
   const [codePostal, setCodePostal] = useState("");
   const [paiement, setPaiement] = useState("paypal");
   const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false); // nouveau état pour overlay succès
+  const [success, setSuccess] = useState(false); 
 
   // Données carte bancaire
   const [cardData, setCardData] = useState({
@@ -80,8 +80,8 @@ const Commande = () => {
         setCodePostal("");
         setPaiement("paypal");
         setCardData({ numero: "", date: "", cvc: "" });
-        setSuccess(true); // afficher overlay succès
-        setMessage(""); // masquer ancien message si existant
+        setSuccess(true);
+        setMessage("");
       } else {
         setMessage(data.message || "Erreur lors de la commande");
       }
@@ -95,9 +95,8 @@ const Commande = () => {
 
   return (
     <div className="home_page">
-      <div className="home_content">
-        <Topuser />
-        <header className="commande_page">
+      <div className="home_content commande_page">
+        <header >
           <h1>Commande</h1>
         </header>
 
@@ -227,7 +226,7 @@ const Commande = () => {
           <div className="commande-success-message">
             <p>Votre commande a été passée avec succès !</p>
             <p>Elle sera bientôt livrée. Vous pouvez consulter son état dans le menu "Commandes".</p>
-            <button onClick={() => setSuccess(false)}>OK</button>
+            <NavLink onClick={() => setSuccess(false)} to="/MyCommande">OK</NavLink>
           </div>
         </div>
       )}

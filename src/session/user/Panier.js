@@ -1,9 +1,9 @@
 import React from "react";
 import { useCart } from "../../Context/CartContext.js";
 import "../../Style/common/home.css";
+// import "../../Style/common/catalogue.css";
 import "../../Style/user/panier.css";
 import Footer from "../../components/Footer";
-import Topuser from "../../components/Topuser";
 import pvide from "../../assets/gifs/pvide.gif";
 import { useAuth } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -23,9 +23,8 @@ const Panier = () => {
 
   return (
     <div className="home_page">
-      <div className="home_content">
-        <Topuser />
-        <header className="panier_page">
+      <div className="home_content panier_page">
+        <header className="">
           <h1>Panier</h1>
         </header>
       </div>

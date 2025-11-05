@@ -1,170 +1,111 @@
-.home_page
-{
-  width: 100%;
-  margin: 0;
+/* === TEXTE GAUCHE === */
+.home_left h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #111; 
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
-  .home_content 
-  {
-    display: flex;
-    flex-wrap: wrap; 
-    /* background: #FBFBFB; */
-  }
+.home_left h5 {
+  font-size: 1.6rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
 
-  /* === PARTIES GENERALES === */
-  .home_content .part {
-    width: 50%;
-    padding: 0 2rem;
-    box-sizing: border-box;
-    /* background: #000; */
-  }
+.home_left p {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
 
-  /* === PARTIE GAUCHE === */
-  .home_content .left {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 6rem 3rem;
-    height: 100vh;
-    text-align: left;
+/* === BOUTON EXPLORER === */
+.btn_explorer {
+  display: inline-block;
+  padding: 10px 32px;
+  background-color: #0d6efd;
+  color: white;
+  font-size: small;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .explorer
-    {
-      background-color: navy;
-      color: white;
-      font-weight: normal;
-    }
-  }
+.btn_explorer:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
 
-  .home_content .left .home_text {
-    max-width: 500px;
-  }
+/* === CAROUSEL === */
+.home_center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; 
+}
 
-  /* === PARTIE DROITE === */
-  .home_content .right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
+.vertical_carousel {
+  position: relative;
+  width: 450px;
+  height: 480px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(240,240,240,0.3); /* boîte avec couleur légère */
+  padding: 1rem;
+}
+
+.vertical_carousel .slide img {
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 1s ease;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+  .home_intro {
     flex-direction: column;
-  }
-
-    .home_content .right
-    {
-      padding: 0;
-    }
-
-  .home_content .right img {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-  }
-
-  /* Texte flottant */
-  .home_content .right .text {
-    width: 60%;
-    text-align: right;
-    margin-top: 2rem;
-    position: relative; 
-    margin-left: auto;
-  }
-
-  /* === PRICE === */
-  .home_content .right .text .price {
-    display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    text-align: center;
   }
 
-  .home_content .right .text .price button {
-    padding: 6px 14px;
-    color: white;
-    background: #0d6efd;
-    border: 1px solid #0d6efd;
-    transition: all .3s ease;
-    font-size: small;
-    border-radius: 20px;
+  .home_left h1 {
+    font-size: 3rem;
   }
 
-  .home_content .right .text .price button:hover {
-    background: transparent;
-    color: #0d6efd;
+  .home_left p, .home_left h5 {
+    font-size: 1.2rem;
   }
 
-  /* ✅ RESPONSIVE MEDIA QUERIES */
-  @media (max-width: 992px) {
-    .home_content .part {
-      width: 100%;
-      /* padding: 2rem; */
-    }
-    
-    .home_content .left {
-      height: auto;
-      padding: 3rem 2rem;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .home_content .right .text {
-      width: 100%;
-      margin: 0;
-      text-align: center;
-    }
-
-    .home_content .right .text .price {
-      justify-content: center;
-    }
-
-  .home_content .right img {
-    max-width: 300px;
+  .vertical_carousel {
+    width: 350px;
+    height: 400px;
   }
 }
 
 @media (max-width: 576px) {
-  .home_content .left .home_text h1 {
-    font-size: 1.6rem;
+  .home_left h1 {
+    font-size: 2rem;
   }
-  .home_content .left .home_text h5 {
+
+  .home_left h5, .home_left p {
     font-size: 1rem;
   }
-  .home_content .right img {
-    max-width: 250px;
+
+  .vertical_carousel {
+    width: 250px;
+    height: 300px;
   }
-}
 
-
-  .hello_box
-    {
-        position: absolute;
-        /* background: rgba(0, 0, 0, 0.24); */
-        width: 100%;
-        left: 0;
-        top: 0;
-        /* height: 135%; */
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        padding: 15rem;
-    }
-
-    section.services
-    {
-        position: relative;
-        background: whitesmoke;
-        padding: 1%;
-        justify-content: center;
-        align-items: center;
-        
-        .container
-        {
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-    }
-
+  .btn_explorer {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
 }

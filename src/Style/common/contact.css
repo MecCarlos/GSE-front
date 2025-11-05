@@ -1,31 +1,133 @@
-.contact
-{
-  padding-top: 7%;
-  padding-bottom: 2%;
-  border-radius: 10px;
-  /* background: whitesmoke; */
+.home_page {
+  font-family: 'Poppins', sans-serif;
 
-  .c_element
-  {
-    background: whitesmoke;
+  .contact_page {
+    /* Header */
+    header {
+      width: 100%;
+      background: url("../../assets/images/tc1.webp") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    .h3{
+      color: navy;
+      font-weight: bold;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-family: monospace;
+    }
+
+    p {
+      color: #333;
+      font-size: 1.2rem;
+    }
   }
 
-  button
-  {
-    color: white;
-    background: navy;
-    border: solid navy 1px;
+  /* Conteneur principal */
+  .container.contact {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
+    .c_element {
+      background: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      h4, h5 {
+        color: navy;
+        margin-bottom: 1.5rem;
+      }
+
+      form {
+        label {
+          font-weight: 500;
+        }
+
+        input, textarea {
+          border-radius: 10px;
+          border: 1px solid #ccc;
+          padding: 0.75rem;
+          margin-top: 0.25rem;
+          width: 100%;
+          transition: border-color 0.2s ease;
+
+          &:focus {
+            outline: none;
+            border-color: navy;
+            box-shadow: 0 0 5px rgba(0, 0, 128, 0.3);
+          }
+        }
+
+        button {
+          background: navy;
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          padding: 0.75rem 2rem;
+          margin-top: 1.5rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: darkblue;
+          }
+        }
+      }
+
+      .list-unstyled {
+        li {
+          font-size: 0.95rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      .d-flex a {
+        transition: transform 0.2s ease, color 0.2s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          color: darkblue !important;
+        }
+      }
+    }
   }
 
-}
+  /* Responsive */
+  @media (max-width: 992px) {
+    .container.contact .row {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
 
-.bg-image-fixed {
-  background-image: url('../../assets/images/cfond.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 4rem 2rem;
-  border-radius: 10px;
+  @media (max-width: 576px) {
+    .contact_page header {
+      padding: 5rem 1rem;
+    }
+
+    .contact_page h1 {
+      font-size: 2rem;
+    }
+
+    .c_element {
+      padding: 1.5rem;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
 }

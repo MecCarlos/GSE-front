@@ -1,3 +1,25 @@
+.home_page
+{
+  .commande_page
+  {
+    header {
+      width: 100%;
+      background: url("../../assets/images/cmd.jpg") center/cover no-repeat;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    h1
+    {
+      color: navy;
+      font-weight: bold;
+      font-size: 3rem;
+    }    
+    
+  }
+
 /* Container général */
 .commande-container {
   width: 100%;
@@ -6,6 +28,23 @@
   justify-content: center;
 }
 
+  
+  .img_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  
+  .commande-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;       
+    border-radius: 12px;     
+    background-color: #f8f8f8;
+    flex-shrink: 0;
+  }
+  
 /* Conteneur flex pour panier + formulaire */
 .commande-part {
   display: flex;
@@ -185,4 +224,6 @@
 .card-info input:focus {
   border-color: #4b7bec;
   outline: none;
+}
+
 }

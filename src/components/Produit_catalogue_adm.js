@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../Style/common/produit_adm.css";
 import axios from "axios";
 import { GoTrash } from "react-icons/go";
-import { CiEdit } from "react-icons/ci";
+import { CiEdit, CiCircleCheck, CiCircleRemove } from "react-icons/ci";
 import { Modal, Button } from "react-bootstrap";
-import { CiCircleCheck, CiCircleRemove } from "react-icons/ci";
 import Edition from "./Edition";
 import B_add from "../session/admin/B_add";
 
@@ -30,18 +29,13 @@ const Produit_catalogue_adm = () => {
   const [products, setProducts] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
-  const [showAdd, setShowAdd] = useState(false);
 
   const refreshProducts = () => {
     axios
       .get("http://localhost:3001/api/adm/rec/produits")
-      .then((res) => {
-        // ton API doit renvoyer un produit avec un champ `variantes: []`
-        setProducts(res.data);
-      })
+      .then((res) => setProducts(res.data))
       .catch((err) => console.error("Erreur lors du rechargement :", err));
   };
 
@@ -81,8 +75,17 @@ const Produit_catalogue_adm = () => {
       <h6>Produits ajoutés</h6>
       <div className="produit">
         {products.map((p, i) => (
-          <div key={i} className="pdt">
-            {/* On affiche l’image principale de la première variante */}
+          <div
+            key={i}
+            className="pdt"
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              e.currentTarget.style.setProperty("--x", `${x}px`);
+              e.currentTarget.style.setProperty("--y", `${y}px`);
+            }}
+          >
             <img
               src={
                 p.variantes?.[0]?.image_principale
@@ -94,8 +97,6 @@ const Produit_catalogue_adm = () => {
             />
             <div className="zone_info">
               <h6>{p.nom}</h6>
-
-              {/* On affiche les prix de la 1ère variante */}
               {p.variantes?.[0] ? (
                 <div className="d-flex">
                   <p className="promo">{p.variantes[0].prix_promo} F</p>
@@ -104,7 +105,6 @@ const Produit_catalogue_adm = () => {
               ) : (
                 <p>Aucune variante</p>
               )}
-
               <div className="btn_box">
                 <button className="edit" onClick={() => openEditModal(p)}>
                   <CiEdit />
@@ -118,7 +118,6 @@ const Produit_catalogue_adm = () => {
         ))}
       </div>
 
-      {/* Modal d'édition */}
       {showEdit && selectedProduct && (
         <Edition
           show={showEdit}
@@ -128,7 +127,6 @@ const Produit_catalogue_adm = () => {
         />
       )}
 
-      {/* Modal de confirmation suppression */}
       <DeleteConfirmation
         show={showDeleteModal}
         handleClose={() => setShowDeleteModal(false)}
@@ -136,7 +134,6 @@ const Produit_catalogue_adm = () => {
         productName={productToDelete?.nom}
       />
 
-      {/* Bouton / Modal ajout */}
       <B_add refresh={refreshProducts} />
     </section>
   );

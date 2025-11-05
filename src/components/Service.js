@@ -9,7 +9,7 @@ const Service = () => {
         <section className="section services">
             <div className="container">
                 <div className="section-title">
-                    <h3>Services</h3>
+                    <h3 className="h3">Services</h3>
                     <p>Nous offrons une gamme de services pour améliorer votre expérience d'achat.</p>
                 </div>
                 <div className="row my-5 service-section text-white px-3">

@@ -5,12 +5,11 @@ import Footer from "../../components/Footer";
 import "../../Style/common/contact.css";
 
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import Topmenu from "../../components/Topuser";
 
 export const Contactuser = () => {
   return (
     <div className="home_page">
-      <Topmenu />
+      
 
       <div className="container my-5 bg-image-fixed box">
         <div className="hebox">

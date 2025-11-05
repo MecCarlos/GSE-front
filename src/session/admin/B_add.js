@@ -55,7 +55,7 @@ const optionsParType = {
   Casque_audio: ['Couleur','Type','Connexion','ANC'],
   Webcam: ['Résolution','Connexion'],
   Microphone: ['Type','Connexion'],
-  Disque_dur: ['Type', 'Connectique', 'Capacité'],
+  Disque_dur: ['Type', 'Connectique', 'Stockage'],
   clavier: ['Type', 'Connectique'],
   souris: ['Type', 'Connectique'],
   Ecran: ['Type','Taille', 'Résolution'],
@@ -78,12 +78,10 @@ const optionsParType = {
 const optionValues = {
   Marque: ["Apple", "Samsung", "Dell", "HP", "Lenovo", "Asus", "Acer", "Microsoft", "Sony", "LG", "Huawei", "Xiaomi", "OnePlus"],
   RAM: ["4 Go", "8 Go", "16 Go", "32 Go"],
-  Capacité: ["32 Go","64 Go","128 Go","256 Go","512 Go","1 To","2 To"],
   Stockage: ["32 Go","64 Go","128 Go","256 Go","512 Go","1 To","2 To"],
   ANC: ["Oui", "Non"],
   Connexion: ["USB", "Bluetooth", "WiFi", "Jack", "USB-C"],
   Couleur: ["Noir", "Blanc", "Bleu", "Rouge", "Gris", "Or", "Argent","Corail","Vert","Violet","Jaune","Rose"],
-  // fallback générique pour Type (si aucune override catégorie)
   Model: ["Standard", "Pro", "Lite", "Max","Pro Max", "Ultra", "Plus", "Mini", "Air"],
   Type: ["Standard","Filaire", "Sans fil","Canal +","Strong"],
   Connectique: ["USB", "USB-C", "Thunderbolt", "SATA", "NVMe", "Ethernet", "WiFi"],

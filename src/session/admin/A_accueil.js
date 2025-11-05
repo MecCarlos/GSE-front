@@ -4,7 +4,7 @@ import Service from "../../components/Service";
 import { Link } from 'react-router-dom';
 import Produit from "../../components/Produit";
 import Footer from "../../components/Footer";
-import { Contact } from "../../components/Contact";
+import { Contact } from "../commons/Contact";
 import { motion } from "framer-motion";
 import Carousel from "../../components/Carousel";
 import Produit_img from "../../components/Produit_img";
@@ -36,7 +36,7 @@ export const A_accueil = () => {
                 minHeight: "100vh", 
                 padding: "20px"
             }}>
-                <Topadmin/>
+                {/* <Topadmin/> */}
                 <div className="part left">
                       <motion.div
                         className="home_text"

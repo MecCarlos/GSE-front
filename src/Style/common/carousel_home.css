@@ -1,57 +1,69 @@
-.color-carousel {
+.vertical_carousel {
   position: relative;
   width: 100%;
+  max-width: 500px;
   height: 400px;
-  overflow: hidden;
+  margin: auto;
+  overflow: visible;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 1s ease; /* ✅ couleur fluide */
+  border-radius:  20px ;
 }
 
-/* ✅ Conteneur qui glisse */
-.carousel-track {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease-in-out; /* ✅ animation du slide */
+.carousel_image {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
-/* ✅ Chaque slide prend toute la largeur */
+
 .slide {
-  min-width: 100%;
-  height: 100%;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transform: translateY(100%) scale(0.9);
+  transition: transform 2s ease-in-out, opacity 2s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  z-index: 2;
+}
+
+/* Quand l'image a fini sa montée, elle redescend lentement */
+@keyframes riseAndFall {
+  0% {
+    transform: translateY(100%) scale(0.9);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.slide.active img {
+  animation: riseAndFall 3.5s ease-in-out forwards;
 }
 
 .slide img {
-  width: auto;
-  max-height: 100%;
+  width: 85%;
+  height: auto;
   object-fit: contain;
-}
-
-/* ✅ Dots */
-.dots {
-  position: absolute;
-  bottom: 15px;
-  display: flex;
-  gap: 8px;
-  display: none;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: white;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.dot.active {
-  opacity: 1;
-  transform: scale(1.2);
 }
