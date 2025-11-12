@@ -9,9 +9,12 @@ export const About = () => {
   return (
     <div className="home_page">
       <div className="home_content contact_page">
-        <header>
-          <h1>A popos</h1>
-        </header>
+        {/* <header className="about_header">
+          <h1>À Propos de Nous</h1>
+          <p>
+            Découvrez notre histoire, nos valeurs et l'équipe qui se cache derrière nos succès.
+          </p>
+      </header> */}
 
         <AboutComp/>
         

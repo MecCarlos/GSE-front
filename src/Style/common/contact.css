@@ -1,133 +1,306 @@
-.home_page {
+.contact_page {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: white;
+  min-height: 100vh;
+}
 
-  .contact_page {
-    /* Header */
-    header {
-      width: 100%;
-      background: url("../../assets/images/tc1.webp") center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 8rem 2rem;
-      position: relative;
-    }
+/* En-tête */
+.contact_header_simple {
+  background: linear-gradient(rgba(0, 0, 50, 0.7), rgba(0, 0, 50, 0.7)), 
+              url("../../assets/images/tc1.webp") center/cover no-repeat;
+  padding: 6rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+}
 
-    .h3{
-      color: navy;
-      font-weight: bold;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      font-family: monospace;
-    }
+.header_content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
-    p {
-      color: #333;
-      font-size: 1.2rem;
-    }
+.header_subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Conteneur principal */
+.contact_grid {
+  padding: 4rem 0;
+}
+
+/* Cartes */
+.contact_form_card,
+.localisation_card,
+.info_card {
+  background: white;
+  border-radius: 20px;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+  border: none;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact_form_card:hover,
+.localisation_card:hover,
+.info_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* En-tête des cartes */
+.card_header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(135deg, navy 0%, #001f3f 100%);
+  color: white;
+}
+
+.card_header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card_header p {
+  opacity: 0.9;
+  margin: 0.5rem 0 0;
+}
+
+/* Corps des cartes */
+.card_body {
+  padding: 2rem;
+}
+
+/* Container pour la map */
+.map_container {
+  padding: 0 !important;
+}
+
+.map_container > * {
+  border-radius: 0 0 20px 20px;
+}
+
+/* Formulaire */
+.form_group {
+  margin-bottom: 1.5rem;
+}
+
+.form_group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control {
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.form-control:focus {
+  border-color: navy;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 128, 0.1);
+  background: white;
+}
+
+/* Bouton d'envoi */
+.submit_btn {
+  background: linear-gradient(135deg, navy 0%, #001f3f 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  font-size: medium;
+}
+
+.submit_btn:hover:not(.submitting) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 128, 0.3);
+}
+
+.submit_btn.submitting {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Cartes d'information */
+.info_card {
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card_icon {
+  font-size: 2.5rem;
+  color: navy;
+  margin-bottom: 1rem;
+}
+
+.info_card h5 {
+  color: navy;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.contact_item {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.contact_icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
+  min-width: 24px;
+}
+
+.contact_item strong {
+  display: block;
+  color: #333;
+  margin-bottom: 0.2rem;
+}
+
+.contact_item p {
+  margin: 0;
+  color: #666;
+}
+
+/* Horaires */
+.hours_list {
+  text-align: left;
+}
+
+.hour_item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.hour_item:last-child {
+  border-bottom: none;
+}
+
+/* Réseaux sociaux */
+.social_info,.contact_info, .hours_info{
+  /* background: rgba(0, 0, 255, 0.048) !important; */
+  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+
+  border: none;
+}
+
+.social_text {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.social_links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social_links a {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social_links a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact_header_simple {
+    padding: 4rem 1rem;
   }
-
-  /* Conteneur principal */
-  .container.contact {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-
-    .c_element {
-      background: #fff;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      h4, h5 {
-        color: navy;
-        margin-bottom: 1.5rem;
-      }
-
-      form {
-        label {
-          font-weight: 500;
-        }
-
-        input, textarea {
-          border-radius: 10px;
-          border: 1px solid #ccc;
-          padding: 0.75rem;
-          margin-top: 0.25rem;
-          width: 100%;
-          transition: border-color 0.2s ease;
-
-          &:focus {
-            outline: none;
-            border-color: navy;
-            box-shadow: 0 0 5px rgba(0, 0, 128, 0.3);
-          }
-        }
-
-        button {
-          background: navy;
-          color: #fff;
-          border: none;
-          border-radius: 10px;
-          padding: 0.75rem 2rem;
-          margin-top: 1.5rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background 0.3s ease;
-
-          &:hover {
-            background: darkblue;
-          }
-        }
-      }
-
-      .list-unstyled {
-        li {
-          font-size: 0.95rem;
-          margin-bottom: 0.5rem;
-        }
-      }
-
-      .d-flex a {
-        transition: transform 0.2s ease, color 0.2s ease;
-
-        &:hover {
-          transform: translateY(-3px);
-          color: darkblue !important;
-        }
-      }
-    }
+  
+  .header_content h1 {
+    font-size: 2.5rem;
   }
-
-  /* Responsive */
-  @media (max-width: 992px) {
-    .container.contact .row {
-      flex-direction: column;
-      gap: 2rem;
-    }
+  
+  .contact_grid {
+    padding: 2rem 0;
   }
+  
+  .card_body {
+    padding: 1.5rem;
+  }
+  
+  .social_links {
+    gap: 1rem;
+  }
+  
+  .social_links a {
+    width: 45px;
+    height: 45px;
+  }
+}
 
-  @media (max-width: 576px) {
-    .contact_page header {
-      padding: 5rem 1rem;
-    }
-
-    .contact_page h1 {
-      font-size: 2rem;
-    }
-
-    .c_element {
-      padding: 1.5rem;
-    }
-
-    button {
-      width: 100%;
-    }
+@media (max-width: 576px) {
+  .header_content h1 {
+    font-size: 2rem;
+  }
+  
+  .header_subtitle {
+    font-size: 1rem;
+  }
+  
+  .contact_item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact_icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .social_links {
+    gap: 0.8rem;
+  }
+  
+  .social_links a {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .localisation_card .card_body {
+    padding: 0;
   }
 }

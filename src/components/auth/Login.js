@@ -4,6 +4,8 @@ import './auth.css';
 import logo from '../../assets/images/logo.png';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuth } from '../../AuthContext';
+import { FaArrowLeftLong } from "react-icons/fa6";
+
 
 const Login = () => {
     const { login } = useAuth();
@@ -118,12 +120,16 @@ const Login = () => {
             </div>
 
             <div className="register-link mt-3 text-center">
-                <p>
+                <p className='noaccount'>
                     Pas de compte ?{" "}
                     <Link to="/register" className="text-link">
                         Créer un compte
                     </Link>
                 </p>
+
+                <Link to="/">
+                    <FaArrowLeftLong className="login-back-icon" />
+                </Link>
             </div>
         </div>
     );

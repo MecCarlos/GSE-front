@@ -2,6 +2,10 @@
 .log_page
 {
   background: whitesmoke;
+  background-image: url("../../assets/images//fond/a4.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   position: absolute;
   left: 0;
@@ -43,7 +47,13 @@
   margin-bottom: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
-  /* border-radius: 50px; */
+  border-radius: 50px;
+  outline: none;
+
+  &:focus {
+    border-color: navy;
+    background: rgba(139, 139, 209, 0.24);
+  }
 }
 
 .auth-container button {
@@ -82,8 +92,13 @@
   color: #333;
 }
 
+.noaccount
+{
+  color: white;
+}
+
 .text-link {
-  color: navy;
+  color: rgb(111, 111, 233);
   text-decoration: underline;
   font-weight: bold;
 }
@@ -118,4 +133,26 @@ label {
         }
     
     }
+}
+
+
+
+.login-back-icon {
+    font-size: 1.6rem;
+    color: white;
+    background: #e2e8f049;
+    border: solid 2px white;
+    padding: 1.5%;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: 
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.login-back-icon:hover {
+    background: #e2e8f0aa;
+    border-color: rgba(255, 255, 255, 0.9);
 }

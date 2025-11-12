@@ -1,18 +1,22 @@
 import { ContactComp } from "../../components/ContactComp";
 import Footer from "../../components/Footer";
 import "../../Style/common/contact.css";
-import { useState } from "react";
+// useState n'est plus nécessaire ici, il est dans ContactComp
+// import { useState } from "react"; 
 
 export const Contact = () => { 
-
-
+  
   return (
     <div className="home_page">
       <div className="home_content contact_page">
-        <header>
-          <h1>Contact</h1>
-        </header>
+      <header className="contact_header_simple">
+        <div className="header_content">
+          <h1>Contactez-Nous</h1>
+          <p className="header_subtitle">Nous sommes là pour répondre à toutes vos questions</p>
+        </div>
+      </header>
 
+        {/* Le corps du formulaire et des infos */}
         <ContactComp/>
         
       </div>

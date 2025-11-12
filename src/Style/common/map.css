@@ -1,0 +1,61 @@
+/* Styles pour la carte Leaflet */
+.leaflet-map {
+  border: 2px solid #e9ecef;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Popup personnalisée */
+.custom-popup .leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e9ecef;
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 12px 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.custom-popup .leaflet-popup-tip {
+  background: white;
+  border: 1px solid #e9ecef;
+}
+
+/* Animation du marqueur */
+.custom-marker {
+  transition: transform 0.3s ease;
+}
+
+.custom-marker:hover {
+  transform: scale(1.1);
+}
+
+/* Légende de la carte */
+.map-legend {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leaflet-map {
+    height: 350px !important;
+  }
+  
+  .custom-popup .leaflet-popup-content {
+    margin: 10px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .leaflet-map {
+    height: 300px !important;
+  }
+  
+  .map-legend small {
+    font-size: 0.7rem;
+  }
+}

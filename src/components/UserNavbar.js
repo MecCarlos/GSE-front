@@ -37,7 +37,7 @@ const UserNavbar = () => {
         <div className="s-btn-left">
           <NavLink className="circle-btn" to="#"><IoSearch /></NavLink>
           {isConnected ? (
-            <button className="btn connexion" onClick={() => setShowModal(!showModal)}>
+            <button className=" circle-btn" onClick={() => setShowModal(!showModal)}>
               <FaRegUserCircle />
             </button>
           ) : (

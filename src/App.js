@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 
 // Contexts
@@ -30,9 +30,18 @@ import { Contact } from "./session/commons/Contact";
 import { About } from "./session/commons/About";
 import Home from "./session/commons/Home";
 
-//  Navbar dynamique (toujours affichée)
+// Navbar dynamique (conditionnée par le chemin)
 const NavbarWrapper = () => {
   const { auth } = useAuth();
+  const location = useLocation();
+
+  // Chemins où la navbar ne doit PAS s'afficher
+  const noNavbarPaths = ["/login", "/register"];
+  
+  // Si le chemin actuel est dans la liste des chemins sans navbar, retourner null
+  if (noNavbarPaths.includes(location.pathname)) {
+    return null;
+  }
 
   if (auth.role === "admin") {
     return <AdminNavbar />;
@@ -61,12 +70,12 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <Router>
-          {/* ✅ Navbar toujours affichée */}
+          {/* ✅ Navbar conditionnée */}
           <NavbarWrapper />
 
           <Routes>
             {/* Pages publiques */}
-            <Route path="/" element={< Home/>} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/catalogue" element={<Catalogue />} />

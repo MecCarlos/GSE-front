@@ -1,229 +1,605 @@
-.home_page
-{
-  .commande_page
-  {
-    header {
-      width: 100%;
-      background: url("../../assets/images/cmd.jpg") center/cover no-repeat;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 8rem 2rem;
-    }
-
-    h1
-    {
-      color: navy;
-      font-weight: bold;
-      font-size: 3rem;
-    }    
-    
-  }
-
-/* Container général */
-.commande-container {
-  width: 100%;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
+.home_page {
+  background: #f8f9fa;
+  min-height: 100vh;
 }
 
-  
-  .img_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  }
-  
-  .commande-container img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;       
-    border-radius: 12px;     
-    background-color: #f8f8f8;
-    flex-shrink: 0;
-  }
-  
-/* Conteneur flex pour panier + formulaire */
-.commande-part {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-}
-
-/* Panier : taille indépendante selon contenu */
-.commande-cart {
-  flex: 0 0 auto; /* ne s'étire pas */
-  width: auto;
-  max-width: 450px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.commande-cart h4, .commande-cart h3 {
+/* Header de la commande */
+.commande_page .commande_header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 6rem 2rem;
   text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.commande_header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+  background-size: cover;
+}
+
+.header_content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header_content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Container principal */
+.commande-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Panier vide */
+.empty-commande {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.empty-illustration {
+  margin-bottom: 2rem;
+}
+
+.panier_vide {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.empty-content h2 {
+  font-size: 2rem;
+  color: #2d3748;
   margin-bottom: 1rem;
 }
 
-/* Items du panier */
-.cart-item {
+.empty-content p {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+/* Layout de commande */
+.commande-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Section formulaire */
+.commande-form-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-section {
+  margin-bottom: 2.5rem;
+  margin-top: 2%;
+}
+
+.section-title {
   display: flex;
-  gap: 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f7fafc;
+}
+
+/* Grille formulaire */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
   align-items: center;
 }
 
-.cart-img {
+.input-with-icon svg {
+  position: absolute;
+  left: 1rem;
+  color: #a0aec0;
+  z-index: 2;
+}
+
+.input-with-icon input {
+  padding-left: 3rem;
+  width: 100%;
+}
+
+/* Méthodes de paiement */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-option {
+  position: relative;
+}
+
+.payment-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.payment-option label {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.payment-option input[type="radio"]:checked + label {
+  border-color: #667eea;
+  background: #f7fafc;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.payment-option label:hover {
+  border-color: #cbd5e0;
+}
+
+.payment-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #667eea;
+}
+
+.payment-option label span {
+  font-weight: 600;
+  color: #2d3748;
+  margin-right: auto;
+}
+
+.payment-option label small {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* Formulaire carte */
+.card-form {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.security-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #f0fff4;
+  border-radius: 8px;
+  color: #38a169;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Bouton de commande */
+.btn-commande {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-commande:hover:not(.submitting) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-commande.submitting {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Récapitulatif */
+.commande-summary {
+  position: sticky;
+  top: 2rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.summary-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Articles commande */
+.order-items {
+  margin-bottom: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.order-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-image {
+  flex-shrink: 0;
+}
+
+.item-image img {
   width: 60px;
   height: 60px;
   object-fit: cover;
   border-radius: 8px;
+  background: #f8f9fa;
 }
 
-.cart-info {
+.item-details {
   flex: 1;
 }
 
-.variant {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-.price {
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-
-.commande-cart h3 span {
-  color: #4b7bec;
-}
-
-/* Formulaire commande : prend l'espace restant */
-.commande-form {
-  flex: 1 1 400px;
-  max-width: 450px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.commande-form h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-/* Formulaire inputs */
-.commande-form form div {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.commande-form label {
-  margin-bottom: 0.3rem;
-  font-weight: 500;
-  color: #444;
-}
-
-.commande-form input,
-.commande-form select {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.item-details h4 {
   font-size: 0.95rem;
-  transition: 0.2s;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.25rem 0;
 }
 
-.commande-form input:focus,
-.commande-form select:focus {
-  border-color: #4b7bec;
-  outline: none;
+.item-variant {
+  font-size: 0.8rem;
+  color: #718096;
+  margin: 0 0 0.5rem 0;
 }
 
-/* Bouton commander */
-.btn-commande {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #4b7bec;
-  color: #fff;
-  font-weight: bold;
-  border: none;
+.item-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #4a5568;
+}
+
+.item-total {
+  font-weight: 600;
+  color: #2a7;
+  font-size: 0.95rem;
+}
+
+/* Totaux */
+.summary-totals {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  color: #4a5568;
+}
+
+.total-row.final {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.total-amount {
+  color: #2a7;
+  font-size: 1.4rem;
+}
+
+.free {
+  color: #2a7;
+  font-weight: 600;
+}
+
+.total-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 1rem 0;
+}
+
+.delivery-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #f0fff4;
   border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-commande:hover {
-  background-color: #3a5bb8;
+  color: #38a169;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
 }
 
 /* Messages */
 .message {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #e74c3c;
-  font-weight: 500;
-}
-
-/* Responsive : mobile/tablette */
-@media (max-width: 992px) {
-  .commande-part {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .commande-cart,
-  .commande-form {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .cart-img {
-    width: 50px;
-    height: 50px;
-  }
-}
-
-/* Carte bancaire */
-.card-info {
-  margin-top: 1rem;
   padding: 1rem;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.card-info div {
-  margin-bottom: 0.8rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-info label {
+  margin-bottom: 1.5rem;
   font-weight: 500;
-  margin-bottom: 0.3rem;
 }
 
-.card-info input {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
+.message.error {
+  background: #fed7d7;
+  color: #c53030;
+  border: 1px solid #feb2b2;
 }
 
-.card-info input:focus {
-  border-color: #4b7bec;
-  outline: none;
+/* Overlay succès */
+.commande-success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
 }
 
+.commande-success-modal {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #48bb78;
+  margin-bottom: 1.5rem;
+}
+
+.commande-success-modal h2 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.commande-success-modal p {
+  color: #718096;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.success-details {
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  margin: 1.5rem 0;
+}
+
+.success-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Boutons généraux */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-height: 52px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: white;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .commande-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .commande-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .commande_header {
+    padding: 4rem 1rem;
+  }
+  
+  .header_content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .commande-container {
+    padding: 1rem;
+  }
+  
+  .commande-form-section {
+    padding: 1.5rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .payment-option label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .success-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .header_content h1 {
+    font-size: 2rem;
+  }
+  
+  .commande-success-modal {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }

@@ -11,7 +11,6 @@ import Produit_img from "../../components/Produit_img";
 import Bande from "../../components/Bande";
 import Ultra from "../../components/Ultra";
 import Carousel_home from "../../components/Carousel_home";
-import Topadmin from "../../components/Topadmin";
 
 
 export const A_accueil = () => { 
@@ -44,7 +43,7 @@ export const A_accueil = () => {
                         animate="visible"
                         transition={{ staggerChildren: 0.2 }}
                         >
-                        <motion.h1 variants={variants}>Gildas Empire Services</motion.h1>
+                        <motion.h1 variants={variants}>Olatetch Corporations</motion.h1>
                         <motion.h5 variants={variants}>Bienvenue sur notre site de vente en ligne</motion.h5>
                         <motion.p variants={variants}>Découvrez nos produits de qualité, conçus pour répondre à vos besoins.</motion.p>
                         <motion.button className="btn btn-primary rounded-pill" variants={variants}>
@@ -56,22 +55,6 @@ export const A_accueil = () => {
                     {/* <img src={airpod}/> */}
 
                     <Carousel_home onColorChange={setBgColor}/>
-
-
-                    {/* <motion.div 
-                        className="text"
-                        initial="hidden"
-                        animate="visible"
-                        variants={variantsRight}
-                        >
-                        <motion.h5 variants={variantsRight}>Apple airpod max</motion.h5>
-                        <motion.p variants={variantsRight}>Decouvrez une nouvelle expériences auditives</motion.p>
-
-                        <motion.div className="price" variants={variantsRight}>
-                            <h6 className="text-danger">200.775<span className="p-1">F</span></h6>
-                            <button className="rounded-pill">Commander</button>
-                        </motion.div>
-                    </motion.div> */}
 
                 </div>
             </div>

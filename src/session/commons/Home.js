@@ -41,7 +41,6 @@ const Home = () => {
           minHeight: "100vh",
         }}
       >
-        {/* Texte dynamique du produit à gauche */}
         <div className="home_left">
           <motion.div
             key={currentProduct.name}
@@ -64,7 +63,6 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Carousel vertical central */}
         <div className="home_center">
           <Carousel_home
             onColorChange={setCarouselColor}

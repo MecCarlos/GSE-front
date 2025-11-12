@@ -47,7 +47,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center">
-          <small>&copy; {new Date().getFullYear()} Gildas Empire Service - Tous droits réservés.</small>
+          <small>&copy; {new Date().getFullYear()} Olatetch Corporation - Tous droits réservés.</small>
         </div>
       </div>
     </footer>

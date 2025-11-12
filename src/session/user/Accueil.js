@@ -15,65 +15,62 @@ import Carousel_home from "../../components/Carousel_home";
 
 
 export const Accueil = () => { 
+  const [carouselColor, setCarouselColor] = useState("#ffffff");
+  const [currentProduct, setCurrentProduct] = useState({
+    name: "HP Pavilion",
+    desc: "Un produit de qualité supérieure disponible dès maintenant.",
+    price: "850 000 FCFA",
+    btnColor: "#0d6efd",
+  });
 
-    const [bgColor, setBgColor] = useState("#fff");
-
-    const variants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 1 } }
-    };
-
-    const variantsRight = {
-        hidden: { opacity: 0, x: 50 },
-        visible: { opacity: 1, x: 0, transition: { duration: 2 } }
-    };
+  const variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
     return (
         <div className="home_page">
-            <div className="home_content"   style={{
-                backgroundColor: bgColor, 
-                transition: "background-color 1s ease",
-                minHeight: "100vh", 
-                padding: "20px"      }}>
-                
-                <div className="part left">
-                    <motion.div
-                        className="home_text"
-                        initial="hidden"
-                        animate="visible"
-                        transition={{ staggerChildren: 0.2 }}
-                        >
-                        <motion.h1 variants={variants}>Gildas Empire Services</motion.h1>
-                        <motion.h5 variants={variants}>Bienvenue sur notre site de vente en ligne</motion.h5>
-                        <motion.p variants={variants}>Découvrez nos produits de qualité, conçus pour répondre à vos besoins.</motion.p>
-                        <motion.button className="btn btn-primary rounded-pill" variants={variants}>
-                            Explorer
-                        </motion.button>
-                    </motion.div>
-                </div>
-                <div className="part right">
-                    {/* <img src={airpod}/> */}
+        <section
+        className="home_intro"
+        style={{
+          backgroundColor: carouselColor,
+          transition: "background-color 1s ease",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 5%",
+          minHeight: "100vh",
+        }}
+      >
+        <div className="home_left">
+          <motion.div
+            key={currentProduct.name}
+            className="product_info"
+            initial="hidden"
+            animate="visible"
+            transition={{ staggerChildren: 0.3 }}
+          >
+            <motion.h2 variants={variants}>{currentProduct.name}</motion.h2>
+            <motion.p variants={variants}>{currentProduct.desc}</motion.p>
+            <motion.h4 variants={variants}>{currentProduct.price}</motion.h4>
+            <motion.a
+              href="/catalogue"
+              className="btn_explorer"
+              style={{ backgroundColor: currentProduct.btnColor }}
+              variants={variants}
+            >
+              Explorer
+            </motion.a>
+          </motion.div>
+        </div>
 
-                    <Carousel_home onColorChange={setBgColor}/>
-
-
-                    {/* <motion.div 
-                        className="text"
-                        initial="hidden"
-                        animate="visible"
-                        variants={variantsRight}
-                        >
-                        <motion.h5 variants={variantsRight}>Apple airpod max</motion.h5>
-                        <motion.p variants={variantsRight}>Decouvrez une nouvelle expériences auditives</motion.p>
-
-                        <motion.div className="price" variants={variantsRight}>
-                            <h6 className="text-danger">200.775<span className="p-1">F</span></h6>
-                            <button className="rounded-pill">Commander</button>
-                        </motion.div>
-                    </motion.div> */}
-
-                </div>
-            </div>
+        <div className="home_center">
+          <Carousel_home
+            onColorChange={setCarouselColor}
+            onProductChange={setCurrentProduct}
+          />
+        </div>
+      </section>
 
             {/* bande d'image */}
             <Carousel/>
@@ -96,7 +93,7 @@ export const Accueil = () => {
 
 
             {/* section contact */}
-            <Contact/>
+            {/* <Contact/> */}
 
             {/* Avis */}
             {/* <Avis/> */}
