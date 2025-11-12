@@ -7,7 +7,7 @@
 
 .h3 {
   font-family: monospace;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .element {
@@ -17,7 +17,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.8rem;
   margin-top: 1%;
   font-size: small;
   cursor: pointer;
@@ -30,7 +30,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/*  Partie gauche */
+/* Partie gauche */
 .element .left {
   flex: 1;
   padding-right: 0.5rem;
@@ -48,70 +48,159 @@
   font-weight: bold;
   margin: 0.3rem 0;
   color: #000;
+  font-size: 0.9rem;
+}
+
+/* PRIX AVEC LA COULEUR DU BOUTON */
+.element .left .prix {
+  font-weight: bold;
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
 }
 
 .element .left button {
   background: white;
   color: currentColor;
   border: 1px solid white;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 20px;
-  transition: all .1s  ease;
+  transition: all .1s ease;
   font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .element .left button:hover {
-
   transform: translateX(1rem);
 }
 
-/*  Partie image */
+/* Partie image */
 .element .right {
   flex-shrink: 0;
 }
 
 .element .right img {
   width: 100%;
-  max-width: 180px;
+  max-width: 150px;
   height: auto;
   object-fit: contain;
 }
 
-/*  Couleurs de fond */
-.gray { background: rgba(122, 122, 122, 0.308); color: rgba(209, 208, 208, 1); }
-.pink { background: rgba(245, 68, 97, 0.555); color: rgb(245, 68, 97); }
-.blue { background: rgba(33, 180, 238, 0.733); color: rgb(33, 180, 238); }
-.purple { background: rgba(128, 0, 128, 0.459); color: rgba(128, 0, 128, 0.459); }
-.gold { background: rgba(214, 161, 28, 0.37); color: rgb(214, 162, 28); }
+/* Couleurs de fond - ET COULEURS DU PRIX */
+.gray { 
+  background: rgba(122, 122, 122, 0.308); 
+  color: rgba(209, 208, 208, 1); 
+}
+.gray .prix {
+  color: rgba(209, 208, 208, 1) !important;
+}
 
-/*  Responsive tablette */
-@media (max-width: 768px) {
+.pink { 
+  background: rgba(245, 68, 97, 0.555); 
+  color: rgb(245, 68, 97); 
+}
+.pink .prix {
+  color: rgb(245, 68, 97) !important;
+}
+
+.blue { 
+  background: rgba(33, 180, 238, 0.733); 
+  color: rgb(33, 180, 238); 
+}
+.blue .prix {
+  color: rgb(33, 180, 238) !important;
+}
+
+.purple { 
+  background: rgba(128, 0, 128, 0.459); 
+  color: rgba(128, 0, 128, 0.8); 
+}
+.purple .prix {
+  color: rgba(128, 0, 128, 0.8) !important;
+}
+
+.gold { 
+  background: rgba(214, 161, 28, 0.37); 
+  color: rgb(214, 162, 28); 
+}
+.gold .prix {
+  color: rgb(214, 162, 28) !important;
+}
+
+/* RESPONSIVE - 2 éléments par ligne */
+@media (max-width: 992px) {
   .element {
     flex: 1 1 calc(50% - 1%);
-    font-size: 0.9rem;
+    min-width: 180px;
+    padding: 0.7rem;
   }
+  
   .element .right img {
-    max-width: 150px;
+    max-width: 120px;
+  }
+  
+  .element .left h4 {
+    font-size: 0.85rem;
+  }
+  
+  .element .left button {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+  }
+  
+  .element .left .prix {
+    font-size: 0.9rem;
   }
 }
 
-/* Responsive mobile */
-@media (max-width: 480px) {
+/* Mobile - 1 élément par ligne */
+@media (max-width: 576px) {
   .element {
     flex: 1 1 100%;
+    min-width: auto;
+    padding: 0.6rem;
+  }
+  
+  .element .right img {
+    max-width: 100px;
+  }
+  
+  .element .left h4 {
+    font-size: 0.8rem;
+  }
+  
+  .element .left .prix {
+    font-size: 0.85rem;
+  }
+  
+  .h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 375px) {
+  .element {
     flex-direction: column;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
   }
+  
   .element .left {
     padding-right: 0;
+    margin-bottom: 0.5rem;
   }
+  
   .element .right img {
-    max-width: 120px; /*  réduit sur mobile */
-    margin-top: 0.5rem;
+    max-width: 80px;
   }
+  
   .element .left button {
-    width: 100%; /*  bouton prend toute la largeur sur mobile */
-    margin-top: 0.5rem;
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+  
+  .element .left .prix {
+    font-size: 0.8rem;
   }
 }

@@ -6,7 +6,7 @@
 /* Header */
 .Mycommande_page .commande_header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 6rem 2rem;
+  padding: 4rem 1rem;
   text-align: center;
   color: white;
   position: relative;
@@ -25,22 +25,24 @@
 }
 
 .header_content h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .header_content p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* Container principal */
 .commande-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 /* État de chargement */
@@ -49,7 +51,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1rem;
   text-align: center;
 }
 
@@ -68,9 +70,16 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Cartes de statistiques */
+/* Cartes de statistiques - TOUJOURS SUR LA MÊME LIGNE */
 .stats-cards {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.stats-cards .col-md-4 {
+  flex: 1;
+  min-width: 0; /* Permet le rétrécissement */
 }
 
 .stat-card {
@@ -79,6 +88,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
   height: 100%;
+  min-height: 120px;
 }
 
 .stat-card:hover {
@@ -103,17 +113,19 @@
 .stat-card .card-body {
   display: flex;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem;
+  height: 100%;
 }
 
 .stat-icon {
-  font-size: 3rem;
-  margin-right: 1.5rem;
+  font-size: 2rem;
+  margin-right: 1rem;
   opacity: 0.9;
+  flex-shrink: 0;
 }
 
 .stat-content h3 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin: 0;
   line-height: 1;
@@ -122,7 +134,7 @@
 .stat-content p {
   margin: 0.5rem 0 0 0;
   opacity: 0.9;
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 
 /* Filtres */
@@ -148,19 +160,23 @@
   gap: 0.75rem;
 }
 
+/* BOUTONS EN ARRONDI COMPLET */
 .filter-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   border: 2px solid #e2e8f0;
-  border-radius: 25px;
+  border-radius: 50px; /* ARRONDI COMPLET */
   background: white;
   color: #4a5568;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
+  flex: 1;
+  min-width: 160px;
+  justify-content: center;
 }
 
 .filter-btn:hover {
@@ -178,7 +194,7 @@
 .filter-count {
   background: rgba(255, 255, 255, 0.2);
   padding: 0.25rem 0.5rem;
-  border-radius: 12px;
+  border-radius: 50px; /* ARRONDI COMPLET */
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -192,10 +208,12 @@
   border: none;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
 .commandes-table {
   margin: 0;
+  width: 100%;
 }
 
 .commandes-table thead th {
@@ -203,14 +221,15 @@
   border-bottom: 2px solid #e2e8f0;
   font-weight: 600;
   color: #2d3748;
-  padding: 1.25rem 1rem;
-  font-size: 0.9rem;
+  padding: 1.25rem 0.75rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .commandes-table tbody td {
-  padding: 1.25rem 1rem;
+  padding: 1rem 0.75rem;
   vertical-align: middle;
   border-bottom: 1px solid #f1f3f4;
 }
@@ -222,32 +241,40 @@
 .commande-id {
   font-weight: 600;
   color: #2d3748;
-  font-size: 1rem;
+  font-size: 0.95rem;
+}
+
+.commande-id small {
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .date-cell {
   display: flex;
   align-items: center;
   color: #718096;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .amount-cell {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #2a7;
+  white-space: nowrap;
 }
 
 /* Badges d'état */
 .etat-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px; /* ARRONDI COMPLET */
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .progress-indicator {
@@ -266,63 +293,89 @@
   transition: width 0.3s ease;
 }
 
-/* Bouton détails */
-.detail-btn {
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+/* BOUTON DÉTAILS EN ARRONDI COMPLET */
+#detail-btn {
+  border-radius: 10px; 
+  padding: 0.5rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  white-space: nowrap;
+  border: solid 2px #667eea;
+  transform: all 0.3s ease  ;
+
+  &:hover {
+    background-color: #667eea;
+    color: white;
+  }
 }
 
 /* État vide */
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1rem;
   color: #718096;
 }
 
 .empty-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
   opacity: 0.5;
 }
 
 .empty-state h3 {
   color: #4a5568;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* Pagination */
 .pagination-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: 2rem;
   padding: 1.5rem 0 0 0;
   border-top: 1px solid #e2e8f0;
+  flex-wrap: wrap;
 }
 
+/* BOUTONS PAGINATION EN ARRONDI COMPLET */
 .pagination-btn {
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 50px; /* ARRONDI COMPLET */
+  padding: 0.75rem 1.25rem;
   font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .pagination-numbers {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
 }
 
+/* NUMÉROS DE PAGE EN ARRONDI COMPLET */
 .page-number {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border: 1px solid #e2e8f0;
   background: white;
-  border-radius: 8px;
+  border-radius: 50px; /* ARRONDI COMPLET */
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
-  min-width: 45px;
+  min-width: 40px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-number:hover {
@@ -341,54 +394,65 @@
   border: none;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
 }
 
 .commande-detail-modal .modal-header {
   border-bottom: 1px solid #e2e8f0;
-  padding: 1.5rem 2rem;
+  padding:  1.5rem;
 }
 
 .commande-detail-modal .modal-title {
   font-weight: 600;
   color: #2d3748;
+  font-size: 1.25rem;
 }
 
 .commande-detail {
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 .detail-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid #e2e8f0;
 }
 
 .detail-item {
   display: flex;
-  justify-content: between;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .detail-item strong {
-  min-width: 150px;
   color: #4a5568;
+  min-width: 120px;
+  font-size: 0.9rem;
+}
+
+.detail-item span {
+  text-align: right;
+  flex: 1;
 }
 
 .total-amount {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #2a7;
 }
 
 .detail-section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .detail-section h5 {
   color: #2d3748;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .products-list {
@@ -400,9 +464,10 @@
 .product-item {
   display: flex;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   border-bottom: 1px solid #f1f3f4;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .product-item:last-child {
@@ -411,16 +476,18 @@
 
 .product-info {
   flex: 1;
+  min-width: 200px;
 }
 
 .product-name {
   font-weight: 600;
   color: #2d3748;
   margin-bottom: 0.25rem;
+  font-size: 0.95rem;
 }
 
 .product-variant {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #718096;
 }
 
@@ -429,34 +496,96 @@
 .product-total {
   font-weight: 600;
   color: #4a5568;
-  min-width: 80px;
+  min-width: 60px;
   text-align: center;
+  font-size: 0.85rem;
 }
 
 .product-total {
   color: #2a7;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 .address-info {
   background: #f8f9fa;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .commande_header {
-    padding: 4rem 1rem;
+/* ==================================== */
+/* RESPONSIVE DESIGN AMÉLIORÉ */
+/* ==================================== */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .commande-container {
+    padding: 1rem;
   }
   
   .header_content h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
   
-  .commande-container {
-    padding: 1rem;
+  .stat-card .card-body {
+    padding: 1.25rem;
+  }
+  
+  .stat-icon {
+    font-size: 1.75rem;
+    margin-right: 0.75rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablettes petites et grands mobiles */
+@media (max-width: 768px) {
+  .commande_header {
+    padding: 3rem 1rem;
+  }
+  
+  .header_content h1 {
+    font-size: 2rem;
+  }
+  
+  .header_content p {
+    font-size: 1rem;
+  }
+  
+  /* STATS TOUJOURS SUR LA MÊME LIGNE MAIS PLUS COMPACTES */
+  .stats-cards {
+    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+  }
+  
+  .stat-card {
+    min-height: 100px;
+  }
+  
+  .stat-card .card-body {
+    padding: 1rem 0.75rem;
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
   }
   
   .filters {
@@ -464,48 +593,280 @@
   }
   
   .filter-btn {
-    flex: 1;
+    flex: 0 1 calc(50% - 0.5rem);
     min-width: 140px;
-    justify-content: center;
   }
   
   .commandes-table {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   
-  .commande-row td {
-    padding: 1rem 0.5rem;
+  .commandes-table thead {
+    display: none;
   }
   
-  .product-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
+  .commandes-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .commandes-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f1f3f4;
+    text-align: right;
+  }
+  
+  .commandes-table tbody td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #4a5568;
+    text-align: left;
+    flex: 1;
+    font-size: 0.8rem;
+  }
+  
+  .commandes-table tbody td:last-child {
+    border-bottom: none;
+  }
+  
+  .commande-id small {
+    display: inline;
+    margin-left: 0.5rem;
   }
   
   .pagination-container {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
+  }
+  
+  .pagination-numbers {
+    order: -1;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobiles */
+@media (max-width: 576px) {
+  .commande_header {
+    padding: 2.5rem 1rem;
+  }
+  
   .header_content h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+  
+  .commande-container {
+    padding: 0.75rem;
+  }
+  
+  /* STATS ENCORE PLUS COMPACTES MAIS TOUJOURS SUR LA MÊME LIGNE */
+  .stats-cards {
+    gap: 0.5rem;
+  }
+  
+  .stat-card {
+    min-height: 90px;
+  }
+  
+  .stat-card .card-body {
+    padding: 0.75rem 0.5rem;
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .stat-icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  }
+  
+  .stat-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.7rem;
+  }
+  
+  .filters {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    min-width: auto;
+  }
+  
+  .commandes-table tbody td {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    text-align: left;
+  }
+  
+  .commandes-table tbody td:before {
+    margin-bottom: 0.25rem;
+  }
+  
+  .date-cell,
+  .amount-cell {
+    justify-content: flex-start;
+  }
+  
+  .product-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+  
+  .product-info {
+    min-width: auto;
+  }
+  
+  .product-quantity,
+  .product-price,
+  .product-total {
+    min-width: auto;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .detail-item span {
+    text-align: left;
+  }
+  
+  .commande-detail-modal .modal-content {
+    margin: 0.5rem;
+  }
+  
+  .commande-detail-modal .modal-header {
+    padding: 1rem 1.25rem;
+  }
+  
+  .commande-detail-modal .modal-body {
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* Très petits mobiles */
+@media (max-width: 375px) {
+  .header_content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header_content p {
+    font-size: 0.9rem;
+  }
+  
+  /* STATS ULTRA COMPACTES MAIS TOUJOURS SUR LA MÊME LIGNE */
+  .stats-cards {
+    gap: 0.25rem;
+  }
+  
+  .stat-card .card-body {
+    padding: 0.5rem;
+  }
+  
+  .stat-icon {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 0.9rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.65rem;
+    margin-top: 0.1rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .page-number {
+    padding: 0.4rem 0.6rem;
+    min-width: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .pagination-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .etat-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Garantir que les stats restent sur une ligne même sur très petits écrans */
+@media (max-width: 320px) {
+  .stats-cards {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    gap: 0.25rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .stats-cards .col-md-4 {
+    flex: 0 0 auto;
+    width: 100px;
   }
   
   .stat-card .card-body {
     flex-direction: column;
     text-align: center;
-    padding: 1.5rem;
+    padding: 0.5rem;
   }
   
   .stat-icon {
     margin-right: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
   }
   
-  .filters {
-    flex-direction: column;
+  .stat-content h3 {
+    font-size: 0.8rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.6rem;
+  }
+}
+
+
+
+/* SOLUTION FORCÉE POUR LE CENTRAGE */
+.modal {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.commande-detail-modal .modal-dialog {
+  margin: auto;
+  max-width: 90%;
+}
+
+@media (max-width: 768px) {
+  .commande-detail-modal .modal-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
   }
 }

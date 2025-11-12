@@ -1,46 +1,125 @@
-.bandex
-{
+/* Styles uniquement pour le composant Bande */
+.bande-component {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: white;
-  padding: 0 3rem;
-  gap: 1rem;
+  background: transparent;
+  padding: 0;
+  gap: 2rem;
   flex-wrap: wrap;
+  padding: 0 3rem;
+
 }
 
-.bandex-item {
+.bande-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  max-width: 220px;
+  gap: 12px;
+  max-width: 250px;
   text-align: left;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: white;
 }
 
-.bandex-icon {
-  font-size: 2rem;
-  color: navy; /* ✅ icône navy */
+.bande-item:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.bande-item-icon {
+  font-size: 2.2rem;
+  color: #667eea;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.bandex-text h6 {
-  margin: 0;
-  font-weight: 600; /* ✅ titre un peu gras */
-  color: black;
+.bande-item:hover .bande-item-icon {
+  transform: scale(1.1);
+  color: #764ba2;
 }
 
-.bandex-text p {
+.bande-item-text {
+  flex: 1;
+}
+
+.bande-item-title {
   margin: 0;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.bande-item-description {
+  margin: 4px 0 0 0;
   font-size: 0.85rem;
-  color: #222; /* ✅ texte noir */
+  color: #718096;
+  line-height: 1.4;
 }
 
-/* ✅ Responsive */
-@media (max-width: 768px) {
-  .bandex {
-    justify-content: start;
+/* Responsive */
+@media (max-width: 1024px) {
+  .bande-component {
+    padding: 2rem;
+    gap: 1.5rem;
   }
-  .bandex-item {
+  
+  .bande-item {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bande-component {
+    justify-content: flex-start;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .bande-item {
+    max-width: calc(50% - 0.5rem);
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .bande-component {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .bande-item {
     max-width: 100%;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 375px) {
+  .bande-component {
+    padding: 1rem 0.5rem;
+  }
+  
+  .bande-item {
+    padding: 0.75rem;
+    gap: 10px;
+  }
+  
+  .bande-item-icon {
+    font-size: 1.8rem;
+  }
+  
+  .bande-item-title {
+    font-size: 0.95rem;
+  }
+  
+  .bande-item-description {
+    font-size: 0.8rem;
   }
 }

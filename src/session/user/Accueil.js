@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import    from "../../components/  ";
 import "../../Style/common/home.css";
 import Service from "../../components/Service";
 import Produit from "../../components/Produit";
 import Footer from "../../components/Footer";
-import { Contact } from "../commons/Contact";
 import { motion } from "framer-motion";
 import Carousel from "../../components/Carousel";
 import Produit_img from "../../components/Produit_img";
 import Bande from "../../components/Bande";
 import Ultra from "../../components/Ultra";
 import Carousel_home from "../../components/Carousel_home";
-// import   from "../../components/ ";
 
 
 export const Accueil = () => { 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Style/common/home.css";
+// import "../../Style/common/home.css";
 import Map from "../../components/Map";
 import Footer from "../../components/Footer";
 import "../../Style/common/contact.css";

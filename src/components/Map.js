@@ -89,7 +89,7 @@ const Map = () => {
           <Popup className="custom-popup">
             <div className="popup-content text-center">
               <h6 className="fw-bold mb-2" style={{ color: '#001f3f' }}>
-                🚀 Olatech Corporation
+                Olatech Corporation
               </h6>
               <p className="mb-1 small">
                 <strong>Adresse:</strong> Pahou, Bénin

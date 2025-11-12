@@ -8,48 +8,44 @@ const Service = () => {
     <>
         <section className="section services">
             <div className="container">
-                <div className="section-title">
-                    <h3 className="h3">Services</h3>
-                    <p>Nous offrons une gamme de services pour améliorer votre expérience d'achat.</p>
+                {/* TITRE CENTRÉ */}
+                <div className="section-title text-center mb-4">
+                    <h3 className="service-title">Services</h3>
                 </div>
-                <div className="row my-5 service-section text-white px-3">
-                    <div className="col-md-3 mb-4">
-                        <div className="service-box bg-electric p-4 rounded">
-                            <FaBolt size={40} className="mb-3 icon" />
+                <div className="row service-section text-white px-2">
+                    <div className="col-md-3 mb-3">
+                        <div className="service-box bg-electric p-3 rounded">
+                            <FaBolt size={35} className="mb-2 icon" />
                             <h5>Installation Électrique</h5>
                             <p>Installation fiable et professionnelle pour vos bâtiments.</p>
-                            <br />
-                            <Link to="/" className="link">En savoire plus <MdOutlineArrowForwardIos /></Link>
+                            <Link to="/" className="link">En savoir plus <MdOutlineArrowForwardIos /></Link>
                         </div>
                     </div>
 
-                    <div className="col-md-3 mb-4">
-                        <div className="service-box bg-solar p-4 rounded">
-                            <FaSun size={40} className="mb-3 icon" />
+                    <div className="col-md-3 mb-3">
+                        <div className="service-box bg-solar p-3 rounded">
+                            <FaSun size={35} className="mb-2 icon" />
                             <h5>Énergie Solaire</h5>
                             <p>Solutions solaires écologiques pour une énergie durable.</p>
-                            <br />
-                            <Link to="/" className="link">En savoire plus <MdOutlineArrowForwardIos /></Link>
+                            <Link to="/" className="link">En savoir plus <MdOutlineArrowForwardIos /></Link>
                         </div>
                     </div>
 
-                    <div className="col-md-3 mb-4">
-                        <div className="service-box bg-design p-4 rounded ">
-                            <FaPaintBrush size={40} className="mb-3 icon" />
+                    <div className="col-md-3 mb-3">
+                        <div className="service-box bg-design p-3 rounded">
+                            <FaPaintBrush size={35} className="mb-2 icon" />
                             <h5>Design Graphique</h5>
                             <p>Création de logos, affiches, flyers, réseaux sociaux...</p>
-                            <br />
-                            <Link to="/" className="link">En savoire plus <MdOutlineArrowForwardIos /></Link>
+                            <Link to="/" className="link">En savoir plus <MdOutlineArrowForwardIos /></Link>
                         </div>
                     </div>
 
-                    <div className="col-md-3 mb-4">
-                        <div className="service-box bg-vente p-4 rounded ">
-                            <FaTruck size={40} className="mb-3 icon" />
+                    <div className="col-md-3 mb-3">
+                        <div className="service-box bg-vente p-3 rounded">
+                            <FaTruck size={35} className="mb-2 icon" />
                             <h5>Vente & Livraison</h5>
                             <p>Produits livrés rapidement à votre porte avec garantie qualité.</p>
-                            <br />
-                            <Link to="/" className="link">En savoire plus <MdOutlineArrowForwardIos /></Link>
+                            <Link to="/" className="link">En savoir plus <MdOutlineArrowForwardIos /></Link>
                         </div>
                     </div>
                 </div>

@@ -239,12 +239,12 @@ const MyCommande = () => {
                                 </td>
                                 <td>
                                   <Button
-                                    variant="outline-primary"
-                                    size="sm"
+                                    variant=""
+                                    // size="sm"
                                     onClick={() => setSelectedCommande(commande)}
-                                    className="detail-btn"
+                                    id="detail-btn"
                                   >
-                                    <FaEye className="me-1" />
+                                    {/* <FaEye className="me-1" /> */}
                                     Détails
                                   </Button>
                                 </td>
@@ -301,11 +301,11 @@ const MyCommande = () => {
           show={!!selectedCommande} 
           onHide={() => setSelectedCommande(null)} 
           size="lg"
-          className="commande-detail-modal"
+          className="commande-detail-modal modal-dialog-centered"
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              Détails de la commande #{selectedCommande?.id}
+              Commande {selectedCommande?.id}
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -376,11 +376,11 @@ const MyCommande = () => {
               </div>
             )}
           </Modal.Body>
-          <Modal.Footer>
+          {/* <Modal.Footer>
             <Button variant="secondary" onClick={() => setSelectedCommande(null)}>
               Fermer
             </Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       </div>
     </div>

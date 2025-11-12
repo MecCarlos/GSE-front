@@ -123,8 +123,8 @@ html, body {
 /* === MODAL UTILISATEUR === */
 .user_modal {
   position: absolute;
-  top: 3rem;
-  right: 0;
+  top: 5rem;
+  left: 9rem;
   background: whitesmoke;
   border-radius: 10px;
   padding: 0.5rem;
@@ -195,6 +195,15 @@ html, body {
   .hamburger {
     display: flex;
   }
+
+  .user_modal
+  {
+    position: absolute;
+    top: 3.5rem;
+    left: 3rem;
+    font-size: x-small;
+  }
+
 }
 
 @media (max-width: 576px) {

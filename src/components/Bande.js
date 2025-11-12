@@ -14,15 +14,15 @@ const Bande = () => {
   ];
 
   return (
-    <div className="bandex">
+    <div className="bande-component">
       {items.map((p, i) => {
         const Icon = p.icon;
         return (
-          <div className="bandex-item" key={i}>
-            <Icon className="bandex-icon" />
-            <div className="bandex-text">
-              <h6>{p.title}</h6>
-              <p>{p.text}</p>
+          <div className="bande-item" key={i}>
+            <Icon className="bande-item-icon" />
+            <div className="bande-item-text">
+              <h6 className="bande-item-title">{p.title}</h6>
+              <p className="bande-item-description">{p.text}</p>
             </div> 
           </div>
         );

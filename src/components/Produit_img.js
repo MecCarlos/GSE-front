@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import routeur from "../assets/images/router.png";
 import ipad from "../assets/images/ipad.png";
 import camera from "../assets/images/cam2.png";
@@ -20,10 +19,22 @@ const Produits = () => {
     { name: "Asus Gaming", price: 3105000, image: asus, color: "purple", reduc: "5%" },
   ];
 
+  // Fonction pour obtenir la couleur du texte basée sur la couleur du produit
+  const getPriceColor = (color) => {
+    const colorMap = {
+      gray: "rgba(209, 208, 208, 1)",
+      gold: "rgb(214, 162, 28)",
+      pink: "rgb(245, 68, 97)",
+      blue: "rgb(33, 180, 238)",
+      purple: "rgba(128, 0, 128, 0.8)"
+    };
+    return colorMap[color] || "#000000";
+  };
+
   return (
-    <section className="container my-5 mt-6">
+    <section className="container my-4 mt-5">
       <div className="text-center">
-        <h3 className="mb-4 h3">Nos Produits</h3>
+        <h3 className="mb-3 h3">Nos Produits</h3>
       </div>
 
       {/* Liste produits */}
@@ -33,7 +44,12 @@ const Produits = () => {
             <div className="left">
               <h6 className="reduc">{p.reduc}</h6>
               <h4 className="nom">{p.name}</h4>
-              <p className="prix text-black">{p.price.toLocaleString()}<span>F</span></p>
+              <p 
+                className="prix" 
+                style={{ color: getPriceColor(p.color) }}
+              >
+                {p.price.toLocaleString()}<span>F</span>
+              </p>
               <button className="rounded-pill">Explorer</button>
             </div>
             <div className="right">

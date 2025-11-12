@@ -1,13 +1,10 @@
 import "../Style/common/contact.css";
 import { useState } from "react";
 import Map from "./Map.js";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok, FaSnapchat, FaMapMarkerAlt, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok, FaSnapchat, FaMapMarkerAlt, FaCheckCircle, FaExclamationTriangle, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 import { RiTimeFill } from "react-icons/ri";
 import { FaUserGroup } from "react-icons/fa6";
 import { BiSolidContact } from "react-icons/bi";
-
-
-
 
 export const ContactComp = () => {
   const [form, setForm] = useState({ nom: "", email: "", objet: "", message: "" });
@@ -16,7 +13,6 @@ export const ContactComp = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
-  // URL de base de l'API
   const BASE_API_URL = process.env.NODE_ENV === 'production' 
     ? 'https://votre-domaine.com/api' 
     : 'http://localhost:3001/api';
@@ -67,6 +63,14 @@ export const ContactComp = () => {
 
   return (
     <div className="contact_page">
+      {/* En-tête Hero */}
+      <header className="contact_header_simple">
+        <div className="header_content">
+          <h1>Contactez-Nous</h1>
+          <p className="header_subtitle">Nous sommes là pour répondre à toutes vos questions</p>
+        </div>
+      </header>
+
       <div className="container contact_grid">
         <div className="row g-4">
           {/* Colonne de gauche - Formulaire et Map */}
@@ -137,7 +141,7 @@ export const ContactComp = () => {
 
                   <button 
                     type="submit" 
-                    className={`btn text-white p-2 submit_btn ${isSubmitting ? 'submitting' : ''}`}
+                    className={`btn rounded-pill text-white p-3 submit_btn ${isSubmitting ? 'submitting' : ''}`}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -147,7 +151,6 @@ export const ContactComp = () => {
                       </>
                     ) : (
                       <>
-                        {/* <FaCheckCircle className="me-2" /> */}
                         Envoyer le message
                       </>
                     )}
@@ -184,14 +187,14 @@ export const ContactComp = () => {
                 </div>
               </div>
               <div className="contact_item">
-                <span className="contact_icon">📞</span>
+                <span className="contact_icon"><FaPhone /></span>
                 <div>
                   <strong>Téléphone</strong>
-                  <p>+229 01 49 30 65 16 </p>
+                  <p>+229 01 49 30 65 16</p>
                 </div>
               </div>
               <div className="contact_item">
-                <span className="contact_icon">✉️</span>
+                <span className="contact_icon"><FaEnvelope /></span>
                 <div>
                   <strong>Email</strong>
                   <p>olatechcorrporations@gmail.com</p>
@@ -202,7 +205,7 @@ export const ContactComp = () => {
             {/* Carte Horaires */}
             <div className="card info_card hours_info">
               <div className="card_icon">
-                <RiTimeFill />
+                <FaClock />
               </div>
               <h5>Nos horaires d'ouverture</h5>
               <div className="hours_list">
@@ -229,19 +232,19 @@ export const ContactComp = () => {
               <h5>Réseaux sociaux</h5>
               <p className="social_text">Rejoignez notre communauté</p>
               <div className="social_links">
-                <a href="#" className="text-primary fs-4" title="Facebook">
+                <a href="#" className="facebook" title="Facebook">
                   <FaFacebook />
                 </a>
-                <a href="#" className="text-danger fs-4" title="Instagram">
+                <a href="#" className="instagram" title="Instagram">
                   <FaInstagram />
                 </a>
-                <a href="https://www.snapchat.com/add/g-ldas29?share_id=I8njbTHM_Mc&locale=fr-BJ " className="text-warning fs-4" title="Snapchat">
+                <a href="https://www.snapchat.com/add/g-ldas29?share_id=I8njbTHM_Mc&locale=fr-BJ" className="snapchat" title="Snapchat">
                   <FaSnapchat />
                 </a>
-                <a href="#" className="text-primary fs-4" title="LinkedIn">
+                <a href="#" className="linkedin" title="LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://www.tiktok.com/@olatechcorporations20" className="text-dark fs-4" title="TikTok">
+                <a href="https://www.tiktok.com/@olatechcorporations20" className="tiktok" title="TikTok">
                   <FaTiktok />
                 </a>
               </div>
@@ -256,10 +259,6 @@ export const ContactComp = () => {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content success-modal">
               <div className="modal-header border-0">
-                {/* <h5 className="modal-title">
-                  <FaCheckCircle className="text-success me-2" />
-                  Message envoyé !
-                </h5> */}
                 <button type="button" className="btn-close" onClick={closeSuccessModal}></button>
               </div>
               <div className="modal-body text-center">
@@ -268,9 +267,9 @@ export const ContactComp = () => {
                 <p className="mb-0">{modalMessage}</p>
               </div>
               <div className="modal-footer border-0 justify-content-center">
-                {/* <button type="button" className="parfais" onClick={closeSuccessModal}>
-                  
-                </button> */}
+                <button type="button" className="btn btn-success" onClick={closeSuccessModal}>
+                  Fermer
+                </button>
               </div>
             </div>
           </div>
@@ -283,10 +282,6 @@ export const ContactComp = () => {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content error-modal">
               <div className="modal-header border-0">
-                <h5 className="modal-title">
-                  <FaExclamationTriangle className="text-danger me-2" />
-                  Erreur
-                </h5>
                 <button type="button" className="btn-close" onClick={closeErrorModal}></button>
               </div>
               <div className="modal-body text-center">

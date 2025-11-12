@@ -29,17 +29,9 @@ const Home = () => {
   return (
     <div className="home_page">
       {/* === SECTION ACCUEIL === */}
-      <section
+      <section 
         className="home_intro"
-        style={{
-          backgroundColor: carouselColor,
-          transition: "background-color 1s ease",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 5%",
-          minHeight: "100vh",
-        }}
+        style={{ backgroundColor: carouselColor }} 
       >
         <div className="home_left">
           <motion.div
@@ -64,7 +56,7 @@ const Home = () => {
         </div>
 
         <div className="home_center">
-          <Carousel_home
+          <Carousel_home 
             onColorChange={setCarouselColor}
             onProductChange={setCurrentProduct}
           />
@@ -78,7 +70,7 @@ const Home = () => {
       <Ultra />
       <Produit />
       <Service />
-      <ContactComp />
+      {/* <ContactComp /> */}
       <Footer />
     </div>
   );

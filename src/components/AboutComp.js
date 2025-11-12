@@ -2,82 +2,86 @@ import "../Style/common/about.css";
 import i1 from "../assets/images/i1.jpg";
 import i2 from "../assets/images/i1.jpg";
 import i3 from "../assets/images/i1.jpg";
-import { FaRocket, FaUsers, FaAward, FaHandshake, FaLightbulb, FaChartLine } from 'react-icons/fa';
+import { FaShippingFast, FaHeadset, FaShieldAlt, FaAward, FaUsers, FaChartLine, FaRecycle, FaHeart } from 'react-icons/fa';
 
 export const AboutComp = () => {
   return (
-    <div className="about_page">
+    <div className="about-ecommerce">
       {/* En-tête Hero */}
-      <section className="about_hero">
-        <div className="hero_content">
-          <h1 className="hero_title">
-            Innovateurs Passionnés, 
-            <span className="highlight"> Créateurs d'Opportunités</span>
+      <section className="about-hero">
+        <div className="about-hero-content">
+          <h1 className="about-hero-title">
+            Votre Partenaire 
+            <span className="about-hero-highlight"> E-Commerce de Confiance</span>
           </h1>
-          <p className="hero_subtitle">
-            Nous transformons les idées ambitieuses en réalités concrètes grâce 
-            à l'expertise, l'innovation et un engagement sans faille envers l'excellence.
+          <p className="about-hero-subtitle">
+            Découvrez une expérience shopping exceptionnelle avec des produits de qualité, 
+            une livraison express et un service client dédié.
           </p>
-          <div className="hero_stats">
-            <div className="stat_item">
-              <span className="stat_number">50+</span>
-              <span className="stat_label">Projets Réalisés</span>
+          {/* <div className="about-hero-stats">
+            <div className="about-stat-item">
+              <span className="about-stat-number">50K+</span>
+              <span className="about-stat-label">Clients Satisfaits</span>
             </div>
-            <div className="stat_item">
-              <span className="stat_number">15+</span>
-              <span className="stat_label">Partenaires</span>
+            <div className="about-stat-item">
+              <span className="about-stat-number">10K+</span>
+              <span className="about-stat-label">Produits</span>
             </div>
-            <div className="stat_item">
-              <span className="stat_number">98%</span>
-              <span className="stat_label">Satisfaction Client</span>
+            <div className="about-stat-item">
+              <span className="about-stat-number">24h</span>
+              <span className="about-stat-label">Livraison Express</span>
             </div>
-          </div>
+            <div className="about-stat-item">
+              <span className="about-stat-number">98%</span>
+              <span className="about-stat-label">Satisfaction</span>
+            </div>
+          </div> */}
         </div>
-        <div className="hero_visual">
-          <div className="floating_cards">
-            <div className="card card_1">
-              <FaRocket className="card_icon" />
-              <span>Innovation</span>
+        <div className="about-hero-visual">
+          <div className="about-floating-cards">
+            <div className="about-card about-card-1">
+              <FaShippingFast className="about-card-icon" />
+              <span>Livraison Rapide</span>
             </div>
-            <div className="card card_2">
-              <FaUsers className="card_icon" />
-              <span>Équipe</span>
+            <div className="about-card about-card-2">
+              <FaHeadset className="about-card-icon" />
+              <span>Support 24/7</span>
             </div>
-            <div className="card card_3">
-              <FaAward className="card_icon" />
-              <span>Excellence</span>
+            <div className="about-card about-card-3">
+              <FaShieldAlt className="about-card-icon" />
+              <span>Paiement Sécurisé</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Section Notre Histoire */}
-      <section className="story_section">
-        <div className="container">
-          <div className="section_header">
+      <section className="about-story-section">
+        <div className="about-container">
+          <div className="about-section-header">
             <h2>Notre Histoire</h2>
-            <p>Un parcours marqué par l'innovation et la croissance</p>
+            <p>De petites débuts à une plateforme e-commerce de référence</p>
           </div>
-          <div className="story_timeline">
-            <div className="timeline_item">
-              <div className="timeline_year">2023</div>
-              <div className="timeline_content">
-                <h3>Fondation</h3>
-                <p>Création de l'entreprise avec une vision claire : révolutionner le secteur par l'innovation technologique.</p>
+          <div className="about-story-timeline">
+            <div className="about-timeline-item">
+              <div className="about-timeline-year">2020</div>
+              <div className="about-timeline-content">
+                <h3>Lancement</h3>
+                <p>Création de notre boutique en ligne avec une sélection soignée de produits authentiques et durables.</p>
               </div>
             </div>
-            <div className="timeline_item">
-              <div className="timeline_year">2024</div>
-              <div className="timeline_content">
+            <div className="about-timeline-item">
+              <div className="about-timeline-year">2022</div>
+              <div className="about-timeline-content">
                 <h3>Expansion</h3>
-                <p>Ouverture de nouveaux marchés et diversification de nos services pour répondre à une demande croissante.</p>
+                <p>Élargissement de notre catalogue et mise en place de la livraison express dans toute la France.</p>
               </div>
             </div>
-            <div className="timeline_item">
-              <div className="timeline_year">2025</div>
-              <div className="timeline_content">
-                <h3>Leadership</h3>
-                <p>Reconnaissance en tant que leader dans notre domaine avec des solutions innovantes primées.</p>
+            <div className="about-timeline-item">
+              <div className="about-timeline-year">2024</div>
+              <div className="about-timeline-content">
+                <h3>Innovation</h3>
+                <p>Lancement de notre application mobile et intégration de nouvelles technologies de paiement sécurisé.</p>
               </div>
             </div>
           </div>
@@ -85,42 +89,40 @@ export const AboutComp = () => {
       </section>
 
       {/* Section Mission & Vision */}
-      <section className="mission_vision_section">
-        <div className="container">
-          <div className="mv_grid">
-            {/* Mission */}
-            <div className="mv_card mission_card">
-              <div className="mv_icon">
-                <FaRocket />
+      <section className="about-mission-section">
+        <div className="about-container">
+          <div className="about-mission-grid">
+            <div className="about-mission-card">
+              <div className="about-mission-icon">
+                <FaShippingFast />
               </div>
               <h3>Notre Mission</h3>
               <p>
-                Fournir des **solutions exceptionnelles** qui transcendent les attentes 
-                de nos clients. Nous combinons **expertise technique**, **innovation continue** 
-                et **approche centrée sur l'humain** pour créer un impact durable.
+                Rendre le shopping en ligne <strong>simple, sécurisé et agréable</strong> pour tous. 
+                Nous nous engageons à proposer des produits de qualité, une livraison rapide 
+                et un service client d'exception à chaque étape de votre expérience.
               </p>
-              <div className="mv_features">
-                <span className="feature">✓ Innovation</span>
-                <span className="feature">✓ Qualité</span>
-                <span className="feature">✓ Impact</span>
+              <div className="about-mission-features">
+                <span className="about-feature">✓ Qualité Premium</span>
+                <span className="about-feature">✓ Livraison Express</span>
+                <span className="about-feature">✓ Service Client</span>
               </div>
             </div>
 
-            {/* Vision */}
-            <div className="mv_card vision_card">
-              <div className="mv_icon">
+            <div className="about-vision-card">
+              <div className="about-vision-icon">
                 <FaChartLine />
               </div>
               <h3>Notre Vision</h3>
               <p>
-                Devenir **l'acteur de référence** dans la transformation digitale, 
-                en inspirant le changement et en créant un écosystème où l'innovation 
-                et l'excellence deviennent la norme pour toutes nos collaborations.
+                Devenir <strong>la plateforme e-commerce préférée</strong> des consommateurs en 
+                redéfinissant les standards du commerce en ligne grâce à l'innovation 
+                technologique et un engagement sans faille envers la satisfaction client.
               </p>
-              <div className="mv_features">
-                <span className="feature">✓ Leadership</span>
-                <span className="feature">✓ Innovation</span>
-                <span className="feature">✓ Durabilité</span>
+              <div className="about-vision-features">
+                <span className="about-feature">✓ Innovation</span>
+                <span className="about-feature">✓ Confiance</span>
+                <span className="about-feature">✓ Croissance</span>
               </div>
             </div>
           </div>
@@ -128,95 +130,132 @@ export const AboutComp = () => {
       </section>
 
       {/* Section Valeurs */}
-      <section className="values_section">
-        <div className="container">
-          <div className="section_header">
-            <h2>Nos Valeurs Fondamentales</h2>
+      <section className="about-values-section">
+        <div className="about-container">
+          <div className="about-section-header">
+            <h2>Nos Engagements</h2>
             <p>Les principes qui guident chacune de nos actions</p>
           </div>
-          <div className="values_grid">
-            <div className="value_card">
-              <div className="value_icon">
-                <FaLightbulb />
+          <div className="about-values-grid">
+            <div className="about-value-card">
+              <div className="about-value-icon">
+                <FaShieldAlt />
               </div>
-              <h4>Innovation</h4>
-              <p>Nous repoussons constamment les limites du possible en explorant de nouvelles technologies et méthodologies.</p>
+              <h4>Sécurité</h4>
+              <p>Paiements 100% sécurisés et protection de vos données personnelles avec chiffrement de bout en bout.</p>
             </div>
             
-            <div className="value_card">
-              <div className="value_icon">
-                <FaHandshake />
+            <div className="about-value-card">
+              <div className="about-value-icon">
+                <FaShippingFast />
               </div>
-              <h4>Confiance</h4>
-              <p>Nous bâtissons des relations durables basées sur la transparence, l'intégrité et le respect mutuel.</p>
+              <h4>Livraison Express</h4>
+              <p>Expédition sous 24h et livraison rapide partout en France avec suivi en temps réel.</p>
             </div>
             
-            <div className="value_card">
-              <div className="value_icon">
+            <div className="about-value-card">
+              <div className="about-value-icon">
+                <FaHeadset />
+              </div>
+              <h4>Support Premium</h4>
+              <p>Équipe dédiée disponible 7j/7 par chat, email et téléphone pour répondre à vos questions.</p>
+            </div>
+            
+            <div className="about-value-card">
+              <div className="about-value-icon">
                 <FaAward />
               </div>
-              <h4>Excellence</h4>
-              <p>Nous visons la perfection dans l'exécution et ne nous contentons jamais du statu quo.</p>
+              <h4>Qualité Garantie</h4>
+              <p>Sélection rigoureuse de produits et satisfaction garantie avec retour facile sous 30 jours.</p>
             </div>
-            
-            <div className="value_card">
-              <div className="value_icon">
-                <FaUsers />
+
+            <div className="about-value-card">
+              <div className="about-value-icon">
+                <FaRecycle />
               </div>
-              <h4>Collaboration</h4>
-              <p>Nous croyons en la force du travail d'équipe et de l'intelligence collective.</p>
+              <h4>Éco-responsable</h4>
+              <p>Emballages recyclables et partenaires engagés dans une démarche environnementale responsable.</p>
+            </div>
+
+            <div className="about-value-card">
+              <div className="about-value-icon">
+                <FaHeart />
+              </div>
+              <h4>Passion du Service</h4>
+              <p>Notre équipe passionnée s'engage à vous offrir la meilleure expérience client possible.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Section Équipe */}
-      <section className="team_section">
-        <div className="container">
-          <div className="section_header">
+      <section className="about-team-section">
+        <div className="about-container">
+          <div className="about-section-header">
             <h2>Notre Équipe</h2>
-            <p>Des talents passionnés réunis par une vision commune</p>
+            <p>Des experts passionnés dédiés à votre satisfaction</p>
           </div>
-          <div className="team_grid">
-            <div className="team_member">
-              <div className="member_photo">
-                <img src={i1} alt="Directeur Général" />
+          <div className="about-team-grid">
+            <div className="about-team-member">
+              <div className="about-member-photo">
+                <img src={i1} alt="Directrice Générale" />
+                <div className="about-member-overlay">
+                  <div className="about-member-social">
+                    <span>📧</span>
+                    <span>💼</span>
+                    <span>📱</span>
+                  </div>
+                </div>
               </div>
-              <h4>Jean Dupont</h4>
-              <p className="member_role">Directeur Général</p>
-              <p className="member_bio">Visionnaire avec 15 ans d'expérience dans l'innovation technologique.</p>
+              <h4>Sophie Martin</h4>
+              <p className="about-member-role">Directrice Générale</p>
+              <p className="about-member-bio">15 ans d'expérience dans le e-commerce et l'innovation retail.</p>
             </div>
             
-            <div className="team_member">
-              <div className="member_photo">
-                <img src={i2} alt="Directrice Technique" />
+            <div className="about-team-member">
+              <div className="about-member-photo">
+                <img src={i2} alt="Responsable Logistique" />
+                <div className="about-member-overlay">
+                  <div className="about-member-social">
+                    <span>📧</span>
+                    <span>💼</span>
+                    <span>📱</span>
+                  </div>
+                </div>
               </div>
-              <h4>Marie Lambert</h4>
-              <p className="member_role">Directrice Technique</p>
-              <p className="member_bio">Expert en architecture logicielle et gestion de projets complexes.</p>
+              <h4>Thomas Leroy</h4>
+              <p className="about-member-role">Responsable Logistique</p>
+              <p className="about-member-bio">Expert en supply chain et optimisation des livraisons.</p>
             </div>
             
-            <div className="team_member">
-              <div className="member_photo">
-                <img src={i3} alt="Chef de Projet Innovation" />
+            <div className="about-team-member">
+              <div className="about-member-photo">
+                <img src={i3} alt="Responsable Service Client" />
+                <div className="about-member-overlay">
+                  <div className="about-member-social">
+                    <span>📧</span>
+                    <span>💼</span>
+                    <span>📱</span>
+                  </div>
+                </div>
               </div>
-              <h4>Thomas Martin</h4>
-              <p className="member_role">Chef de Projet Innovation</p>
-              <p className="member_bio">Spécialiste en transformation digitale et stratégies d'innovation.</p>
+              <h4>Laura Petit</h4>
+              <p className="about-member-role">Responsable Service Client</p>
+              <p className="about-member-bio">Passionnée par l'expérience client et la satisfaction.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="cta_section">
-        <div className="container">
-          <div className="cta_content">
-            <h2>Prêt à Transformer Vos Idées en Réalité ?</h2>
-            <p>Rejoignez les nombreuses entreprises qui nous font confiance pour leurs projets les plus ambitieux.</p>
-            <div className="cta_buttons">
-              <button className="btn btn_primary">Démarrer un Projet</button>
-              <button className="btn btn_secondary">Nous Contacter</button>
+      {/* Section CTA */}
+      {/* <section className="about-cta-section">
+        <div className="about-container">
+          <div className="about-cta-content">
+            <h2>Prêt à Découvrir Notre Univers ?</h2>
+            <p>Rejoignez des milliers de clients satisfaits et vivez une expérience shopping exceptionnelle</p>
+            <div className="about-cta-buttons">
+              <button className="about-btn about-btn-primary">Découvrir nos produits</button>
+              <button className="about-btn about-btn-secondary">Nous contacter</button>
             </div>
           </div>
         </div>

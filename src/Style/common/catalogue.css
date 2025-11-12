@@ -64,3 +64,202 @@
   }
 
 }
+
+
+
+
+
+.produit-catalogue-page {
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* En-tête Hero */
+.catalogue-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.catalogue-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+  background-size: cover;
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive de l'en-tête */
+@media (max-width: 768px) {
+  .catalogue-header {
+    padding: 4rem 1rem;
+  }
+  
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .catalogue-header {
+    padding: 3rem 1rem;
+  }
+  
+  .header-content h1 {
+    font-size: 2rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
+
+
+/* Filtres Desktop - Boutons arrondis */
+.categorie-filters-desktop {
+  margin-bottom: 2rem;
+}
+
+.filters-header {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.categorie-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.categorie-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 50px;
+  background: white;
+  color: #4a5568;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.categorie-btn:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.categorie-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Filtres Mobile - Select */
+.categorie-filters-mobile {
+  display: none;
+  margin-bottom: 2rem;
+}
+
+.categorie-select {
+  border: 2px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: white;
+  color: #4a5568;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.categorie-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
+.categorie-select option {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .categorie-filters-desktop {
+    display: none;
+  }
+  
+  .categorie-filters-mobile {
+    display: block;
+  }
+}
+
+/* Pour les très petits écrans, ajuster les boutons */
+@media (max-width: 480px) {
+  .categorie-buttons {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .categorie-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+    border-radius: 50px;
+  }
+}
+
+/* Animation pour le changement d'état */
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.categorie-btn.active {
+  animation: buttonPulse 0.3s ease;
+}
