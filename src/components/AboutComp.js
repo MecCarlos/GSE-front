@@ -207,9 +207,9 @@ export const AboutComp = () => {
                   </div>
                 </div>
               </div>
-              <h4>Sophie Martin</h4>
-              <p className="about-member-role">Directrice Générale</p>
-              <p className="about-member-bio">15 ans d'expérience dans le e-commerce et l'innovation retail.</p>
+              <h4>Quenum Gildas</h4>
+              {/* <p className="about-member-role">Directrice Générale</p> */}
+              <p className="about-member-bio">PDG d'<>Olatech Coopoation</>, a votre services.</p>
             </div>
             
             <div className="about-team-member">
@@ -223,8 +223,8 @@ export const AboutComp = () => {
                   </div>
                 </div>
               </div>
-              <h4>Thomas Leroy</h4>
-              <p className="about-member-role">Responsable Logistique</p>
+              {/* <h4>Thomas Leroy</h4> */}
+              {/* <p className="about-member-role">Responsable Logistique</p> */}
               <p className="about-member-bio">Expert en supply chain et optimisation des livraisons.</p>
             </div>
             
@@ -239,8 +239,8 @@ export const AboutComp = () => {
                   </div>
                 </div>
               </div>
-              <h4>Laura Petit</h4>
-              <p className="about-member-role">Responsable Service Client</p>
+              {/* <h4>Laura Petit</h4> */}
+              {/* <p className="about-member-role">Responsable Service Client</p> */}
               <p className="about-member-bio">Passionnée par l'expérience client et la satisfaction.</p>
             </div>
           </div>
