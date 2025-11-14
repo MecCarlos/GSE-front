@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../AuthContext";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { API_URL } from '../../../config';
+import { API_URL } from '../../config';
 
 const Login = () => {
   const { login } = useAuth();

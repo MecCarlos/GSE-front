@@ -7,7 +7,7 @@ import { FaSearch, FaFilter } from "react-icons/fa";
 import { Modal, Button, Form } from "react-bootstrap";
 import Edition from "./Edition";
 import B_add from "../session/admin/B_add";
-import { API_URL } from '../../../config';
+import { API_URL } from '../config';
 
 const DeleteConfirmation = ({ show, handleClose, handleConfirm, productName }) => (
   <Modal show={show} onHide={handleClose} centered>

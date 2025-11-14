@@ -3,7 +3,7 @@ import "./auth.css";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { API_URL } from '../../../config';
+import { API_URL } from '../../config';
 
 
 

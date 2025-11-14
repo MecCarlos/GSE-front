@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Button, Toast, ToastContainer, Form } from "react-bootstrap";
 import { useCart } from "../Context/CartContext.js";
 import { FaFilter, FaSearch } from "react-icons/fa";
-import { API_URL } from '../../config';
+import { API_URL } from '../config';
 
 const ProduitCatalogue = () => {
   const [products, setProducts] = useState([]);

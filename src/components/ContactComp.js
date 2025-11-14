@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok, FaSnapchat, F
 import { RiTimeFill } from "react-icons/ri";
 import { FaUserGroup } from "react-icons/fa6";
 import { BiSolidContact } from "react-icons/bi";
-import { API_URL } from '../../config';
+import { API_URL } from '../config';
 
 export const ContactComp = () => {
   const [form, setForm] = useState({ nom: "", email: "", objet: "", message: "" });

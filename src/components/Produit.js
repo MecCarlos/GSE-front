@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { Modal, Button } from "react-bootstrap";
 import { useCart } from "../Context/CartContext.js"; // hook panier
-import { API_URL } from '../../config';
+import { API_URL } from '../config';
 
 const Produit = () => {
   const [products, setProducts] = useState([]);

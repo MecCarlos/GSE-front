@@ -8,7 +8,7 @@ import { useAuth } from "../AuthContext";
 import { useCart } from "../Context/CartContext";
 import SearchOverlay from "./SearchOverlay"; 
 import "../Style/common/navbar.css";
-import { API_URL } from '../../config';
+import { API_URL } from '../config';
 
 
 

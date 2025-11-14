@@ -4,7 +4,7 @@ import axios from "axios";
 import ImageSelector from "./ImageSelector"; // ton composant ImageSelector
 import logo from "../assets/images/logo.png";
 import "../Style/admin/edition.css";
-import { API_URL } from '../../../config';
+import { API_URL } from '../config';
 
 const Edition = ({ show, handleClose, product, refresh }) => {
   const [formData, setFormData] = useState({
