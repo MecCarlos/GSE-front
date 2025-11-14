@@ -1,7 +1,7 @@
 import "../Style/common/about.css";
-import i1 from "../assets/images/i1.jpg";
-import i2 from "../assets/images/i1.jpg";
-import i3 from "../assets/images/i1.jpg";
+import i1 from "../assets/images/gildas.png";
+// import i2 from "../assets/images/i1.jpg";
+// import i3 from "../assets/images/i1.jpg";
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaAward, FaUsers, FaChartLine, FaRecycle, FaHeart } from 'react-icons/fa';
 
 export const AboutComp = () => {
