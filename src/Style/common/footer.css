@@ -2,6 +2,7 @@ footer
 {
     /* margin-top: 20rem; */
     background: navy;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     width: 100%;
     position: absolute;
     left: 0;

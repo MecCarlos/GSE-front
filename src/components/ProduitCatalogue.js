@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Toast, ToastContainer, Form } from "react-bootstrap";
 import { useCart } from "../Context/CartContext.js";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaSearch } from "react-icons/fa";
 
 const ProduitCatalogue = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +13,7 @@ const ProduitCatalogue = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showToast, setShowToast] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { addToCart } = useCart();
 
@@ -30,11 +31,36 @@ const ProduitCatalogue = () => {
 
   const handleFilter = (cat) => {
     setSelectedCategory(cat);
-    if (cat === "Tous") setFilteredProducts(products);
-    else setFilteredProducts(products.filter((p) => p.categorie === cat));
+    if (cat === "Tous") {
+      setFilteredProducts(products);
+    } else {
+      setFilteredProducts(products.filter((p) => p.categorie === cat));
+    }
+    // Réinitialiser la recherche quand on change de catégorie
+    setSearchTerm("");
   };
 
-  // Reste du code inchangé...
+  // Filtrage par recherche
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    if (term.trim() === "") {
+      // Si la recherche est vide, afficher les produits de la catégorie sélectionnée
+      if (selectedCategory === "Tous") {
+        setFilteredProducts(products);
+      } else {
+        setFilteredProducts(products.filter((p) => p.categorie === selectedCategory));
+      }
+    } else {
+      // Filtrer par terme de recherche dans le nom et la description
+      const filtered = products.filter((p) =>
+        p.nom.toLowerCase().includes(term.toLowerCase()) ||
+        p.description?.toLowerCase().includes(term.toLowerCase()) ||
+        p.categorie?.toLowerCase().includes(term.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  };
+
   const handleOpenModal = (product) => {
     setSelectedProduct(product);
     setSelectedVariantIndex(0);
@@ -61,13 +87,27 @@ const ProduitCatalogue = () => {
       <header className="catalogue-header">
         <div className="header-content">
           <h1>Notre Catalogue</h1>
-          <p className="header-subtitle">Découvrez nos produits exclusifs aux meilleurs prix</p>
+          {/* <p className="header-subtitle">Découvrez nos produits exclusifs aux meilleurs prix</p> */}
+        </div>
+         {/* Barre de recherche */}
+        <div className="search-container">
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Rechercher un produit..."
+              value={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="search-input"
+            />
+            <div className="search-icon">
+              <FaSearch />
+            </div>
+          </div>
         </div>
       </header>
 
       <section className="produit_box">
-        <h6>Découvrez nos produits</h6>
-
+        
         {/* Filtres Desktop - Boutons arrondis */}
         <div className="categorie-filters-desktop">
           <div className="filters-header">
@@ -101,7 +141,7 @@ const ProduitCatalogue = () => {
         </div>
 
         <div className="produit">
-          {Array.isArray(filteredProducts) &&
+          {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
             filteredProducts.map((p, i) => {
               const firstVariant = p.variantes?.[0];
               const mainImage = firstVariant?.images?.principale || "default.png";
@@ -143,10 +183,15 @@ const ProduitCatalogue = () => {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="no-products">
+              <p>Aucun produit trouvé.</p>
+            </div>
+          )}
         </div>
 
-        {/* Modal produit (inchangé) */}
+        {/* Modal produit */}
         {selectedProduct && (
           <Modal show={showModal} onHide={handleCloseModal} centered dialogClassName="modal-lg-custom">
             <Modal.Body>

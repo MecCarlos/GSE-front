@@ -1,8 +1,6 @@
-
-.log_page
-{
+.log_page {
   background: whitesmoke;
-  background-image: url("../../assets/images//fond/a4.jpg");
+  background-image: url("../../assets/images//fond/v1.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -15,13 +13,12 @@
   padding: 2rem;
   text-align: center;
   align-items: center;
-  padding-top:4rem;
+  padding-top: 1rem;
   overflow: scroll;
 
-  img
-  {
-    width: 250px;
-    height: 150px;
+  img {
+    width: 150px;
+    /* height: 250px; */
   }
 }
 
@@ -63,10 +60,10 @@
   background: navy;
   color: white;
   border: none;
-  border-radius: 5px;   
+  border-radius: 5px;
   font-weight: bold;
   transform: all 0.5s ease;
-    border-radius: 50px;
+  border-radius: 50px;
 
 
   &:hover {
@@ -92,13 +89,13 @@
   color: #333;
 }
 
-.noaccount
-{
+.noaccount {
   color: white;
 }
 
 .text-link {
   color: rgb(111, 111, 233);
+  color: white;
   text-decoration: underline;
   font-weight: bold;
 }
@@ -122,37 +119,36 @@ label {
 
 
 
-@media (max-width: 576px) 
-{
-    .log_page
-    {
-        img
-        {
-            width: 100px;
-            height: 70px;
-        }
-    
+@media (max-width: 576px) {
+  .log_page {
+    padding-top: 3rem;
+    background-image: url("../../assets/images//fond/fm.jpg");
+
+    img {
+      width: 100px;
     }
+
+  }
 }
 
 
 
 .login-back-icon {
-    font-size: 1.6rem;
-    color: white;
-    background: #e2e8f049;
-    border: solid 2px white;
-    padding: 1.5%;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: 
-        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-        background 0.3s ease,
-        border-color 0.3s ease;
+  font-size: 1.6rem;
+  color: white;
+  background: #e2e8f049;
+  border: solid 2px white;
+  padding: 1.5%;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .login-back-icon:hover {
-    background: #e2e8f0aa;
-    border-color: rgba(255, 255, 255, 0.9);
+  background: #e2e8f0aa;
+  border-color: rgba(255, 255, 255, 0.9);
 }

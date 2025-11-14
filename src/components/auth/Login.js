@@ -6,7 +6,6 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuth } from '../../AuthContext';
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-
 const Login = () => {
     const { login } = useAuth();
     const [email, setEmail] = useState('root@gmail.com');
@@ -19,7 +18,6 @@ const Login = () => {
     const [messageType, setMessageType] = useState('');
     const [message, setMessage] = useState('');
 
-    // Récupération du paramètre redirect (sinon /accueil par défaut)
     const params = new URLSearchParams(location.search);
     const redirectPath = params.get("redirect") || "/accueil";
 
@@ -37,11 +35,7 @@ const Login = () => {
             const data = await res.json();
             if (res.ok) {
                 login(data.token, data.role, data.user);
-                console.log("Token:", localStorage.getItem("token"));
-                console.log("Role:", localStorage.getItem("role"));
-                console.log("User:", localStorage.getItem("user"));
-
-                //  Redirection prioritaire : admin → admin-accueil
+                
                 if (data.role === "admin") {
                     navigate("/admin-accueil", { replace: true });
                 } else {
@@ -71,6 +65,7 @@ const Login = () => {
     return (
         <div className="log_page">
             <img src={logo} alt="Logo" className="logo" />
+            
             <div className="auth-container">
                 <h3 className='mb-3'>Connexion</h3>
                 {message && (
@@ -126,7 +121,10 @@ const Login = () => {
                         Créer un compte
                     </Link>
                 </p>
+            </div>
 
+                        {/* Bouton de retour en haut à gauche */}
+            <div className="back-button-container">
                 <Link to="/">
                     <FaArrowLeftLong className="login-back-icon" />
                 </Link>
