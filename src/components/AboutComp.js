@@ -192,19 +192,19 @@ export const AboutComp = () => {
       <section className="about-team-section">
         <div className="about-container">
           <div className="about-section-header">
-            <h2>Notre Équipe</h2>
-            <p>Des experts passionnés dédiés à votre satisfaction</p>
+            <h2>Responsable</h2>
+            <p>Une personne passionnés dédiés à votre satisfaction</p>
           </div>
           <div className="about-team-grid">
             <div className="about-team-member">
               <div className="about-member-photo">
                 <img src={i1} alt="Directrice Générale" />
                 <div className="about-member-overlay">
-                  <div className="about-member-social">
+                  {/* <div className="about-member-social">
                     <span>📧</span>
                     <span>💼</span>
                     <span>📱</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <h4>Quenum Gildas</h4>
@@ -212,7 +212,7 @@ export const AboutComp = () => {
               <p className="about-member-bio">PDG d'<>Olatech Coopoation</>, a votre services.</p>
             </div>
             
-            <div className="about-team-member">
+            {/* <div className="about-team-member">
               <div className="about-member-photo">
                 <img src={i2} alt="Responsable Logistique" />
                 <div className="about-member-overlay">
@@ -223,12 +223,13 @@ export const AboutComp = () => {
                   </div>
                 </div>
               </div>
-              {/* <h4>Thomas Leroy</h4> */}
-              {/* <p className="about-member-role">Responsable Logistique</p> */}
+              <h4>Thomas Leroy</h4>
+              <p className="about-member-role">Responsable Logistique</p>
               <p className="about-member-bio">Expert en supply chain et optimisation des livraisons.</p>
             </div>
-            
-            <div className="about-team-member">
+             */}
+
+            {/* <div className="about-team-member">
               <div className="about-member-photo">
                 <img src={i3} alt="Responsable Service Client" />
                 <div className="about-member-overlay">
@@ -239,10 +240,10 @@ export const AboutComp = () => {
                   </div>
                 </div>
               </div>
-              {/* <h4>Laura Petit</h4> */}
-              {/* <p className="about-member-role">Responsable Service Client</p> */}
+              <h4>Laura Petit</h4>
+              <p className="about-member-role">Responsable Service Client</p>
               <p className="about-member-bio">Passionnée par l'expérience client et la satisfaction.</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
