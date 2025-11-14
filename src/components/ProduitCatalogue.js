@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Button, Toast, ToastContainer, Form } from "react-bootstrap";
 import { useCart } from "../Context/CartContext.js";
 import { FaFilter, FaSearch } from "react-icons/fa";
+import { API_URL } from '../../config';
 
 const ProduitCatalogue = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ const ProduitCatalogue = () => {
   const { addToCart } = useCart(); 
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/adm/rec/produits")
+    fetch(`${API_URL}/adm/rec/produits`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

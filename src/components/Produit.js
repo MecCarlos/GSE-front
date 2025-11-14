@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { Modal, Button } from "react-bootstrap";
 import { useCart } from "../Context/CartContext.js"; // hook panier
+import { API_URL } from '../../config';
 
 const Produit = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +16,7 @@ const Produit = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/adm/rec/produits")
+    fetch(`${API_URL}/adm/rec/produits`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Erreur chargement produits:", err));

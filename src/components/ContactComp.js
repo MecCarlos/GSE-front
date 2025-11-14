@@ -5,6 +5,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok, FaSnapchat, F
 import { RiTimeFill } from "react-icons/ri";
 import { FaUserGroup } from "react-icons/fa6";
 import { BiSolidContact } from "react-icons/bi";
+import { API_URL } from '../../config';
 
 export const ContactComp = () => {
   const [form, setForm] = useState({ nom: "", email: "", objet: "", message: "" });
@@ -15,7 +16,7 @@ export const ContactComp = () => {
 
   const BASE_API_URL = process.env.NODE_ENV === 'production' 
     ? 'https://votre-domaine.com/api' 
-    : 'http://localhost:3001/api';
+    : "`${API_URL}'";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

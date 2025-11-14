@@ -3,6 +3,8 @@ import "./auth.css";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { API_URL } from '../../../config';
+
 
 
 const Register = () => {
@@ -54,7 +56,7 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/register", {
+      const res = await fetch(`${API_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

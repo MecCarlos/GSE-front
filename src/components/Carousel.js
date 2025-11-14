@@ -13,12 +13,12 @@ import webcam from "../../src/assets/images/webcam.png";
 const Carousel = () => {
   const products = [
     { img: ipad, name: "iPad", url: "/produit/ipad" },
-    { img: iph13, name: "Casque audio", url: "/login" },
-    { img: asus, name: "Asus", url: "/login" },
-    { img: souris, name: "Souris gamer", url: "/login" },
-    { img: macbook2, name: "MacBook Air", url: "/login" },
-    { img: airpodpro, name: "AirPods Pro 3", url: "/login" },
-    { img: webcam, name: "Web cam", url: "/login" }
+    { img: iph13, name: "Casque audio", url: "/catalogue" },
+    { img: asus, name: "Asus", url: "/catalogue" },
+    { img: souris, name: "Souris gamer", url: "/catalogue" },
+    { img: macbook2, name: "MacBook Air", url: "/catalogue" },
+    { img: airpodpro, name: "AirPods Pro 3", url: "/catalogue" },
+    { img: webcam, name: "Web cam", url: "/catalogue" }
   ];
 
   return (

@@ -4,6 +4,7 @@ import axios from "axios";
 import ImageSelector from "./ImageSelector"; // ton composant ImageSelector
 import logo from "../assets/images/logo.png";
 import "../Style/admin/edition.css";
+import { API_URL } from '../../../config';
 
 const Edition = ({ show, handleClose, product, refresh }) => {
   const [formData, setFormData] = useState({
@@ -97,7 +98,7 @@ const Edition = ({ show, handleClose, product, refresh }) => {
       });
 
       await axios.put(
-        `http://localhost:3001/api/adm/update-produit/${product.id}`,
+        `${API_URL}/adm/update-produit/${product.id}`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

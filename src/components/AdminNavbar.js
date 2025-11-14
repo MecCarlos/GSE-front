@@ -8,6 +8,9 @@ import { useAuth } from "../AuthContext";
 import { useCart } from "../Context/CartContext";
 import SearchOverlay from "./SearchOverlay"; 
 import "../Style/common/navbar.css";
+import { API_URL } from '../../config';
+
+
 
 const AdminNavbar = () => { 
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +33,7 @@ const AdminNavbar = () => {
   // Charger les produits pour la recherche
   useEffect(() => {
     if (showSearchOverlay) {
-      fetch("http://localhost:3001/api/adm/rec/produits")
+      fetch(`${API_URL}/adm/rec/produits`)
         .then((res) => res.json())
         .then((data) => {
           setProducts(data);

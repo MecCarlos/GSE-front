@@ -7,6 +7,7 @@ import { FaSearch, FaFilter } from "react-icons/fa";
 import { Modal, Button, Form } from "react-bootstrap";
 import Edition from "./Edition";
 import B_add from "../session/admin/B_add";
+import { API_URL } from '../../../config';
 
 const DeleteConfirmation = ({ show, handleClose, handleConfirm, productName }) => (
   <Modal show={show} onHide={handleClose} centered>
@@ -39,7 +40,7 @@ const Produit_catalogue_adm = () => {
 
   const refreshProducts = () => {
     axios
-      .get("http://localhost:3001/api/adm/rec/produits")
+      .get(`${API_URL}/adm/rec/produits`)
       .then((res) => {
         setProducts(res.data);
         setFilteredProducts(res.data);
@@ -104,7 +105,7 @@ const Produit_catalogue_adm = () => {
   const handleConfirmDelete = async () => {
     if (!productToDelete) return;
     try {
-      await axios.delete(`http://localhost:3001/api/adm/supprimer-produit/${productToDelete.id}`);
+      await axios.delete(`${API_URL}/adm/supprimer-produit/${productToDelete.id}`);
       setProducts(products.filter((p) => p.id !== productToDelete.id));
       setFilteredProducts(filteredProducts.filter((p) => p.id !== productToDelete.id));
       setShowDeleteModal(false);
