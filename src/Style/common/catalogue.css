@@ -18,7 +18,7 @@
     h1
     {
       /* color: bisque; */
-      font-weight: bold;
+      font-weight: bold; 
       font-size: 3rem;
     }
 
@@ -633,11 +633,11 @@
 .promo {
   font-weight: 700;
   color: #2d3748;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   background: linear-gradient(135deg, #48bb78, #38a169);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip: text; 
 }
 
 .prix {
@@ -645,6 +645,8 @@
   color: #a0aec0;
   text-decoration: line-through;
   font-size: 0.95rem;
+    font-size: 0.8rem;
+
 }
 
 /* Bouton identique à .panier mais stylé */

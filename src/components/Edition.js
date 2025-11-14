@@ -249,11 +249,11 @@ const Edition = ({ show, handleClose, product, refresh }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer className="modal-footer-custom">
-        <Button variant="secondary" onClick={handleClose}>
+        <Button  className=" btn ann" onClick={handleClose}>
           Annuler
         </Button>
-        <Button variant="primary" onClick={handleSave} disabled={isSaving}>
-          {isSaving ? "Enregistrement..." : "Enregistrer"}
+        <Button  className=" btn modifier" onClick={handleSave} disabled={isSaving}>
+          {isSaving ? "Modifier..." : "Modifier"}
         </Button>
       </Modal.Footer>
     </Modal>

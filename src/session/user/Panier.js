@@ -152,7 +152,7 @@ const Panier = () => {
                 </div>
               </div>
 
-              <button className="btn btn-clear" onClick={clearCart}>
+              <button className="btn btn-clear btn-danger" onClick={clearCart}>
                 <FaTrash className="me-2" />
                 Vider le panier
               </button>

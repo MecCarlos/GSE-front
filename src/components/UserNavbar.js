@@ -98,7 +98,7 @@ const UserNavbar = () => {
           {/* Modal utilisateur */}
           {isConnected && showModal && (
             <div className="user_modal">
-              <NavLink className="profil" to="#"><FaRegUserCircle /> Profil</NavLink>
+              {/* <NavLink className="profil" to="#"><FaRegUserCircle /> Profil</NavLink> */}
               <button className="dec" onClick={handleLogout}><RiLogoutCircleRLine /> Déconnexion</button>
             </div>
           )}

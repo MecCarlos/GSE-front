@@ -70,7 +70,7 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <Router>
-          {/* ✅ Navbar conditionnée */}
+          {/*  Navbar conditionnée */}
           <NavbarWrapper />
 
           <Routes>

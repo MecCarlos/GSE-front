@@ -15,7 +15,7 @@ const ProduitCatalogue = () => {
   const [showToast, setShowToast] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { addToCart } = useCart();
+  const { addToCart } = useCart(); 
 
   useEffect(() => {
     fetch("http://localhost:3001/api/adm/rec/produits")
@@ -84,7 +84,7 @@ const ProduitCatalogue = () => {
   return (
     <div className="produit-catalogue-page">
       {/* En-tête Hero */}
-      <header className="catalogue-header">
+      <header className="catalogue-header"> 
         <div className="header-content">
           <h1>Notre Catalogue</h1>
           {/* <p className="header-subtitle">Découvrez nos produits exclusifs aux meilleurs prix</p> */}

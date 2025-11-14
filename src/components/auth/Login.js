@@ -8,8 +8,8 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 const Login = () => {
     const { login } = useAuth();
-    const [email, setEmail] = useState('root@gmail.com');
-    const [password, setPassword] = useState('Mac-os02');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -78,7 +78,7 @@ const Login = () => {
                     <label htmlFor="name">Email</label>
                     <input
                         type="email"
-                        placeholder="Email"
+                        placeholder="email@gmail.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required

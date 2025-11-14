@@ -8,6 +8,7 @@ import hp3 from "../assets/images/hp3.png";
 import luminaire from "../assets/images/luminaire.png";
 import manette from "../assets/images/manette-eclaire.png";
 import airpodmax from "../assets/images/AirPodsMax5.png";
+import laptop from "../assets/images/double_laptop2.png";
 
 const images = [
   {
@@ -23,10 +24,10 @@ const images = [
     btnColor: "#e91e63",
   },
   {
-    src: luminaire,
-    color: "rgba(236, 183, 10, 0.32)",
-    name: "Lampe décorative",
-    btnColor: "#ffc107",
+    src: laptop,
+    color: "rgba(30, 233, 148, 0.32)",
+    name: "Ordinateur portable",
+    btnColor: "#3f9992ff",
   },
   {
     src: ecran,
@@ -44,8 +45,14 @@ const images = [
     src: airpodmax,
     color: "#f3c77a50",
     name: "AirPods Max",
-    btnColor: "#ff9800",
+    btnColor: "gold",
   },
+  // {
+  //   src: laptop,
+  //   color: "rgba(121, 203, 236, 0.26)",
+  //   name: "Ordinateur portable",
+  //   btnColor: "#009688",
+  // },
 ];
 
 const Carousel_home = ({ onColorChange, onProductChange }) => {
