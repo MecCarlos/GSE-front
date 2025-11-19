@@ -2,11 +2,6 @@
   align-items: center;
   justify-content: center;
   
-  .product_box
-  {
-    padding: 2rem;
-    background: #000;
-  }
 
   .v_plus {
     border-bottom: solid 1px;

@@ -25,6 +25,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setMessage(""); // Réinitialiser le message
 
     try {
       const res = await fetch(`${API_URL}/login`, {
@@ -34,7 +35,9 @@ const Login = () => {
       });
 
       const data = await res.json(); 
+
       if (res.ok) {
+        // Succès
         login(data.token, data.role, data.user);
 
         if (data.role === "admin") {
@@ -45,10 +48,14 @@ const Login = () => {
 
         setMessage("Connexion réussie !");
         setMessageType("success");
+      } else {
+        // Erreur du serveur (401, 404, etc.)
+        setMessage(data.message || "Une erreur est survenue");
+        setMessageType("danger");
       }
     } catch (err) {
-      console.error(err);
-      setMessage("Une erreur est survenue.");
+      console.error("Erreur réseau:", err);
+      setMessage("Erreur de connexion au serveur");
       setMessageType("danger");
     }
 
@@ -57,7 +64,7 @@ const Login = () => {
 
   useEffect(() => {
     if (message) {
-      const timer = setTimeout(() => setMessage(""), 3000);
+      const timer = setTimeout(() => setMessage(""), 5000); // 5 secondes pour lire le message
       return () => clearTimeout(timer);
     }
   }, [message]);
@@ -71,17 +78,18 @@ const Login = () => {
         {message && (
           <div className={`alert alert-${messageType}`} role="alert">
             {message}
-          </div>
+          </div> 
         )}
 
         <form onSubmit={handleLogin}>
-          <label htmlFor="name">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             placeholder="email@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            id="email"
           />
 
           <div className="password-input">
@@ -92,10 +100,13 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              id="password"
             />
             <span
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
+              role="button"
+              tabIndex={0}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -103,7 +114,7 @@ const Login = () => {
 
           <div className="register-link mt-1 text-end">
             <p>
-              <Link to="/register" className="text-link">
+              <Link to="/forgot-password" className="text-link">
                 Mot de passe oublié ?
               </Link>
             </p>

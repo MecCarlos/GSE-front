@@ -4,11 +4,7 @@ import Produit_adm from "../../components/Produit_catalogue_adm";
 export const A_catalogue = () => {
   return (
     <div className="home_page">
-
-      <div className="product_box">
-        <Produit_adm />
-      </div>
-
+      <Produit_adm />
     </div>
   );
 };
