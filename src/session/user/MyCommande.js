@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../AuthContext";
 import { Table, Button, Badge, Modal, Card, Row, Col } from "react-bootstrap";
 import { FaInfoCircle, FaEye, FaCalendarAlt, FaMoneyBillWave, FaTruck, FaBoxOpen, FaCheckCircle, FaTimesCircle, FaClock, FaFilter } from "react-icons/fa";
+import PageHeader from "../../components/Header"
 import "../../Style/user/MyCommande.css";
 
 const MyCommande = () => {
-  const { auth } = useAuth();
+  const { auth } = useAuth(); 
   const [commandes, setCommandes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
@@ -98,12 +99,12 @@ const MyCommande = () => {
   return (
     <div className="home_page">
       <div className="home_content Mycommande_page">
-        <header className="commande_header">
-          <div className="header_content">
-            <h1>Mes Commandes</h1>
-            <p>Suivez l'état de vos commandes en temps réel</p>
-          </div>
-        </header>
+        {/* Utilisation du composant PageHeader */}
+        <PageHeader 
+          title="Mes Commandes" 
+          description="Suivez l'état de vos commandes en temps réel"
+          background="primary pattern"
+        />
 
         <div className="commande-container">
           {loading ? (
@@ -240,11 +241,9 @@ const MyCommande = () => {
                                 <td>
                                   <Button
                                     variant=""
-                                    // size="sm"
                                     onClick={() => setSelectedCommande(commande)}
                                     id="detail-btn"
                                   >
-                                    {/* <FaEye className="me-1" /> */}
                                     Détails
                                   </Button>
                                 </td>
@@ -376,11 +375,6 @@ const MyCommande = () => {
               </div>
             )}
           </Modal.Body>
-          {/* <Modal.Footer>
-            <Button variant="secondary" onClick={() => setSelectedCommande(null)}>
-              Fermer
-            </Button>
-          </Modal.Footer> */}
         </Modal>
       </div>
     </div>

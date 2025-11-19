@@ -20,11 +20,11 @@ export const AboutComp = () => {
           </p>
           {/* <div className="about-hero-stats">
             <div className="about-stat-item">
-              <span className="about-stat-number">50K+</span>
+              <span className="about-stat-number">0.5K+</span>
               <span className="about-stat-label">Clients Satisfaits</span>
             </div>
             <div className="about-stat-item">
-              <span className="about-stat-number">10K+</span>
+              <span className="about-stat-number">1K+</span>
               <span className="about-stat-label">Produits</span>
             </div>
             <div className="about-stat-item">
@@ -43,14 +43,15 @@ export const AboutComp = () => {
               <FaShippingFast className="about-card-icon" />
               <span>Livraison Rapide</span>
             </div>
-            <div className="about-card about-card-2">
-              <FaHeadset className="about-card-icon" />
-              <span>Support 24/7</span>
-            </div>
             <div className="about-card about-card-3">
               <FaShieldAlt className="about-card-icon" />
               <span>Paiement Sécurisé</span>
             </div>
+            <div className="about-card about-card-2">
+              <FaHeadset className="about-card-icon" />
+              <span>Support 24/7</span>
+            </div>
+            
           </div>
         </div>
       </section>

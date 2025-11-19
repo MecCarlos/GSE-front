@@ -29,6 +29,7 @@ import { A_Commande } from "./session/admin/A_Commande";
 import { Contact } from "./session/commons/Contact";
 import { About } from "./session/commons/About";
 import Home from "./session/commons/Home";
+import { A_Message } from "./session/admin/A_Message";
 
 // Navbar dynamique (conditionnée par le chemin)
 const NavbarWrapper = () => {
@@ -139,6 +140,15 @@ function App() {
               element={
                 <PrivateRoute adminOnly={true}>
                   <A_Commande />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/admin-messages"
+              element={
+                <PrivateRoute adminOnly={true}>
+                  <A_Message />
                 </PrivateRoute>
               }
             />

@@ -211,7 +211,7 @@ html, body {
 @media (max-width: 576px) {
   .Top_user .container {
     max-width: 100%;
-    padding: 1rem ;
+    padding: 0 1rem ;
     border-radius: 0;
     justify-content: space-between;
   }
@@ -222,7 +222,6 @@ html, body {
     font-size: 1.1rem;
   }
 }
-
 
 
 

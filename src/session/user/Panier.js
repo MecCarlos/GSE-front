@@ -1,12 +1,20 @@
 import React from "react";
 import { useCart } from "../../Context/CartContext.js";
-// import "../../Style/common/home.css";
 import "../../Style/user/panier.css";
+import PageHeader from "../../components/Header";
+
 import Footer from "../../components/Footer";
 import pvide from "../../assets/gifs/pvide.gif";
 import { useAuth } from "../../AuthContext";
 import { useNavigate } from "react-router-dom";
-import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowLeft, FaCreditCard } from "react-icons/fa";
+import {
+  FaTrash,
+  FaPlus,
+  FaMinus,
+  FaShoppingBag,
+  FaArrowLeft,
+  FaCreditCard,
+} from "react-icons/fa";
 
 const Panier = () => {
   const { cart, updateQuantity, removeFromCart, total, clearCart } = useCart();
@@ -31,13 +39,19 @@ const Panier = () => {
 
   return (
     <div className="home_page">
-      <div className="home_content panier_page">
-        <header className="panier_header">
-          <div className="header_content">
+      <div className="home_content _page">
+        {/* <header className="_header">
+          <div className="_content">
             <h1>Mon Panier</h1>
             <p>{getTotalItems()} article{getTotalItems() > 1 ? 's' : ''} dans votre panier</p>
           </div>
-        </header>
+          </header> */}
+
+        <PageHeader
+          title="Mon Panier"
+          description="Découvrer le contenu de votre panier"
+          background="primary pattern"
+        />
       </div>
 
       <div className="cart-container">
@@ -49,7 +63,10 @@ const Panier = () => {
             <div className="empty-cart_content">
               <h2>Votre panier est vide</h2>
               <p>Découvrez nos produits et ajoutez vos articles préférés</p>
-              <button className="btn btn-primary" onClick={handleContinueShopping}>
+              <button
+                className="btn btn-primary"
+                onClick={handleContinueShopping}
+              >
                 <FaShoppingBag className="me-2" />
                 Découvrir nos produits
               </button>
@@ -62,7 +79,9 @@ const Panier = () => {
                 <div key={idx} className="cart-item">
                   <div className="cart-item_image">
                     <img
-                      src={`http://localhost:3001/uploads/${it.image || "default.png"}`}
+                      src={`http://localhost:3001/uploads/${
+                        it.image || "default.png"
+                      }`}
                       alt={it.nom}
                       className="cart-img"
                     />
@@ -73,20 +92,26 @@ const Panier = () => {
                       <h3 className="cart-item_title">{it.nom}</h3>
                       <button
                         className="cart-item_remove"
-                        onClick={() => removeFromCart(it.productId, it.variantKey)}
+                        onClick={() =>
+                          removeFromCart(it.productId, it.variantKey)
+                        }
                         title="Supprimer"
                       >
                         <FaTrash />
                       </button>
                     </div>
-                    
+
                     <div className="cart-item_variant">
-                      {Object.values(JSON.parse(it.variantKey || "{}") || {}).join(" / ")}
+                      {Object.values(
+                        JSON.parse(it.variantKey || "{}") || {}
+                      ).join(" / ")}
                     </div>
-                    
+
                     <div className="cart-item_price">
                       <span className="price-unit">{it.prix_promo} FCFA</span>
-                      <span className="price-total">{it.quantite +" × "+ it.prix} FCFA</span>
+                      <span className="price-total">
+                        {it.quantite + " × " + it.prix} FCFA
+                      </span>
                     </div>
 
                     <div className="cart-item_actions">
@@ -94,7 +119,11 @@ const Panier = () => {
                         <button
                           className="qty-btn"
                           onClick={() =>
-                            updateQuantity(it.productId, it.variantKey, Math.max(1, it.quantite - 1))
+                            updateQuantity(
+                              it.productId,
+                              it.variantKey,
+                              Math.max(1, it.quantite - 1)
+                            )
                           }
                         >
                           <FaMinus />
@@ -103,7 +132,11 @@ const Panier = () => {
                         <button
                           className="qty-btn"
                           onClick={() =>
-                            updateQuantity(it.productId, it.variantKey, it.quantite + 1)
+                            updateQuantity(
+                              it.productId,
+                              it.variantKey,
+                              it.quantite + 1
+                            )
                           }
                         >
                           <FaPlus />
@@ -118,10 +151,13 @@ const Panier = () => {
             <div className="cart-summary">
               <div className="summary-card">
                 <h3 className="summary-title">Récapitulatif</h3>
-                
+
                 <div className="summary-details">
                   <div className="summary-row">
-                    <span>Sous-total ({getTotalItems()} article{getTotalItems() > 1 ? 's' : ''})</span>
+                    <span>
+                      Sous-total ({getTotalItems()} article
+                      {getTotalItems() > 1 ? "s" : ""})
+                    </span>
                     <span>{total} FCFA</span>
                   </div>
                   <div className="summary-row">
@@ -136,7 +172,10 @@ const Panier = () => {
                 </div>
 
                 <div className="summary-actions">
-                  <button className="btn btn-secondary" onClick={handleContinueShopping}>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={handleContinueShopping}
+                  >
                     <FaArrowLeft className="me-2" />
                     Continuer mes achats
                   </button>
@@ -148,7 +187,9 @@ const Panier = () => {
 
                 <div className="security-notice">
                   <div className="security-icon">🔒</div>
-                  <span>Paiement sécurisé • Livraison gratuite • Retour facile</span>
+                  <span>
+                    Paiement sécurisé • Livraison gratuite • Retour facile
+                  </span>
                 </div>
               </div>
 

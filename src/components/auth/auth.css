@@ -1,6 +1,6 @@
 .log_page {
   background: whitesmoke;
-  background-image: url("../../assets/images//fond/fp.jpg");
+  background-image: url("../../assets/images//fond/fpc.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -46,10 +46,13 @@
   border-radius: 5px;
   border-radius: 50px;
   outline: none;
+  background: transparent;
+  color: #000;
+  transition: all .3s;
 
   &:focus {
     border-color: navy;
-    background: rgba(139, 139, 209, 0.24);
+    border: solid 2px navy;
   }
 }
 
@@ -125,7 +128,7 @@ label {
     background-image: url("../../assets/images//fond/fm.jpg");
 
     img {
-      width: 70px;
+      /* width: 70px; */
     }
 
   }

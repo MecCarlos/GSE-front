@@ -1,22 +1,37 @@
 import "../Style/common/contact.css";
 import { useState } from "react";
 import Map from "./Map.js";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaTiktok, FaSnapchat, FaMapMarkerAlt, FaCheckCircle, FaExclamationTriangle, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaTiktok,
+  FaSnapchat,
+  FaMapMarkerAlt,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaPhone,
+  FaEnvelope,
+  FaClock,
+} from "react-icons/fa";
 import { RiTimeFill } from "react-icons/ri";
 import { FaUserGroup } from "react-icons/fa6";
 import { BiSolidContact } from "react-icons/bi";
-import { API_URL } from '../config';
+import { API_URL } from "../config";
+import PageHeader from "../components/Header";
 
 export const ContactComp = () => {
-  const [form, setForm] = useState({ nom: "", email: "", objet: "", message: "" });
+  const [form, setForm] = useState({
+    nom: "",
+    email: "",
+    objet: "",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
-
-  const BASE_API_URL = process.env.NODE_ENV === 'production' 
-    ? 'https://votre-domaine.com/api' 
-    : "`${API_URL}'";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,10 +42,10 @@ export const ContactComp = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${BASE_API_URL}/contact`, {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/contact`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(form),
       });
@@ -42,12 +57,12 @@ export const ContactComp = () => {
         setShowSuccessModal(true);
         setForm({ nom: "", email: "", objet: "", message: "" });
       } else {
-        setModalMessage(data.message || 'Une erreur est survenue');
+        setModalMessage(data.message || "Une erreur est survenue");
         setShowErrorModal(true);
       }
     } catch (error) {
-      console.error('Erreur:', error);
-      setModalMessage('Erreur de connexion. Veuillez réessayer.');
+      console.error("Erreur:", error);
+      setModalMessage("Erreur de connexion. Veuillez réessayer.");
       setShowErrorModal(true);
     } finally {
       setIsSubmitting(false);
@@ -64,13 +79,11 @@ export const ContactComp = () => {
 
   return (
     <div className="contact_page">
-      {/* En-tête Hero */}
-      <header className="contact_header_simple">
-        <div className="header_content">
-          <h1>Contactez-Nous</h1>
-          <p className="header_subtitle">Nous sommes là pour répondre à toutes vos questions</p>
-        </div>
-      </header>
+      <PageHeader
+        title="Contactez-Nous"
+        description="Nous sommes là pour répondre à toutes vos questions"
+        background="primary pattern"
+      />
 
       <div className="container contact_grid">
         <div className="row g-4">
@@ -78,8 +91,14 @@ export const ContactComp = () => {
           <div className="col-lg-8">
             <div className="card contact_form_card">
               <div className="card_header">
-                <h2><BiSolidContact className="me-2" />Envoyez-nous un message</h2>
-                <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais</p>
+                <h2>
+                  <BiSolidContact className="me-2" />
+                  Envoyez-nous un message
+                </h2>
+                <p>
+                  Remplissez le formulaire ci-dessous et nous vous répondrons
+                  dans les plus brefs délais
+                </p>
               </div>
               <div className="card_body">
                 <form onSubmit={handleSubmit}>
@@ -87,28 +106,28 @@ export const ContactComp = () => {
                     <div className="col-md-6">
                       <div className="form_group">
                         <label>Nom complet *</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           name="nom"
                           value={form.nom}
                           onChange={handleChange}
-                          placeholder="Votre nom complet" 
-                          className="form-control" 
-                          required 
+                          placeholder="Votre nom complet"
+                          className="form-control"
+                          required
                         />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form_group">
                         <label>Email *</label>
-                        <input 
-                          type="email" 
+                        <input
+                          type="email"
                           name="email"
                           value={form.email}
                           onChange={handleChange}
-                          placeholder="Votre adresse email" 
-                          className="form-control" 
-                          required 
+                          placeholder="Votre adresse email"
+                          className="form-control"
+                          required
                         />
                       </div>
                     </div>
@@ -116,22 +135,22 @@ export const ContactComp = () => {
 
                   <div className="form_group">
                     <label>Objet *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="objet"
                       value={form.objet}
                       onChange={handleChange}
-                      placeholder="Objet de votre message" 
-                      className="form-control" 
-                      required 
+                      placeholder="Objet de votre message"
+                      className="form-control"
+                      required
                     />
                   </div>
 
                   <div className="form_group">
                     <label>Message *</label>
-                    <textarea 
-                      className="form-control" 
-                      rows="6" 
+                    <textarea
+                      className="form-control"
+                      rows="6"
                       name="message"
                       value={form.message}
                       onChange={handleChange}
@@ -140,20 +159,23 @@ export const ContactComp = () => {
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit" 
-                    className={`btn rounded-pill text-white p-3 submit_btn ${isSubmitting ? 'submitting' : ''}`}
+                  <button
+                    type="submit"
+                    className={`btn rounded-pill text-white p-3 submit_btn ${
+                      isSubmitting ? "submitting" : ""
+                    }`}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                        <span
+                          className="spinner-border spinner-border-sm me-2"
+                          role="status"
+                        ></span>
                         Envoi en cours...
                       </>
                     ) : (
-                      <>
-                        Envoyer le message
-                      </>
+                      <>Envoyer le message</>
                     )}
                   </button>
                 </form>
@@ -163,7 +185,10 @@ export const ContactComp = () => {
             {/* Carte Localisation */}
             <div className="card localisation_card mt-4">
               <div className="card_header">
-                <h2><FaMapMarkerAlt className="me-2" />Notre localisation</h2>
+                <h2>
+                  <FaMapMarkerAlt className="me-2" />
+                  Notre localisation
+                </h2>
                 <p>Venez nous rencontrer dans nos bureaux</p>
               </div>
               <div className="card_body map_container">
@@ -188,14 +213,18 @@ export const ContactComp = () => {
                 </div>
               </div>
               <div className="contact_item">
-                <span className="contact_icon"><FaPhone /></span>
+                <span className="contact_icon">
+                  <FaPhone />
+                </span>
                 <div>
                   <strong>Téléphone</strong>
                   <p>+229 01 49 30 65 16</p>
                 </div>
               </div>
               <div className="contact_item">
-                <span className="contact_icon"><FaEnvelope /></span>
+                <span className="contact_icon">
+                  <FaEnvelope />
+                </span>
                 <div>
                   <strong>Email</strong>
                   <p>olatechcorrporations@gmail.com</p>
@@ -239,13 +268,21 @@ export const ContactComp = () => {
                 <a href="#" className="instagram" title="Instagram">
                   <FaInstagram />
                 </a>
-                <a href="https://www.snapchat.com/add/g-ldas29?share_id=I8njbTHM_Mc&locale=fr-BJ" className="snapchat" title="Snapchat">
+                <a
+                  href="https://www.snapchat.com/add/g-ldas29?share_id=I8njbTHM_Mc&locale=fr-BJ"
+                  className="snapchat"
+                  title="Snapchat"
+                >
                   <FaSnapchat />
                 </a>
                 <a href="#" className="linkedin" title="LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://www.tiktok.com/@olatechcorporations20" className="tiktok" title="TikTok">
+                <a
+                  href="https://www.tiktok.com/@olatechcorporations20"
+                  className="tiktok"
+                  title="TikTok"
+                >
                   <FaTiktok />
                 </a>
               </div>
@@ -256,19 +293,34 @@ export const ContactComp = () => {
 
       {/* Modal de succès */}
       {showSuccessModal && (
-        <div className="modal fade show" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }} tabIndex="-1">
+        <div
+          className="modal fade show"
+          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}
+          tabIndex="-1"
+        >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content success-modal">
               <div className="modal-header border-0">
-                <button type="button" className="btn-close" onClick={closeSuccessModal}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeSuccessModal}
+                ></button>
               </div>
               <div className="modal-body text-center">
-                <FaCheckCircle className="text-success mb-3" style={{ fontSize: '3rem' }} />
+                <FaCheckCircle
+                  className="text-success mb-3"
+                  style={{ fontSize: "3rem" }}
+                />
                 <h4 className="text-success mb-3">Succès !</h4>
                 <p className="mb-0">{modalMessage}</p>
               </div>
               <div className="modal-footer border-0 justify-content-center">
-                <button type="button" className="btn btn-success" onClick={closeSuccessModal}>
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={closeSuccessModal}
+                >
                   Fermer
                 </button>
               </div>
@@ -279,19 +331,34 @@ export const ContactComp = () => {
 
       {/* Modal d'erreur */}
       {showErrorModal && (
-        <div className="modal fade show" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }} tabIndex="-1">
+        <div
+          className="modal fade show"
+          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}
+          tabIndex="-1"
+        >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content error-modal">
               <div className="modal-header border-0">
-                <button type="button" className="btn-close" onClick={closeErrorModal}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeErrorModal}
+                ></button>
               </div>
               <div className="modal-body text-center">
-                <FaExclamationTriangle className="text-danger mb-3" style={{ fontSize: '3rem' }} />
+                <FaExclamationTriangle
+                  className="text-danger mb-3"
+                  style={{ fontSize: "3rem" }}
+                />
                 <h4 className="text-danger mb-3">Oups !</h4>
                 <p className="mb-0">{modalMessage}</p>
               </div>
               <div className="modal-footer border-0 justify-content-center">
-                <button type="button" className="btn btn-danger" onClick={closeErrorModal}>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={closeErrorModal}
+                >
                   Réessayer
                 </button>
               </div>

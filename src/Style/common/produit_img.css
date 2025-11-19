@@ -56,6 +56,8 @@
   font-weight: bold;
   margin: 0.3rem 0;
   font-size: 0.95rem;
+  color: #000;
+
 }
 
 .element .left button {
@@ -91,7 +93,7 @@
   color: rgba(209, 208, 208, 1); 
 }
 .gray .prix {
-  color: rgba(209, 208, 208, 1) !important;
+  color: rgb(58, 57, 57) !important;
 }
 
 .pink { 
@@ -107,7 +109,7 @@
   color: rgb(33, 180, 238); 
 }
 .blue .prix {
-  color: rgb(33, 180, 238) !important;
+  color: rgb(4, 53, 73) !important;
 }
 
 .purple { 

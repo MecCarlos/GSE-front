@@ -11,18 +11,18 @@ const Produits = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = [
-    { name: "Routeur", price: 2100000, image: routeur, color: "gray", reduc: "5%" },
-    { name: "Apple iphone", price: 75000, image: iph3, color: "gold", reduc: "10%" },
-    { name: "iPad 128Go", price: 210000, image: ipad, color: "pink", reduc: "5%" },
+    { name: "Routeur", price: 210000, image: routeur, color: "gray", reduc: "5%" },
+    { name: "Apple iphone", price: 415000, image: iph3, color: "gold", reduc: "10%" },
+    { name: "iPad 128Go", price: 310000, image: ipad, color: "pink", reduc: "5%" },
     { name: "Caméra surveillance", price: 51000, image: camera, color: "blue", reduc: "5%" },
-    { name: "Apple Airpod 4", price: 9000, image: airpod4, color: "gray", reduc: "5%" },
-    { name: "Asus Gaming", price: 3105000, image: asus, color: "purple", reduc: "5%" },
+    { name: "Apple Airpod 4", price: 25000, image: airpod4, color: "gray", reduc: "5%" },
+    { name: "Asus Gaming", price: 2105000, image: asus, color: "purple", reduc: "5%" },
   ];
 
   // Fonction pour obtenir la couleur du texte basée sur la couleur du produit
   const getPriceColor = (color) => {
     const colorMap = {
-      gray: "rgba(209, 208, 208, 1)",
+      gray: "rgba(218, 66, 66, 1)",
       gold: "rgb(214, 162, 28)",
       pink: "rgb(245, 68, 97)",
       blue: "rgb(33, 180, 238)",
@@ -46,7 +46,7 @@ const Produits = () => {
               <h4 className="nom">{p.name}</h4>
               <p 
                 className="prix" 
-                style={{ color: getPriceColor(p.color) }}
+               
               >
                 {p.price.toLocaleString()}<span>F</span>
               </p>

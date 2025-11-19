@@ -1,42 +1,8 @@
-.home_page {
-  background: #f8f9fa;
-  min-height: 100vh;
-}
 
-/* Header */
-.Mycommande_page .commande_header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 4rem 1rem;
-  text-align: center;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
 
-.commande_header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
-  background-size: cover;
-}
 
-.header_content h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
 
-.header_content p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin: 0 auto;
-}
+
 
 /* Container principal */
 .commande-container {
@@ -547,10 +513,7 @@
   .commande-container {
     padding: 1rem;
   }
-  
-  .header_content h1 {
-    font-size: 2rem;
-  }
+ 
   
   .stats-cards {
     gap: 0.75rem;
@@ -624,14 +587,7 @@
 }
 
 @media (max-width: 576px) {
-  .commande_header {
-    padding: 2.5rem 1rem;
-  }
-  
-  .header_content h1 {
-    font-size: 1.75rem;
-  }
-  
+
   .stats-cards {
     gap: 0.5rem;
   }

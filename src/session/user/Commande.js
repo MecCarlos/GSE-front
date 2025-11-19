@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useCart } from "../../Context/CartContext.js";
 import { useAuth } from "../../AuthContext";
 import "../../Style/user/commande.css";
+import "../../Style/common/header.css";
 import pvide from "../../assets/gifs/pvide.gif";
 import Footer from "../../components/Footer";
 import { NavLink } from "react-router-dom";
+import PageHeader from "../../components/Header"
+
 import {
   FaMoneyBillWave,
   FaTruck,
@@ -267,13 +270,20 @@ const Commande = () => {
 
   return (
     <div className="home_page">
-      <div className="home_content commande_page">
-        <header className="commande_header">
-          <div className="header_content">
-            <h1>Finaliser votre commande</h1>
-            <p>Dernière étape avant de recevoir vos articles</p>
-          </div>
-        </header>
+      <div className="home_content _page">
+        {/* <header className="_header">
+          <div className="_content">
+            <h1>Ccommander</h1>
+            <p></p>
+            </div>
+        </header> */}
+
+         <PageHeader 
+          title="Commander" 
+          description="Dernière étape avant de recevoir vos articles"
+          background="primary pattern"
+        />
+      </div>
 
         <div className="commande-container">
           {cart.length === 0 ? (
@@ -692,7 +702,7 @@ const Commande = () => {
             </div>
           )}
         </div>
-      </div>
+      
 
       <Footer />
 
