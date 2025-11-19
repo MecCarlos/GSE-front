@@ -1,3 +1,8 @@
+.produit_box
+{
+  max-width: 1600px!important;
+  padding: 4rem!important;
+}
 
 .catalogue-subtitle {
   font-size: 1.2rem;
@@ -54,6 +59,8 @@
   color: #2d3748;
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  align-items: center!important;
+  justify-content: left!important;
 }
 
 .categorie-buttons {
@@ -97,7 +104,8 @@
   display: none;
   margin-bottom: 2rem;
   width: 40%;
-  border-bottom: #2d3748 solid 2px;
+  width: 100%;
+  align-items: center;
 }
 
 .categorie-select {
@@ -126,6 +134,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .produit_box
+{
+  max-width: 1600px!important;
+  padding: 1rem!important;
+}
+
+
   .categorie-filters-desktop {
     display: none;
   }
@@ -545,12 +560,13 @@
 }
 
 .promo {
-  font-weight: 700;
-  color: #2d3748;
+  font-weight: 500!important;
+  /* color: #2d3748; */
   font-size: 0.8rem;
-  background: linear-gradient(135deg, #48bb78, #38a169);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* background: linear-gradient(135deg, #48bb78, #38a169); */
+  color: blue !important;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
   background-clip: text;
 }
 
@@ -558,9 +574,7 @@
   font-weight: 500;
   color: #a0aec0;
   text-decoration: line-through;
-  font-size: 0.95rem;
   font-size: 0.8rem;
-
 }
 
 /* Bouton identique à .panier mais stylé */

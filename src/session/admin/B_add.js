@@ -81,16 +81,16 @@ const optionValues = {
   Stockage: ["32 Go","64 Go","128 Go","256 Go","512 Go","1 To","2 To"],
   ANC: ["Oui", "Non"],
   Connexion: ["USB", "Bluetooth", "WiFi", "Jack", "USB-C"],
-  Couleur: ["Noir", "Blanc", "Bleu", "Rouge", "Gris", "Or", "Argent","Corail","Vert","Violet","Jaune","Rose"],
+  Couleur: ["Noir", "Blanc", "Bleu", "Orange", "Rouge", "Gris", "Or", "Argent","Corail","Vert","Violet","Jaune","Rose"],
   Model: ["Standard", "Pro", "Lite", "Max","Pro Max", "Ultra", "Plus", "Mini", "Air"],
   Type: ["Standard","Filaire", "Sans fil","Canal +","Strong"],
-  Connectique: ["USB", "USB-C", "Thunderbolt", "SATA", "NVMe", "Ethernet", "WiFi"],
+  Connectique: ["USB", "USB-C", "Thunderbolt", "SATA", "NVMe", "Ethernet", "WiFi","PCI"],
   Résolution: ["720p", "1080p", "1440p", "4K"],
   Longueur: ["0.5 m", "1 m", "2 m", "3 m", "5 m", "10 m", "15 m", "20 m", "30 m", "50 m"],
   Taille: ["24 pouces", "27 pouces", "32 pouces", "34 pouces", "40 pouces", "50 pouces", "55 pouces", "65 pouces"],
   Vitesse: ["300 Mbps", "600 Mbps", "1 Gbps", "2.5 Gbps", "5 Gbps", "10 Gbps"],
   Ports: ["5", "8", "16", "24", "48"],
-  Puissance: ["50W", "100W", "150W", "200W", "250W", "300W", "500W", "1000W"],
+  Puissance: ["5W","10", "50W", "100W", "150W", "200W", "250W", "300W", "500W", "1000W"],
   Tension_entree: ["12V", "24V", "48V", "120V", "230V", "400V"],
   Tension_sortie: ["12V", "24V", "48V", "120V", "230V", "400V"],
   Tension: ["12V", "24V", "48V", "110V", "220V", "230V", "240V"],
@@ -321,10 +321,10 @@ const B_add = ({ refresh }) => {
                           <input type="number" value={v.quantite} onChange={e=>handleQuantiteChange(i,e.target.value)} className="form-control" />
                         </div>
 
-                        <div className="mb-2">
+                        {/* <div className="mb-2">
                           <label>Prix</label>
                           <input type="number" value={v.prix || ''} onChange={e=>handlePrixChange(i,'prix',e.target.value)} className="form-control" />
-                        </div>
+                        </div> */}
                         <div className="mb-2">
                           <label>Prix promo</label>
                           <input type="number" value={v.prix_promo || ''} onChange={e=>handlePrixChange(i,'prix_promo',e.target.value)} className="form-control" />

@@ -684,7 +684,7 @@ const Commande = () => {
                     </div>
                     <div className="total-row">
                       <span>Livraison</span>
-                      <span className="free">Gratuite</span>
+                      {/* <span className="free">Assurée</span> */}
                     </div>
                     <div className="total-divider"></div>
                     <div className="total-row final">

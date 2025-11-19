@@ -162,7 +162,7 @@ const Panier = () => {
                   </div>
                   <div className="summary-row">
                     <span>Livraison</span>
-                    <span className="free-shipping">Gratuite</span>
+                    {/* <span className="free-shipping">Gratuite</span> */}
                   </div>
                   <div className="summary-divider"></div>
                   <div className="summary-row total">
@@ -188,7 +188,7 @@ const Panier = () => {
                 <div className="security-notice">
                   <div className="security-icon">🔒</div>
                   <span>
-                    Paiement sécurisé • Livraison gratuite • Retour facile
+                    Paiement sécurisé • Livraison  • Retour facile
                   </span>
                 </div>
               </div>

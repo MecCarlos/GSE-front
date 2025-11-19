@@ -4,6 +4,7 @@ import { useCart } from "../Context/CartContext.js";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import { API_URL } from "../config";
 import "../Style/common/header.css";
+import "../Style/common/catalogue.css"
 
 const ProduitCatalogue = () => {
   const [products, setProducts] = useState([]);
