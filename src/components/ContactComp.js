@@ -262,10 +262,10 @@ export const ContactComp = () => {
               <h5>Réseaux sociaux</h5>
               <p className="social_text">Rejoignez notre communauté</p>
               <div className="social_links">
-                <a href="#" className="facebook" title="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61564656532982" className="facebook" title="Facebook">
                   <FaFacebook />
                 </a>
-                <a href="#" className="instagram" title="Instagram">
+                <a href="https://www.instagram.com/olatechcorporation/" className="instagram" title="Instagram">
                   <FaInstagram />
                 </a>
                 <a
@@ -274,9 +274,6 @@ export const ContactComp = () => {
                   title="Snapchat"
                 >
                   <FaSnapchat />
-                </a>
-                <a href="#" className="linkedin" title="LinkedIn">
-                  <FaLinkedin />
                 </a>
                 <a
                   href="https://www.tiktok.com/@olatechcorporations20"
