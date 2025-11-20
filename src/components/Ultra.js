@@ -53,7 +53,7 @@ const Ultra = () => {
         <div className="right">
           {/* <h6 className="reduc">25%</h6> */}
           <div className="text_box">
-            <h3>Gildas Empire</h3>
+            <h3>Olatech store</h3>
             <p>Consultez nos meilleurs produits en stock et faites-vous livrer en un rien de temps.</p>
             <NavLink className="bttn rounded-pill">Boutique</NavLink>
           </div>
