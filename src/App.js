@@ -7,8 +7,8 @@ import { AuthProvider, useAuth } from "./AuthContext";
 import { CartProvider } from "./Context/CartContext";
 
 // Navbars
-import UserNavbar from "./components/UserNavbar";
-import AdminNavbar from "./components/AdminNavbar";
+// import UserNavbar from "./components/UserNavbar";
+// import AdminNavbar from "./components/AdminNavbar";
 
 // Pages publiques
 import Login from "./components/auth/Login";
@@ -44,12 +44,12 @@ const NavbarWrapper = () => {
     return null;
   }
 
-  if (auth.role === "admin") {
-    return <AdminNavbar />;
-  }
+  // if (auth.role === "admin") {
+  //   return <AdminNavbar />;
+  // }
 
-  // Si pas admin → UserNavbar (connecté ou pas)
-  return <UserNavbar />;
+  // // Si pas admin → UserNavbar (connecté ou pas)
+  // return <UserNavbar />;
 };
 
 // PrivateRoute simple
